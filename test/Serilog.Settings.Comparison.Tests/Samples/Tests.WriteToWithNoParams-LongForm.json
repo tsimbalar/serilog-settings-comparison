@@ -1,0 +1,8 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      { "Name": "Dummy" }
+    ]
+  }
+}

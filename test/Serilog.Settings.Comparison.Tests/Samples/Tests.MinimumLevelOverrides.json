@@ -1,0 +1,12 @@
+﻿{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Verbose",
+      "Override": {
+        "Microsoft": "Error",
+        "Microsoft.Extensions": "Information",
+        "System": "Debug"
+      }
+    }
+  }
+}

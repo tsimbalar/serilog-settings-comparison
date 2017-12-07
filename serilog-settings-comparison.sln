@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Settings.Comparison.Tests", "test\Serilog.Settings.Comparison.Tests\Serilog.Settings.Comparison.Tests.csproj", "{00BF7178-64EF-42A7-AFFB-D6F9A1A4E2BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDummies", "test\TestDummies\TestDummies.csproj", "{220BB2B2-FB03-48B5-8B8E-C21DE683164B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00BF7178-64EF-42A7-AFFB-D6F9A1A4E2BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00BF7178-64EF-42A7-AFFB-D6F9A1A4E2BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00BF7178-64EF-42A7-AFFB-D6F9A1A4E2BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00BF7178-64EF-42A7-AFFB-D6F9A1A4E2BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{220BB2B2-FB03-48B5-8B8E-C21DE683164B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{220BB2B2-FB03-48B5-8B8E-C21DE683164B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{220BB2B2-FB03-48B5-8B8E-C21DE683164B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{220BB2B2-FB03-48B5-8B8E-C21DE683164B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CAF905A-68BA-485F-8E67-37C8D2063FCA}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,14 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "Enrich": [
+      "WithThreadId",
+      {
+        "Name": "WithDummyUserName",
+        "Args": {
+          "extraParam": "UserExtraParam"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,129 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net452;netcoreapp2.0</TargetFrameworks>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Samples\Tests.Empty-EmptySection.config" />
+    <None Remove="Samples\Tests.Empty-EmptySection.json" />
+    <None Remove="Samples\Tests.Empty.config" />
+    <None Remove="Samples\Tests.Empty.json" />
+    <None Remove="Samples\Tests.EnrichWithExternalEnricher.config" />
+    <None Remove="Samples\Tests.EnrichWithExternalEnricher.json" />
+    <None Remove="Samples\Tests.EnrichWithProperty.config" />
+    <None Remove="Samples\Tests.EnrichWithProperty.json" />
+    <None Remove="Samples\Tests.EnvironmentVariableExpansion.config" />
+    <None Remove="Samples\Tests.EnvironmentVariableExpansion.json" />
+    <None Remove="Samples\Tests.MinimumLevel-Default.json" />
+    <None Remove="Samples\Tests.MinimumLevel.config" />
+    <None Remove="Samples\Tests.MinimumLevel.json" />
+    <None Remove="Samples\Tests.MinimumLevelOverrides.config" />
+    <None Remove="Samples\Tests.MinimumLevelOverrides.json" />
+    <None Remove="Samples\Tests.WriteToWithNoParams-LongForm.json" />
+    <None Remove="Samples\Tests.WriteToWithNoParams.config" />
+    <None Remove="Samples\Tests.WriteToWithNoParams.json" />
+    <None Remove="Samples\Tests.WriteToWithRestrictedToMinimumLevel.config" />
+    <None Remove="Samples\Tests.WriteToWithRestrictedToMinimumLevel.json" />
+    <None Remove="Samples\Tests.WriteToWithSimpleParams.config" />
+    <None Remove="Samples\Tests.WriteToWithSimpleParams.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Samples\Tests.Empty-EmptySection.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.Empty-EmptySection.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.Empty.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.Empty.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.EnrichWithExternalEnricher.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.EnrichWithExternalEnricher.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.EnrichWithProperty.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.EnrichWithProperty.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.EnvironmentVariableExpansion.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.EnvironmentVariableExpansion.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.MinimumLevel-Default.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.MinimumLevel.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.MinimumLevel.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.MinimumLevelOverrides.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.MinimumLevelOverrides.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.WriteToWithNoParams-LongForm.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.WriteToWithNoParams.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.WriteToWithNoParams.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.WriteToWithRestrictedToMinimumLevel.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.WriteToWithRestrictedToMinimumLevel.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.WriteToWithSimpleParams.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.WriteToWithSimpleParams.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <PackageReference Include="Serilog" Version="2.6.0" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+    <Reference Include="System.Configuration" />
+    <PackageReference Include="Serilog.Settings.AppSettings" Version="2.1.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+    <PackageReference Include="Microsoft.Extensions.Configuration">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Serilog.Settings.Configuration" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TestDummies\TestDummies.csproj" />
+  </ItemGroup>
+</Project>

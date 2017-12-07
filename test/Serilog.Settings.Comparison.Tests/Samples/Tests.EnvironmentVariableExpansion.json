@@ -1,0 +1,14 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "Dummy",
+        "Args": {
+          "stringParam": "%PATH%",
+          "intParam": "%NUMBER_OF_PROCESSORS%"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+﻿{
+  "Serilog": {
+    "Properties": {
+      "AppName": "MyApp",
+      "ServerName": "MyServer"
+    }
+  }
+}
