@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Serilog.Context;
 using Serilog.Core;
 using Serilog.Events;
+using Serilog.Formatting.Json;
 using Serilog.Settings.Comparison.Tests.Support;
 using Xunit;
 using Xunit.Abstractions;
@@ -162,6 +163,24 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
             Assert.Equal(666, TestDummies.DummySink.IntParam);
             Assert.Null(TestDummies.DummySink.NullableIntParam);
             Assert.Equal("default", TestDummies.DummySink.StringParamWithDefault);
+        }
+
+        [Theory]
+        [InlineData("Tests.WriteToWithConcreteDefaultImplementationOfInterface.json")]
+        [InlineData("Tests.WriteToWithConcreteDefaultImplementationOfInterface.config")]
+        public void SupportForInterfaceParamsPassingConcreteClassWithDefaultConstructor(string fileName)
+        {
+            var docs = "For parameters whose type is an `interface`, the full type name of an implementation " +
+                       "can be provided. If the type is not in the `Serilog`, remember to include `using` directives." +
+                       "**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !";
+
+            WriteDocumentation(docs, fileName);
+
+            var loggerConfig = LoadConfig(fileName);
+
+            loggerConfig.CreateLogger();
+            Assert.NotNull(TestDummies.DummySink.Formatter);
+            Assert.IsType<JsonFormatter>(TestDummies.DummySink.Formatter);
         }
 
         [Theory]

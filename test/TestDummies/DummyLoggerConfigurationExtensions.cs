@@ -44,19 +44,20 @@ namespace TestDummies
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum
             )
         {
-            return loggerSinkConfiguration.Sink(new DummySink(stringParam, intParam, stringParamWithDefault, nullableIntParam),
+            return loggerSinkConfiguration.Sink(new DummySink(stringParam, intParam, stringParamWithDefault, nullableIntParam, null),
                 restrictedToMinimumLevel);
         }
 
-        public static LoggerConfiguration DummyRollingFile(
+        public static LoggerConfiguration DummyWithFormatter(
             this LoggerSinkConfiguration loggerSinkConfiguration,
-            ITextFormatter formatter,
-            string pathFormat,
-            LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum)
+            LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
+            ITextFormatter formatter = null
+        )
         {
-            return loggerSinkConfiguration.Sink(new DummyRollingFileSink(), restrictedToMinimumLevel);
+            return loggerSinkConfiguration.Sink(new DummySink(null, 0, null, null, formatter),
+                restrictedToMinimumLevel);
         }
-
+        
         public static LoggerConfiguration DummyRollingFile(
             this LoggerAuditSinkConfiguration loggerSinkConfiguration,
             string pathFormat,

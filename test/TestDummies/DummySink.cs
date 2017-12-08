@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Serilog.Core;
 using Serilog.Events;
+using Serilog.Formatting;
 
 namespace TestDummies
 {
@@ -11,15 +12,18 @@ namespace TestDummies
     public class DummySink : ILogEventSink
     {
 
-        public DummySink(string stringParam, int intParam, string stringParamWithDefault, int? nullableIntParam)
+        public DummySink(string stringParam, int intParam, string stringParamWithDefault, int? nullableIntParam, ITextFormatter formatter)
         {
             Emitted.Clear();
             StringParam = stringParam;
             IntParam = intParam;
             StringParamWithDefault = stringParamWithDefault;
             NullableIntParam = nullableIntParam;
+            Formatter = formatter;
         }
 
+        [ThreadStatic]
+        public static ITextFormatter Formatter;
         [ThreadStatic]
         public static string StringParam;
         [ThreadStatic]
