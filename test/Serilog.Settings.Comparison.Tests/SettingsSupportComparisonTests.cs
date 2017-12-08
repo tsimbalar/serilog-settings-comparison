@@ -250,8 +250,6 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         // TODO : implementation class for Interface or Abstract class
         // TODO : static property accessor
         // TODO : out of the box conversions : Uri, TimeSpan ... 
-        // TODO : Enrichement with abitrary enricher
-        // TODO : Enrichement with LogContext
         // TODO : AuditTo
         // TODO : LoggingLevelSwitch
         // TODO : filters

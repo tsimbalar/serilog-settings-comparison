@@ -7,103 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Samples\Tests.Empty-EmptySection.config" />
-    <None Remove="Samples\Tests.Empty-EmptySection.json" />
-    <None Remove="Samples\Tests.Empty.config" />
-    <None Remove="Samples\Tests.Empty.json" />
-    <None Remove="Samples\Tests.EnrichFromLogContext.config" />
-    <None Remove="Samples\Tests.EnrichFromLogContext.json" />
-    <None Remove="Samples\Tests.EnrichWithExternalEnricher.config" />
-    <None Remove="Samples\Tests.EnrichWithExternalEnricher.json" />
-    <None Remove="Samples\Tests.EnrichWithProperty.config" />
-    <None Remove="Samples\Tests.EnrichWithProperty.json" />
-    <None Remove="Samples\Tests.EnvironmentVariableExpansion.config" />
-    <None Remove="Samples\Tests.EnvironmentVariableExpansion.json" />
-    <None Remove="Samples\Tests.MinimumLevel-Default.json" />
-    <None Remove="Samples\Tests.MinimumLevel.config" />
-    <None Remove="Samples\Tests.MinimumLevel.json" />
-    <None Remove="Samples\Tests.MinimumLevelOverrides.config" />
-    <None Remove="Samples\Tests.MinimumLevelOverrides.json" />
-    <None Remove="Samples\Tests.WriteToWithNoParams-LongForm.json" />
-    <None Remove="Samples\Tests.WriteToWithNoParams.config" />
-    <None Remove="Samples\Tests.WriteToWithNoParams.json" />
-    <None Remove="Samples\Tests.WriteToWithRestrictedToMinimumLevel.config" />
-    <None Remove="Samples\Tests.WriteToWithRestrictedToMinimumLevel.json" />
-    <None Remove="Samples\Tests.WriteToWithSimpleParams.config" />
-    <None Remove="Samples\Tests.WriteToWithSimpleParams.json" />
+    <None Remove="Samples\*" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Samples\Tests.Empty-EmptySection.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.Empty-EmptySection.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.Empty.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.Empty.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.EnrichFromLogContext.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.EnrichFromLogContext.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.EnrichWithExternalEnricher.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.EnrichWithExternalEnricher.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.EnrichWithProperty.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.EnrichWithProperty.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.EnvironmentVariableExpansion.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.EnvironmentVariableExpansion.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.MinimumLevel-Default.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.MinimumLevel.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.MinimumLevel.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.MinimumLevelOverrides.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.MinimumLevelOverrides.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.WriteToWithNoParams-LongForm.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.WriteToWithNoParams.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.WriteToWithNoParams.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.WriteToWithRestrictedToMinimumLevel.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.WriteToWithRestrictedToMinimumLevel.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.WriteToWithSimpleParams.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Samples\Tests.WriteToWithSimpleParams.json">
+    <Content Include="Samples\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
