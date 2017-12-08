@@ -9,9 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDummies", "test\TestDum
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{B88E60D4-DB93-4BA8-BE04-535125613B6E}"
 	ProjectSection(SolutionItems) = preProject
+		Build.ps1 = Build.ps1
 		README.md = README.md
 		serilog-settings-comparison.sln.DotSettings = serilog-settings-comparison.sln.DotSettings
 		assets\Serilog.snk = assets\Serilog.snk
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{BBDE608C-6826-4ED1-BD6F-08B278D0873C}"
+	ProjectSection(SolutionItems) = preProject
+		docs\README.md = docs\README.md
 	EndProjectSection
 EndProject
 Global

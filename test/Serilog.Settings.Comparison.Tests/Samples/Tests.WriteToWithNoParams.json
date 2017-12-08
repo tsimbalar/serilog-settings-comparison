@@ -1,6 +1,6 @@
 ﻿{
   "Serilog": {
     "Using": [ "TestDummies" ],
-    "WriteTo": "Dummy"
+    "WriteTo": [ "Dummy" ]
   }
 }
