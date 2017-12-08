@@ -2,7 +2,7 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace Serilog.Settings.Configuration.Tests.Support
+namespace Serilog.Settings.Comparison.Tests.Support
 {
     public class DelegatingSink : ILogEventSink
     {

@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Linq;
-#if NET452
-using System.Collections.Generic;
-using System.Configuration;
-#endif
 using System.IO;
-#if NETCOREAPP2_0
 using Microsoft.Extensions.Configuration;
-#endif
 using Serilog.Core;
 using Serilog.Events;
-using Serilog.Settings.Configuration.Tests.Support;
+using Serilog.Settings.Comparison.Tests.Support;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Serilog.Settings.Configuration.Tests.SettingsComparison
+namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
 {
     public class SettingsSupportComparisonTests
     {
-        private readonly ITestOutputHelper _outputHelper;
+        readonly ITestOutputHelper _outputHelper;
 
         public SettingsSupportComparisonTests(ITestOutputHelper outputHelper)
         {
@@ -165,7 +159,7 @@ namespace Serilog.Settings.Configuration.Tests.SettingsComparison
             loggerConfig.CreateLogger();
             Assert.Equal("A string param", TestDummies.DummySink.StringParam);
             Assert.Equal(666, TestDummies.DummySink.IntParam);
-            Assert.Equal(null, TestDummies.DummySink.NullableIntParam);
+            Assert.Null(TestDummies.DummySink.NullableIntParam);
             Assert.Equal("default", TestDummies.DummySink.StringParamWithDefault);
         }
 
@@ -238,7 +232,7 @@ namespace Serilog.Settings.Configuration.Tests.SettingsComparison
         // TODO : LoggingLevelSwitch
         // TODO : filters
 
-        private void WriteDocumentation(string markdownDescription, string fileName)
+        void WriteDocumentation(string markdownDescription, string fileName)
         {
             var fullFilePath = GetTestFileFullPath(fileName);
 
@@ -249,42 +243,27 @@ namespace Serilog.Settings.Configuration.Tests.SettingsComparison
             _outputHelper.WriteLine("```");
         }
 
-        private static LoggerConfiguration LoadConfig(string fileName)
+        static LoggerConfiguration LoadConfig(string fileName)
         {
             var fullFilePath = GetTestFileFullPath(fileName);
-#if NETCOREAPP2_0
             if (fileName.EndsWith(".json")) return LoadJsonConfig(fullFilePath);
-#endif
-#if NET452
             if (fileName.EndsWith(".config")) return LoadXmlConfig(fullFilePath);
-#endif
             throw new ArgumentException($"Only .json and .config are supported. Provided value : {fileName}", nameof(fileName));
         }
 
-        private static string GetTestFileFullPath(string fileName)
+        static string GetTestFileFullPath(string fileName)
         {
             var fullFilePath = Path.Combine("Samples", fileName);
             return fullFilePath;
         }
-#if NET452
-        private static LoggerConfiguration LoadXmlConfig(string fileName)
+
+        static LoggerConfiguration LoadXmlConfig(string fileName)
         {
-            var map = new ExeConfigurationFileMap { ExeConfigFilename = fileName };
-            var config2 = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
-            var settings = config2.AppSettings.Settings
-                .Cast<KeyValueConfigurationElement>()
-                .Select(k => new KeyValuePair<string, string>(k.Key, k.Value))
-                .Where(k => k.Key.StartsWith("serilog:"))
-                .Select(k => new KeyValuePair<string, string>(
-                    k.Key.Substring("serilog:".Length),
-                    Environment.ExpandEnvironmentVariables(k.Value)));
-            var xmlConfig = new LoggerConfiguration().ReadFrom.KeyValuePairs(settings);
+            var xmlConfig = new LoggerConfiguration().ReadFrom.AppSettings(filePath:fileName);
             return xmlConfig;
         }
-#endif
-#if NETCOREAPP2_0
 
-        private static LoggerConfiguration LoadJsonConfig(string fileName)
+        static LoggerConfiguration LoadJsonConfig(string fileName)
         {
             var config = new ConfigurationBuilder()
                 .AddJsonFile(fileName, optional: false)
@@ -293,6 +272,5 @@ namespace Serilog.Settings.Configuration.Tests.SettingsComparison
             var jsonConfig = new LoggerConfiguration().ReadFrom.Configuration(config);
             return jsonConfig;
         }
-#endif
     }
 }
