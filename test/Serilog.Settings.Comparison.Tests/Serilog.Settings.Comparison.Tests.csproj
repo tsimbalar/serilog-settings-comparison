@@ -11,6 +11,8 @@
     <None Remove="Samples\Tests.Empty-EmptySection.json" />
     <None Remove="Samples\Tests.Empty.config" />
     <None Remove="Samples\Tests.Empty.json" />
+    <None Remove="Samples\Tests.EnrichFromLogContext.config" />
+    <None Remove="Samples\Tests.EnrichFromLogContext.json" />
     <None Remove="Samples\Tests.EnrichWithExternalEnricher.config" />
     <None Remove="Samples\Tests.EnrichWithExternalEnricher.json" />
     <None Remove="Samples\Tests.EnrichWithProperty.config" />
@@ -42,6 +44,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Samples\Tests.Empty.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.EnrichFromLogContext.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\Tests.EnrichFromLogContext.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Samples\Tests.EnrichWithExternalEnricher.config">

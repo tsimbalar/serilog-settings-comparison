@@ -2,6 +2,7 @@
 using System.Linq;
 using System.IO;
 using Microsoft.Extensions.Configuration;
+using Serilog.Context;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Settings.Comparison.Tests.Support;
@@ -200,6 +201,29 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
             Assert.NotNull(e);
             Assert.Equal("MyApp", e.Properties["AppName"].LiteralValue());
             Assert.Equal("MyServer", e.Properties["ServerName"].LiteralValue());
+        }
+
+        [Theory]
+        [InlineData("Tests.EnrichFromLogContext.json")]
+        [InlineData("Tests.EnrichFromLogContext.config")]
+        public void SupportForOutOfTheBoxEnrichmentExtensionMethod(string fileName)
+        {
+            var docs = "Log events can be enriched with LogContext.";
+
+            WriteDocumentation(docs, fileName);
+
+            var loggerConfig = LoadConfig(fileName);
+
+            LogEvent e = null;
+            var logger = loggerConfig
+                .WriteTo.Sink(new DelegatingSink(le => e = le)).CreateLogger();
+            using (LogContext.PushProperty("LogContextProperty", "value"))
+            {
+                logger.Information("This will be enriched with a property");
+            }
+            
+            Assert.NotNull(e);
+            Assert.Equal("value", e.Properties["LogContextProperty"].LiteralValue());
         }
 
         [Theory]
