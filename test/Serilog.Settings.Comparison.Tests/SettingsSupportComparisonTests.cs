@@ -6,6 +6,7 @@ using Serilog.Context;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting.Json;
+using Serilog.Settings.Code;
 using Serilog.Settings.Comparison.Tests.Support;
 using Xunit;
 using Xunit.Abstractions;
@@ -22,6 +23,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         }
 
         [Theory]
+        [InlineData("Tests.Empty.csx")]
         [InlineData("Tests.Empty.json")]
         [InlineData("Tests.Empty-EmptySection.json")]
         [InlineData("Tests.Empty.config")]
@@ -281,10 +283,18 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
             _outputHelper.WriteLine("");
             _outputHelper.WriteLine($"ex: {fileName}");
             _outputHelper.WriteLine("");
-            _outputHelper.WriteLine("```" + (fileName.EndsWith(".json") ? "json" : "xml"));
+            _outputHelper.WriteLine("```" + GetMarkdownSnippetLanguage(fileName));
             _outputHelper.WriteLine(File.ReadAllText(fullFilePath));
             _outputHelper.WriteLine("```");
             _outputHelper.WriteLine("");
+        }
+
+        static string GetMarkdownSnippetLanguage(string fileName)
+        {
+            var mdOuputFormat = fileName.Split('.').Last();
+            if (mdOuputFormat == "csx") mdOuputFormat = "csharp";
+            if (mdOuputFormat == "config") mdOuputFormat = "xml";
+            return mdOuputFormat;
         }
 
         static LoggerConfiguration LoadConfig(string fileName)
@@ -292,6 +302,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
             var fullFilePath = GetTestFileFullPath(fileName);
             if (fileName.EndsWith(".json")) return LoadJsonConfig(fullFilePath);
             if (fileName.EndsWith(".config")) return LoadXmlConfig(fullFilePath);
+            if (fileName.EndsWith(".csx")) return LoadCSharpConfig(fullFilePath);
             throw new ArgumentException($"Only .json and .config are supported. Provided value : {fileName}", nameof(fileName));
         }
 
@@ -314,6 +325,14 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
                 .Build();
 
             var jsonConfig = new LoggerConfiguration().ReadFrom.Configuration(config);
+            return jsonConfig;
+        }
+
+        static LoggerConfiguration LoadCSharpConfig(string fileName)
+        {
+            var code = File.ReadAllText(fileName);
+
+            var jsonConfig = new LoggerConfiguration().ReadFrom.CodeString(code);
             return jsonConfig;
         }
     }

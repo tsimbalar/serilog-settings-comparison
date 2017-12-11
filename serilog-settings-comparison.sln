@@ -20,6 +20,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{BBDE608C-6
 		docs\README.md = docs\README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4932AABF-0472-4DFD-A4C8-7FA5291A7522}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Settings.Code", "src\Serilog.Settings.Code\Serilog.Settings.Code.csproj", "{12DC7FF3-7305-489D-8E73-9F8E0F7FD899}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DF9F62A1-F98D-481A-8B6D-1782B1A20C4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,9 +40,17 @@ Global
 		{220BB2B2-FB03-48B5-8B8E-C21DE683164B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{220BB2B2-FB03-48B5-8B8E-C21DE683164B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{220BB2B2-FB03-48B5-8B8E-C21DE683164B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12DC7FF3-7305-489D-8E73-9F8E0F7FD899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12DC7FF3-7305-489D-8E73-9F8E0F7FD899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12DC7FF3-7305-489D-8E73-9F8E0F7FD899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12DC7FF3-7305-489D-8E73-9F8E0F7FD899}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{00BF7178-64EF-42A7-AFFB-D6F9A1A4E2BF} = {DF9F62A1-F98D-481A-8B6D-1782B1A20C4B}
+		{12DC7FF3-7305-489D-8E73-9F8E0F7FD899} = {4932AABF-0472-4DFD-A4C8-7FA5291A7522}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5CAF905A-68BA-485F-8E67-37C8D2063FCA}

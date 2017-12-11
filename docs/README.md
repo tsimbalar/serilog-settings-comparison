@@ -413,6 +413,21 @@ ex: Tests.EnrichWithProperty.config
 
 Loading an empty config file behaves the same as the default `CreateLogger()`. Minimum Level is *Information*.
 
+ex: Tests.Empty.csx
+
+```csharp
+
+```
+
+
+## EmptyConfigFile
+
+
+*Pass*
+
+
+Loading an empty config file behaves the same as the default `CreateLogger()`. Minimum Level is *Information*.
+
 ex: Tests.Empty.json
 
 ```json
