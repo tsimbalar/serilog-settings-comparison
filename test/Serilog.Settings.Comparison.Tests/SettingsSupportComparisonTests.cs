@@ -225,6 +225,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         }
 
         [Theory]
+        [InlineData("Tests.EnrichFromLogContext.csx")]
         [InlineData("Tests.EnrichFromLogContext.json")]
         [InlineData("Tests.EnrichFromLogContext.config")]
         public void SupportForOutOfTheBoxEnrichmentExtensionMethod(string fileName)

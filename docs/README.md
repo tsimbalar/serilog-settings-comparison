@@ -56,6 +56,22 @@ ex: Tests.EnvironmentVariableExpansion.config
 
 Log events can be enriched with LogContext.
 
+ex: Tests.EnrichFromLogContext.csx
+
+```csharp
+LoggerConfiguration.Enrich.FromLogContext();
+
+```
+
+
+## SupportForOutOfTheBoxEnrichmentExtensionMethod
+
+
+*Pass*
+
+
+Log events can be enriched with LogContext.
+
 ex: Tests.EnrichFromLogContext.json
 
 ```json

@@ -1,0 +1,1 @@
+﻿LoggerConfiguration.Enrich.FromLogContext();
