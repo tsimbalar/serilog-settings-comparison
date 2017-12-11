@@ -240,7 +240,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
             {
                 logger.Information("This will be enriched with a property");
             }
-            
+
             Assert.NotNull(e);
             Assert.Equal("value", e.Properties["LogContextProperty"].LiteralValue());
         }
@@ -278,10 +278,13 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
             var fullFilePath = GetTestFileFullPath(fileName);
 
             _outputHelper.WriteLine(markdownDescription);
+            _outputHelper.WriteLine("");
             _outputHelper.WriteLine($"ex: {fileName}");
+            _outputHelper.WriteLine("");
             _outputHelper.WriteLine("```" + (fileName.EndsWith(".json") ? "json" : "xml"));
             _outputHelper.WriteLine(File.ReadAllText(fullFilePath));
             _outputHelper.WriteLine("```");
+            _outputHelper.WriteLine("");
         }
 
         static LoggerConfiguration LoadConfig(string fileName)
@@ -300,7 +303,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
 
         static LoggerConfiguration LoadXmlConfig(string fileName)
         {
-            var xmlConfig = new LoggerConfiguration().ReadFrom.AppSettings(filePath:fileName);
+            var xmlConfig = new LoggerConfiguration().ReadFrom.AppSettings(filePath: fileName);
             return xmlConfig;
         }
 
