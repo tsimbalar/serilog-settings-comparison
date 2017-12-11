@@ -1,6 +1,13 @@
-SupportEnvironmentVariableExpansion
+## SupportEnvironmentVariableExpansion
+
+
+*Pass*
+
+
 Values like `%ENV_VARIABLE%` are replaced by the value of the environment variable `ENV_VARIABLE`.
+
 ex: Tests.EnvironmentVariableExpansion.json
+
 ```json
 {
   "Serilog": {
@@ -18,9 +25,17 @@ ex: Tests.EnvironmentVariableExpansion.json
 }
 ```
 
-SupportEnvironmentVariableExpansion
+
+## SupportEnvironmentVariableExpansion
+
+
+*Pass*
+
+
 Values like `%ENV_VARIABLE%` are replaced by the value of the environment variable `ENV_VARIABLE`.
+
 ex: Tests.EnvironmentVariableExpansion.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -32,9 +47,17 @@ ex: Tests.EnvironmentVariableExpansion.config
 </configuration>
 ```
 
-SupportForOutOfTheBoxEnrichmentExtensionMethod
+
+## SupportForOutOfTheBoxEnrichmentExtensionMethod
+
+
+*Pass*
+
+
 Log events can be enriched with LogContext.
+
 ex: Tests.EnrichFromLogContext.json
+
 ```json
 {
   "Serilog": {
@@ -44,9 +67,17 @@ ex: Tests.EnrichFromLogContext.json
 
 ```
 
-SupportForOutOfTheBoxEnrichmentExtensionMethod
+
+## SupportForOutOfTheBoxEnrichmentExtensionMethod
+
+
+*Pass*
+
+
 Log events can be enriched with LogContext.
+
 ex: Tests.EnrichFromLogContext.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -57,9 +88,17 @@ ex: Tests.EnrichFromLogContext.config
 
 ```
 
-SupportForArbitraryEnrichmentExtensionMethod
+
+## SupportForArbitraryEnrichmentExtensionMethod
+
+
+*Pass*
+
+
 Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
+
 ex: Tests.EnrichWithExternalEnricher.json
+
 ```json
 {
   "Serilog": {
@@ -77,9 +116,17 @@ ex: Tests.EnrichWithExternalEnricher.json
 }
 ```
 
-SupportForArbitraryEnrichmentExtensionMethod
+
+## SupportForArbitraryEnrichmentExtensionMethod
+
+
+*Pass*
+
+
 Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
+
 ex: Tests.EnrichWithExternalEnricher.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -91,9 +138,17 @@ ex: Tests.EnrichWithExternalEnricher.config
 </configuration>
 ```
 
-SupportForMinimumLevel
+
+## SupportForMinimumLevel
+
+
+*Pass*
+
+
 Global Minimum level can be defined.
+
 ex: Tests.MinimumLevel.json
+
 ```json
 {
   "Serilog": {
@@ -102,9 +157,17 @@ ex: Tests.MinimumLevel.json
 }
 ```
 
-SupportForMinimumLevel
+
+## SupportForMinimumLevel
+
+
+*Pass*
+
+
 Global Minimum level can be defined.
+
 ex: Tests.MinimumLevel-Default.json
+
 ```json
 {
   "Serilog": {
@@ -115,9 +178,17 @@ ex: Tests.MinimumLevel-Default.json
 }
 ```
 
-SupportForMinimumLevel
+
+## SupportForMinimumLevel
+
+
+*Pass*
+
+
 Global Minimum level can be defined.
+
 ex: Tests.MinimumLevel.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -127,9 +198,17 @@ ex: Tests.MinimumLevel.config
 </configuration>
 ```
 
-SupportForSinksWithoutParameters
+
+## SupportForSinksWithoutParameters
+
+
+*Pass*
+
+
 Sinks without mandatory arguments can be called.
+
 ex: Tests.WriteToWithNoParams.json
+
 ```json
 {
   "Serilog": {
@@ -140,9 +219,17 @@ ex: Tests.WriteToWithNoParams.json
 
 ```
 
-SupportForSinksWithoutParameters
+
+## SupportForSinksWithoutParameters
+
+
+*Pass*
+
+
 Sinks without mandatory arguments can be called.
+
 ex: Tests.WriteToWithNoParams-LongForm.json
+
 ```json
 {
   "Serilog": {
@@ -154,9 +241,17 @@ ex: Tests.WriteToWithNoParams-LongForm.json
 }
 ```
 
-SupportForSinksWithoutParameters
+
+## SupportForSinksWithoutParameters
+
+
+*Pass*
+
+
 Sinks without mandatory arguments can be called.
+
 ex: Tests.WriteToWithNoParams.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -167,9 +262,17 @@ ex: Tests.WriteToWithNoParams.config
 </configuration>
 ```
 
-SupportForInterfaceParamsPassingConcreteClassWithDefaultConstructor
+
+## SupportForInterfaceParamsPassingConcreteClassWithDefaultConstructor
+
+
+*Pass*
+
+
 For parameters whose type is an `interface`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
+
 ex: Tests.WriteToWithConcreteDefaultImplementationOfInterface.json
+
 ```json
 {
   "Serilog": {
@@ -187,9 +290,17 @@ ex: Tests.WriteToWithConcreteDefaultImplementationOfInterface.json
 
 ```
 
-SupportForInterfaceParamsPassingConcreteClassWithDefaultConstructor
+
+## SupportForInterfaceParamsPassingConcreteClassWithDefaultConstructor
+
+
+*Pass*
+
+
 For parameters whose type is an `interface`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
+
 ex: Tests.WriteToWithConcreteDefaultImplementationOfInterface.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -201,9 +312,17 @@ ex: Tests.WriteToWithConcreteDefaultImplementationOfInterface.config
 
 ```
 
-SupportForMinimumLevelOverrides
+
+## SupportForMinimumLevelOverrides
+
+
+*Pass*
+
+
 Minimum level can be overriden (up or down) for specific `SourceContext`s.
+
 ex: Tests.MinimumLevelOverrides.json
+
 ```json
 {
   "Serilog": {
@@ -219,9 +338,17 @@ ex: Tests.MinimumLevelOverrides.json
 }
 ```
 
-SupportForMinimumLevelOverrides
+
+## SupportForMinimumLevelOverrides
+
+
+*Pass*
+
+
 Minimum level can be overriden (up or down) for specific `SourceContext`s.
+
 ex: Tests.MinimumLevelOverrides.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -234,9 +361,17 @@ ex: Tests.MinimumLevelOverrides.config
 </configuration>
 ```
 
-SupportForPropertyEnrichment
+
+## SupportForPropertyEnrichment
+
+
+*Pass*
+
+
 Log events can be enriched with arbitrary properties.
+
 ex: Tests.EnrichWithProperty.json
+
 ```json
 {
   "Serilog": {
@@ -248,9 +383,17 @@ ex: Tests.EnrichWithProperty.json
 }
 ```
 
-SupportForPropertyEnrichment
+
+## SupportForPropertyEnrichment
+
+
+*Pass*
+
+
 Log events can be enriched with arbitrary properties.
+
 ex: Tests.EnrichWithProperty.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -261,35 +404,67 @@ ex: Tests.EnrichWithProperty.config
 </configuration>
 ```
 
-EmptyConfigFile
+
+## EmptyConfigFile
+
+
+*Pass*
+
+
 Loading an empty config file behaves the same as the default `CreateLogger()`. Minimum Level is *Information*.
+
 ex: Tests.Empty.json
+
 ```json
 {
 }
 ```
 
-EmptyConfigFile
+
+## EmptyConfigFile
+
+
+*Pass*
+
+
 Loading an empty config file behaves the same as the default `CreateLogger()`. Minimum Level is *Information*.
+
 ex: Tests.Empty-EmptySection.json
+
 ```json
 {
   "Serilog": {}
 }
 ```
 
-EmptyConfigFile
+
+## EmptyConfigFile
+
+
+*Pass*
+
+
 Loading an empty config file behaves the same as the default `CreateLogger()`. Minimum Level is *Information*.
+
 ex: Tests.Empty.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
 </configuration>
 ```
 
-EmptyConfigFile
+
+## EmptyConfigFile
+
+
+*Pass*
+
+
 Loading an empty config file behaves the same as the default `CreateLogger()`. Minimum Level is *Information*.
+
 ex: Tests.Empty-EmptySection.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -298,9 +473,17 @@ ex: Tests.Empty-EmptySection.config
 </configuration>
 ```
 
-SupportForLogEventLevelParameters
+
+## SupportForLogEventLevelParameters
+
+
+*Pass*
+
+
 Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be provided
+
 ex: Tests.WriteToWithRestrictedToMinimumLevel.json
+
 ```json
 {
   "Serilog": {
@@ -317,9 +500,17 @@ ex: Tests.WriteToWithRestrictedToMinimumLevel.json
 }
 ```
 
-SupportForLogEventLevelParameters
+
+## SupportForLogEventLevelParameters
+
+
+*Pass*
+
+
 Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be provided
+
 ex: Tests.WriteToWithRestrictedToMinimumLevel.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -330,9 +521,17 @@ ex: Tests.WriteToWithRestrictedToMinimumLevel.config
 </configuration>
 ```
 
-SupportForSimpleTypesParameters
+
+## SupportForSimpleTypesParameters
+
+
+*Pass*
+
+
 Simple types that are *convertible* from string can be passed. Empty string can be provided to specify null for nullable parameters. Parameters with a default value can be omitted.
+
 ex: Tests.WriteToWithSimpleParams.json
+
 ```json
 {
   "Serilog": {
@@ -351,9 +550,17 @@ ex: Tests.WriteToWithSimpleParams.json
 }
 ```
 
-SupportForSimpleTypesParameters
+
+## SupportForSimpleTypesParameters
+
+
+*Pass*
+
+
 Simple types that are *convertible* from string can be passed. Empty string can be provided to specify null for nullable parameters. Parameters with a default value can be omitted.
+
 ex: Tests.WriteToWithSimpleParams.config
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -365,4 +572,5 @@ ex: Tests.WriteToWithSimpleParams.config
   </appSettings>
 </configuration>
 ```
+
 

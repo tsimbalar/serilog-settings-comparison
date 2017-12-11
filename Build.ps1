@@ -19,8 +19,9 @@ $xml.SelectNodes('/assemblies/assembly/collection/test') | ForEach-Object {
     New-Object -Type PSObject -Property @{
         ShortName = $_.method
         Details = $_.output.InnerText
+        Outcome = $_.result 
     }
-} | % {@($_.ShortName, $_.Details)} | Out-File README.md -Encoding utf8 -Force
+} | % {@( "## $($_.ShortName)", "`n", "*$($_.Outcome)*", "`n", $_.Details)} | Out-File README.md -Encoding utf8 -Force
 Pop-Location
 
 Copy-Item artefacts/*.md docs
