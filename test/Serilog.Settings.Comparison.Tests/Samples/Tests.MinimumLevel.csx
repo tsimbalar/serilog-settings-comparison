@@ -1,0 +1,2 @@
+﻿LoggerConfiguration
+    .MinimumLevel.Warning();

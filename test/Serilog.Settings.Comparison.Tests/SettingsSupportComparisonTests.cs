@@ -48,6 +48,8 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         }
 
         [Theory]
+        [InlineData("Tests.MinimumLevel.csx")]
+        [InlineData("Tests.MinimumLevel-is.csx")]
         [InlineData("Tests.MinimumLevel.json")]
         [InlineData("Tests.MinimumLevel-Default.json")]
         [InlineData("Tests.MinimumLevel.config")]
