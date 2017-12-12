@@ -113,6 +113,27 @@ ex: Tests.EnrichFromLogContext.config
 
 Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
 
+ex: Tests.EnrichWithExternalEnricher.csx
+
+```csharp
+#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
+using TestDummies;
+
+LoggerConfiguration
+    .Enrich.WithDummyThreadId()
+    .Enrich.WithDummyUserName("UserExtraParam");
+
+```
+
+
+## SupportForArbitraryEnrichmentExtensionMethod
+
+
+*Pass*
+
+
+Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
+
 ex: Tests.EnrichWithExternalEnricher.json
 
 ```json
@@ -152,6 +173,42 @@ ex: Tests.EnrichWithExternalEnricher.config
     <add key="serilog:enrich:WithDummyUserName.extraParam" value="UserExtraParam" />
   </appSettings>
 </configuration>
+```
+
+
+## SupportForMinimumLevel
+
+
+*Pass*
+
+
+Global Minimum level can be defined.
+
+ex: Tests.MinimumLevel.csx
+
+```csharp
+LoggerConfiguration
+    .MinimumLevel.Warning();
+
+```
+
+
+## SupportForMinimumLevel
+
+
+*Pass*
+
+
+Global Minimum level can be defined.
+
+ex: Tests.MinimumLevel-is.csx
+
+```csharp
+using Serilog.Events;
+
+LoggerConfiguration
+    .MinimumLevel.Is(LogEventLevel.Warning);
+
 ```
 
 
