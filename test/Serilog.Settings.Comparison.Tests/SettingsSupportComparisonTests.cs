@@ -249,6 +249,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         }
 
         [Theory]
+        [InlineData("Tests.EnrichWithExternalEnricher.csx")]
         [InlineData("Tests.EnrichWithExternalEnricher.json")]
         [InlineData("Tests.EnrichWithExternalEnricher.config")]
         public void SupportForArbitraryEnrichmentExtensionMethod(string fileName)
