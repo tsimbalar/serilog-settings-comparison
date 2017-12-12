@@ -15,13 +15,14 @@ Pop-Location
 
 Push-Location "artefacts"
 [xml]$xml = Get-Content testOutput.xml
-$xml.SelectNodes('/assemblies/assembly/collection/test') | ForEach-Object {
+$xml.SelectNodes('/assemblies/assembly/collection') | ForEach-Object {
     New-Object -Type PSObject -Property @{
-        ShortName = $_.method
-        Details = $_.output.InnerText
-        Outcome = $_.result 
+        Description = $_.name
+        Tests = $_.SelectNodes('test') | ForEach-Object {
+                    $_.output.InnerText
+                } 
     }
-} | % {@( "## $($_.ShortName)", "`n", "*$($_.Outcome)*", "`n", $_.Details)} | Out-File README.md -Encoding utf8 -Force
+} | % {"## Something",  @($_.Description) + "`n" + $_.Tests} | Out-File README.md -Encoding utf8 -Force
 Pop-Location
 
 Copy-Item artefacts/*.md docs

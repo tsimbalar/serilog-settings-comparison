@@ -14,7 +14,7 @@ namespace TestDummies
 
         public DummySink(string stringParam, int intParam, string stringParamWithDefault, int? nullableIntParam, ITextFormatter formatter)
         {
-            Emitted.Clear();
+            Emitted = new List<LogEvent>();
             StringParam = stringParam;
             IntParam = intParam;
             StringParamWithDefault = stringParamWithDefault;
