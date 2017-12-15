@@ -17,6 +17,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         }
 
         [Theory]
+        [InlineData("Tests.MinimumLevelOverrides.csx")]
         [InlineData("Tests.MinimumLevelOverrides.json")]
         [InlineData("Tests.MinimumLevelOverrides.config")]
         public void SupportForMinimumLevelOverrides(string fileName)
