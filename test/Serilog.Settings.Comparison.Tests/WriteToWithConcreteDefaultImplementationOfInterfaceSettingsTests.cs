@@ -17,6 +17,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         }
 
         [Theory]
+        [InlineData("Tests.WriteToWithConcreteDefaultImplementationOfInterface.csx")]
         [InlineData("Tests.WriteToWithConcreteDefaultImplementationOfInterface.json")]
         [InlineData("Tests.WriteToWithConcreteDefaultImplementationOfInterface.config")]
         public void SupportForInterfaceParamsPassingConcreteClassWithDefaultConstructor(string fileName)
