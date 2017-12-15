@@ -16,6 +16,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         }
 
         [Theory]
+        [InlineData("Tests.WriteToWithSimpleParams.csx")]
         [InlineData("Tests.WriteToWithSimpleParams.json")]
         [InlineData("Tests.WriteToWithSimpleParams.config")]
         public void SupportForSimpleTypesParameters(string fileName)
