@@ -15,6 +15,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         }
 
         [Theory]
+        [InlineData("Tests.WriteToWithRestrictedToMinimumLevel.csx")]
         [InlineData("Tests.WriteToWithRestrictedToMinimumLevel.json")]
         [InlineData("Tests.WriteToWithRestrictedToMinimumLevel.config")]
         public void SupportForLogEventLevelParameters(string fileName)
