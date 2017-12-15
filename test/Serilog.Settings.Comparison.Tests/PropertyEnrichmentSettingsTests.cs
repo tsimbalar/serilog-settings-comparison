@@ -16,6 +16,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         }
 
         [Theory]
+        [InlineData("Tests.EnrichWithProperty.csx")]
         [InlineData("Tests.EnrichWithProperty.json")]
         [InlineData("Tests.EnrichWithProperty.config")]
         public void SupportForPropertyEnrichment(string fileName)

@@ -1,8 +1,189 @@
-## SupportForInterfaceParamsPassingConcreteClassWithDefaultConstructor
-For parameters whose type is an `interface`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
+## SupportForMinimumLevelOverrides
+Minimum level can be overriden (up or down) for specific `SourceContext`s.
 
 
-ex: `Tests.WriteToWithConcreteDefaultImplementationOfInterface.json`
+ex: `Tests.MinimumLevelOverrides.csx`
+
+```csharp
+using Serilog.Events;
+
+LoggerConfiguration
+  .MinimumLevel.Debug()
+  .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
+  .MinimumLevel.Override("Microsoft.Extensions", LogEventLevel.Information)
+  .MinimumLevel.Override("System", LogEventLevel.Debug)
+  ;
+
+```
+
+
+ex: `Tests.MinimumLevelOverrides.json`
+
+```json
+{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Verbose",
+      "Override": {
+        "Microsoft": "Error",
+        "Microsoft.Extensions": "Information",
+        "System": "Debug"
+      }
+    }
+  }
+}
+```
+
+
+ex: `Tests.MinimumLevelOverrides.config`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:minimum-level" value="Verbose" />
+    <add key="serilog:minimum-level:override:Microsoft" value="Error" />
+    <add key="serilog:minimum-level:override:Microsoft.Extensions" value="Information" />
+    <add key="serilog:minimum-level:override:System" value="Debug" />
+  </appSettings>
+</configuration>
+```
+
+
+## SupportForOutOfTheBoxEnrichmentExtensionMethod
+Log events can be enriched with LogContext.
+
+
+ex: `Tests.EnrichFromLogContext.csx`
+
+```csharp
+LoggerConfiguration.Enrich.FromLogContext();
+
+```
+
+
+ex: `Tests.EnrichFromLogContext.json`
+
+```json
+{
+  "Serilog": {
+    "Enrich": [ "FromLogContext" ]
+  }
+}
+
+```
+
+
+ex: `Tests.EnrichFromLogContext.config`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:enrich:FromLogContext" value="" />
+  </appSettings>
+</configuration>
+
+```
+
+
+## SupportForPropertyEnrichment
+Log events can be enriched with arbitrary properties.
+
+
+ex: `Tests.EnrichWithProperty.csx`
+
+```csharp
+LoggerConfiguration
+    .Enrich.WithProperty("AppName", "MyApp")
+    .Enrich.WithProperty("ServerName", "MyServer");
+
+```
+
+
+ex: `Tests.EnrichWithProperty.json`
+
+```json
+{
+  "Serilog": {
+    "Properties": {
+      "AppName": "MyApp",
+      "ServerName": "MyServer"
+    }
+  }
+}
+```
+
+
+ex: `Tests.EnrichWithProperty.config`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:enrich:with-property:AppName" value="MyApp" />
+    <add key="serilog:enrich:with-property:ServerName" value="MyServer" />
+  </appSettings>
+</configuration>
+```
+
+
+## SupportForArbitraryEnrichmentExtensionMethod
+Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
+
+
+ex: `Tests.EnrichWithExternalEnricher.csx`
+
+```csharp
+#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
+using TestDummies;
+
+LoggerConfiguration
+    .Enrich.WithDummyThreadId()
+    .Enrich.WithDummyUserName("UserExtraParam");
+
+```
+
+
+ex: `Tests.EnrichWithExternalEnricher.json`
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "Enrich": [
+      "WithThreadId",
+      {
+        "Name": "WithDummyUserName",
+        "Args": {
+          "extraParam": "UserExtraParam"
+        }
+      }
+    ]
+  }
+}
+```
+
+
+ex: `Tests.EnrichWithExternalEnricher.config`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:enrich:WithDummyThreadId" value="" />
+    <add key="serilog:enrich:WithDummyUserName.extraParam" value="UserExtraParam" />
+  </appSettings>
+</configuration>
+```
+
+
+## SupportForLogEventLevelParameters
+Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be provided
+
+
+ex: `Tests.WriteToWithRestrictedToMinimumLevel.json`
 
 ```json
 {
@@ -10,29 +191,27 @@ ex: `Tests.WriteToWithConcreteDefaultImplementationOfInterface.json`
     "Using": [ "TestDummies" ],
     "WriteTo": [
       {
-        "Name": "DummyWithFormatter",
+        "Name": "Dummy",
         "Args": {
-          "formatter": "Serilog.Formatting.Json.JsonFormatter, Serilog"
+          "restrictedToMinimumLevel": "Error"
         }
       }
     ]
   }
 }
-
 ```
 
 
-ex: `Tests.WriteToWithConcreteDefaultImplementationOfInterface.config`
+ex: `Tests.WriteToWithRestrictedToMinimumLevel.config`
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <appSettings>
     <add key="serilog:using:TestDummies" value="TestDummies" />
-    <add key="serilog:write-to:DummyWithFormatter.formatter" value="Serilog.Formatting.Json.JsonFormatter" />
+    <add key="serilog:write-to:Dummy.restrictedToMinimumLevel" value="Error" />
   </appSettings>
 </configuration>
-
 ```
 
 
@@ -71,6 +250,88 @@ ex: `Tests.WriteToWithSimpleParams.config`
     <add key="serilog:write-to:Dummy.stringParam" value="A string param" />
     <add key="serilog:write-to:Dummy.intParam" value="666" />
     <add key="serilog:write-to:Dummy.nullableIntParam" value="" />
+  </appSettings>
+</configuration>
+```
+
+
+## SupportForInterfaceParamsPassingConcreteClassWithDefaultConstructor
+For parameters whose type is an `interface`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
+
+
+ex: `Tests.WriteToWithConcreteDefaultImplementationOfInterface.json`
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyWithFormatter",
+        "Args": {
+          "formatter": "Serilog.Formatting.Json.JsonFormatter, Serilog"
+        }
+      }
+    ]
+  }
+}
+
+```
+
+
+ex: `Tests.WriteToWithConcreteDefaultImplementationOfInterface.config`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:write-to:DummyWithFormatter.formatter" value="Serilog.Formatting.Json.JsonFormatter" />
+  </appSettings>
+</configuration>
+
+```
+
+
+## SupportForSinksWithoutParameters
+Sinks without mandatory arguments can be called.
+
+
+ex: `Tests.WriteToWithNoParams.json`
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [ "Dummy" ]
+  }
+}
+
+```
+
+
+ex: `Tests.WriteToWithNoParams-LongForm.json`
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      { "Name": "Dummy" }
+    ]
+  }
+}
+```
+
+
+ex: `Tests.WriteToWithNoParams.config`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:write-to:Dummy" />
   </appSettings>
 </configuration>
 ```
@@ -119,117 +380,6 @@ ex: `Tests.Empty-EmptySection.config`
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <appSettings>
-  </appSettings>
-</configuration>
-```
-
-
-## SupportForPropertyEnrichment
-Log events can be enriched with arbitrary properties.
-
-
-ex: `Tests.EnrichWithProperty.json`
-
-```json
-{
-  "Serilog": {
-    "Properties": {
-      "AppName": "MyApp",
-      "ServerName": "MyServer"
-    }
-  }
-}
-```
-
-
-ex: `Tests.EnrichWithProperty.config`
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:enrich:with-property:AppName" value="MyApp" />
-    <add key="serilog:enrich:with-property:ServerName" value="MyServer" />
-  </appSettings>
-</configuration>
-```
-
-
-## SupportForSinksWithoutParameters
-Sinks without mandatory arguments can be called.
-
-
-ex: `Tests.WriteToWithNoParams.json`
-
-```json
-{
-  "Serilog": {
-    "Using": [ "TestDummies" ],
-    "WriteTo": [ "Dummy" ]
-  }
-}
-
-```
-
-
-ex: `Tests.WriteToWithNoParams-LongForm.json`
-
-```json
-{
-  "Serilog": {
-    "Using": [ "TestDummies" ],
-    "WriteTo": [
-      { "Name": "Dummy" }
-    ]
-  }
-}
-```
-
-
-ex: `Tests.WriteToWithNoParams.config`
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:using:TestDummies" value="TestDummies" />
-    <add key="serilog:write-to:Dummy" />
-  </appSettings>
-</configuration>
-```
-
-
-## SupportForLogEventLevelParameters
-Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be provided
-
-
-ex: `Tests.WriteToWithRestrictedToMinimumLevel.json`
-
-```json
-{
-  "Serilog": {
-    "Using": [ "TestDummies" ],
-    "WriteTo": [
-      {
-        "Name": "Dummy",
-        "Args": {
-          "restrictedToMinimumLevel": "Error"
-        }
-      }
-    ]
-  }
-}
-```
-
-
-ex: `Tests.WriteToWithRestrictedToMinimumLevel.config`
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:using:TestDummies" value="TestDummies" />
-    <add key="serilog:write-to:Dummy.restrictedToMinimumLevel" value="Error" />
   </appSettings>
 </configuration>
 ```
@@ -290,146 +440,6 @@ ex: `Tests.MinimumLevel.config`
 <configuration>
   <appSettings>
     <add key="serilog:minimum-level" value="Warning" />
-  </appSettings>
-</configuration>
-```
-
-
-## SupportForArbitraryEnrichmentExtensionMethod
-Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
-
-
-ex: `Tests.EnrichWithExternalEnricher.csx`
-
-```csharp
-#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
-using TestDummies;
-
-LoggerConfiguration
-    .Enrich.WithDummyThreadId()
-    .Enrich.WithDummyUserName("UserExtraParam");
-
-```
-
-
-ex: `Tests.EnrichWithExternalEnricher.json`
-
-```json
-{
-  "Serilog": {
-    "Using": [ "TestDummies" ],
-    "Enrich": [
-      "WithThreadId",
-      {
-        "Name": "WithDummyUserName",
-        "Args": {
-          "extraParam": "UserExtraParam"
-        }
-      }
-    ]
-  }
-}
-```
-
-
-ex: `Tests.EnrichWithExternalEnricher.config`
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:using:TestDummies" value="TestDummies" />
-    <add key="serilog:enrich:WithDummyThreadId" value="" />
-    <add key="serilog:enrich:WithDummyUserName.extraParam" value="UserExtraParam" />
-  </appSettings>
-</configuration>
-```
-
-
-## SupportForOutOfTheBoxEnrichmentExtensionMethod
-Log events can be enriched with LogContext.
-
-
-ex: `Tests.EnrichFromLogContext.csx`
-
-```csharp
-LoggerConfiguration.Enrich.FromLogContext();
-
-```
-
-
-ex: `Tests.EnrichFromLogContext.json`
-
-```json
-{
-  "Serilog": {
-    "Enrich": [ "FromLogContext" ]
-  }
-}
-
-```
-
-
-ex: `Tests.EnrichFromLogContext.config`
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:enrich:FromLogContext" value="" />
-  </appSettings>
-</configuration>
-
-```
-
-
-## SupportForMinimumLevelOverrides
-Minimum level can be overriden (up or down) for specific `SourceContext`s.
-
-
-ex: `Tests.MinimumLevelOverrides.csx`
-
-```csharp
-using Serilog.Events;
-
-LoggerConfiguration
-  .MinimumLevel.Debug()
-  .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
-  .MinimumLevel.Override("Microsoft.Extensions", LogEventLevel.Information)
-  .MinimumLevel.Override("System", LogEventLevel.Debug)
-  ;
-
-```
-
-
-ex: `Tests.MinimumLevelOverrides.json`
-
-```json
-{
-  "Serilog": {
-    "MinimumLevel": {
-      "Default": "Verbose",
-      "Override": {
-        "Microsoft": "Error",
-        "Microsoft.Extensions": "Information",
-        "System": "Debug"
-      }
-    }
-  }
-}
-```
-
-
-ex: `Tests.MinimumLevelOverrides.config`
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:minimum-level" value="Verbose" />
-    <add key="serilog:minimum-level:override:Microsoft" value="Error" />
-    <add key="serilog:minimum-level:override:Microsoft.Extensions" value="Information" />
-    <add key="serilog:minimum-level:override:System" value="Debug" />
   </appSettings>
 </configuration>
 ```
