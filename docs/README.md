@@ -1,4 +1,35 @@
 ## Something
+Log events can be enriched with arbitrary properties.
+
+
+ex: `Tests.EnrichWithProperty.json`
+
+```json
+{
+  "Serilog": {
+    "Properties": {
+      "AppName": "MyApp",
+      "ServerName": "MyServer"
+    }
+  }
+}
+```
+
+
+ex: `Tests.EnrichWithProperty.config`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:enrich:with-property:AppName" value="MyApp" />
+    <add key="serilog:enrich:with-property:ServerName" value="MyServer" />
+  </appSettings>
+</configuration>
+```
+
+
+## Something
 For parameters whose type is an `interface`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
 
 
@@ -121,37 +152,6 @@ ex: `Tests.WriteToWithSimpleParams.config`
 
 
 ## Something
-Log events can be enriched with arbitrary properties.
-
-
-ex: `Tests.EnrichWithProperty.json`
-
-```json
-{
-  "Serilog": {
-    "Properties": {
-      "AppName": "MyApp",
-      "ServerName": "MyServer"
-    }
-  }
-}
-```
-
-
-ex: `Tests.EnrichWithProperty.config`
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:enrich:with-property:AppName" value="MyApp" />
-    <add key="serilog:enrich:with-property:ServerName" value="MyServer" />
-  </appSettings>
-</configuration>
-```
-
-
-## Something
 Loading an empty config file behaves the same as the default `CreateLogger()`. Minimum Level is *Information*.
 
 
@@ -194,6 +194,111 @@ ex: `Tests.Empty-EmptySection.config`
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <appSettings>
+  </appSettings>
+</configuration>
+```
+
+
+## Something
+Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
+
+
+ex: `Tests.EnrichWithExternalEnricher.csx`
+
+```csharp
+#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
+using TestDummies;
+
+LoggerConfiguration
+    .Enrich.WithDummyThreadId()
+    .Enrich.WithDummyUserName("UserExtraParam");
+
+```
+
+
+ex: `Tests.EnrichWithExternalEnricher.json`
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "Enrich": [
+      "WithThreadId",
+      {
+        "Name": "WithDummyUserName",
+        "Args": {
+          "extraParam": "UserExtraParam"
+        }
+      }
+    ]
+  }
+}
+```
+
+
+ex: `Tests.EnrichWithExternalEnricher.config`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:enrich:WithDummyThreadId" value="" />
+    <add key="serilog:enrich:WithDummyUserName.extraParam" value="UserExtraParam" />
+  </appSettings>
+</configuration>
+```
+
+
+## Something
+Values like `%ENV_VARIABLE%` are replaced by the value of the environment variable `ENV_VARIABLE`.
+
+
+ex: `Tests.EnvironmentVariableExpansion.csx`
+
+```csharp
+#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
+using System;
+using TestDummies;
+
+
+LoggerConfiguration
+    .WriteTo.Dummy(
+        stringParam: Environment.ExpandEnvironmentVariables("%PATH%"),
+        intParam: Int32.Parse(Environment.ExpandEnvironmentVariables("%NUMBER_OF_PROCESSORS%")));
+
+```
+
+
+ex: `Tests.EnvironmentVariableExpansion.json`
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "Dummy",
+        "Args": {
+          "stringParam": "%PATH%",
+          "intParam": "%NUMBER_OF_PROCESSORS%"
+        }
+      }
+    ]
+  }
+}
+```
+
+
+ex: `Tests.EnvironmentVariableExpansion.config`
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:write-to:Dummy.stringParam" value="%PATH%" />
+    <add key="serilog:write-to:Dummy.intParam" value="%NUMBER_OF_PROCESSORS%" />
   </appSettings>
 </configuration>
 ```
@@ -254,57 +359,6 @@ ex: `Tests.MinimumLevel.config`
 <configuration>
   <appSettings>
     <add key="serilog:minimum-level" value="Warning" />
-  </appSettings>
-</configuration>
-```
-
-
-## Something
-Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
-
-
-ex: `Tests.EnrichWithExternalEnricher.csx`
-
-```csharp
-#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
-using TestDummies;
-
-LoggerConfiguration
-    .Enrich.WithDummyThreadId()
-    .Enrich.WithDummyUserName("UserExtraParam");
-
-```
-
-
-ex: `Tests.EnrichWithExternalEnricher.json`
-
-```json
-{
-  "Serilog": {
-    "Using": [ "TestDummies" ],
-    "Enrich": [
-      "WithThreadId",
-      {
-        "Name": "WithDummyUserName",
-        "Args": {
-          "extraParam": "UserExtraParam"
-        }
-      }
-    ]
-  }
-}
-```
-
-
-ex: `Tests.EnrichWithExternalEnricher.config`
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:using:TestDummies" value="TestDummies" />
-    <add key="serilog:enrich:WithDummyThreadId" value="" />
-    <add key="serilog:enrich:WithDummyUserName.extraParam" value="UserExtraParam" />
   </appSettings>
 </configuration>
 ```
@@ -430,44 +484,6 @@ ex: `Tests.MinimumLevelOverrides.config`
     <add key="serilog:minimum-level:override:Microsoft" value="Error" />
     <add key="serilog:minimum-level:override:Microsoft.Extensions" value="Information" />
     <add key="serilog:minimum-level:override:System" value="Debug" />
-  </appSettings>
-</configuration>
-```
-
-
-## Something
-Values like `%ENV_VARIABLE%` are replaced by the value of the environment variable `ENV_VARIABLE`.
-
-
-ex: `Tests.EnvironmentVariableExpansion.json`
-
-```json
-{
-  "Serilog": {
-    "Using": [ "TestDummies" ],
-    "WriteTo": [
-      {
-        "Name": "Dummy",
-        "Args": {
-          "stringParam": "%PATH%",
-          "intParam": "%NUMBER_OF_PROCESSORS%"
-        }
-      }
-    ]
-  }
-}
-```
-
-
-ex: `Tests.EnvironmentVariableExpansion.config`
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:using:TestDummies" value="TestDummies" />
-    <add key="serilog:write-to:Dummy.stringParam" value="%PATH%" />
-    <add key="serilog:write-to:Dummy.intParam" value="%NUMBER_OF_PROCESSORS%" />
   </appSettings>
 </configuration>
 ```

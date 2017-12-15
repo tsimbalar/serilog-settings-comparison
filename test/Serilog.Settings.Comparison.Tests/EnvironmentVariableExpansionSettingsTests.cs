@@ -15,6 +15,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         }
 
         [Theory]
+        [InlineData("Tests.EnvironmentVariableExpansion.csx")]
         [InlineData("Tests.EnvironmentVariableExpansion.json")]
         [InlineData("Tests.EnvironmentVariableExpansion.config")]
         public void SupportEnvironmentVariableExpansion(string fileName)
