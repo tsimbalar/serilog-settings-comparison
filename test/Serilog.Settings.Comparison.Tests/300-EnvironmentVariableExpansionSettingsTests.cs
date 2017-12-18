@@ -16,9 +16,9 @@ Values like `%ENV_VARIABLE%` are replaced by the value of the environment variab
         }
 
         [Theory]
-        [InlineData("Tests.EnvironmentVariableExpansion.csx")]
-        [InlineData("Tests.EnvironmentVariableExpansion.json")]
-        [InlineData("Tests.EnvironmentVariableExpansion.config")]
+        [InlineData("EnvironmentVariableExpansion.csx")]
+        [InlineData("EnvironmentVariableExpansion.json")]
+        [InlineData("EnvironmentVariableExpansion.config")]
         public void SupportEnvironmentVariableExpansion(string fileName)
         {
             WriteDocumentation(fileName);

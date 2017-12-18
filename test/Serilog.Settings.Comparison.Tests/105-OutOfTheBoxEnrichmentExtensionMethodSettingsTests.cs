@@ -18,9 +18,9 @@ Log events can be enriched with LogContext.";
         }
 
         [Theory]
-        [InlineData("Tests.EnrichFromLogContext.csx")]
-        [InlineData("Tests.EnrichFromLogContext.json")]
-        [InlineData("Tests.EnrichFromLogContext.config")]
+        [InlineData("EnrichFromLogContext.csx")]
+        [InlineData("EnrichFromLogContext.json")]
+        [InlineData("EnrichFromLogContext.config")]
         public void SupportForOutOfTheBoxEnrichmentExtensionMethod(string fileName)
         {
             WriteDocumentation(fileName);

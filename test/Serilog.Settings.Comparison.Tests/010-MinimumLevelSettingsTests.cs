@@ -17,11 +17,11 @@ Global Minimum level can be defined.";
         }
 
         [Theory]
-        [InlineData("Tests.MinimumLevel.csx")]
-        [InlineData("Tests.MinimumLevel-is.csx")]
-        [InlineData("Tests.MinimumLevel.json")]
-        [InlineData("Tests.MinimumLevel-Default.json")]
-        [InlineData("Tests.MinimumLevel.config")]
+        [InlineData("MinimumLevel.csx")]
+        [InlineData("MinimumLevel-is.csx")]
+        [InlineData("MinimumLevel.json")]
+        [InlineData("MinimumLevel-Default.json")]
+        [InlineData("MinimumLevel.config")]
         public void SupportForMinimumLevel(string fileName)
         {
             WriteDocumentation(fileName);

@@ -18,11 +18,11 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. "
         }
 
         [Theory]
-        [InlineData("Tests.Empty.csx")]
-        [InlineData("Tests.Empty.json")]
-        [InlineData("Tests.Empty-EmptySection.json")]
-        [InlineData("Tests.Empty.config")]
-        [InlineData("Tests.Empty-EmptySection.config")]
+        [InlineData("Empty.csx")]
+        [InlineData("Empty.json")]
+        [InlineData("Empty-EmptySection.json")]
+        [InlineData("Empty.config")]
+        [InlineData("Empty-EmptySection.config")]
         public void EmptyConfigFile(string fileName)
         {
             WriteDocumentation(fileName);

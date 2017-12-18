@@ -16,9 +16,9 @@ Sinks without mandatory arguments can be called.";
         }
 
         [Theory]
-        [InlineData("Tests.WriteToWithNoParams.json")]
-        [InlineData("Tests.WriteToWithNoParams-LongForm.json")]
-        [InlineData("Tests.WriteToWithNoParams.config")]
+        [InlineData("WriteToWithNoParams.json")]
+        [InlineData("WriteToWithNoParams-LongForm.json")]
+        [InlineData("WriteToWithNoParams.config")]
         public void SupportForSinksWithoutParameters(string fileName)
         {
             WriteDocumentation(fileName);

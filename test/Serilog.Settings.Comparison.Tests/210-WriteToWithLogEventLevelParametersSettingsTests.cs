@@ -16,9 +16,9 @@ Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be pro
         }
 
         [Theory]
-        [InlineData("Tests.WriteToWithRestrictedToMinimumLevel.csx")]
-        [InlineData("Tests.WriteToWithRestrictedToMinimumLevel.json")]
-        [InlineData("Tests.WriteToWithRestrictedToMinimumLevel.config")]
+        [InlineData("WriteToWithRestrictedToMinimumLevel.csx")]
+        [InlineData("WriteToWithRestrictedToMinimumLevel.json")]
+        [InlineData("WriteToWithRestrictedToMinimumLevel.config")]
         public void SupportForLogEventLevelParameters(string fileName)
         {
             WriteDocumentation(fileName);

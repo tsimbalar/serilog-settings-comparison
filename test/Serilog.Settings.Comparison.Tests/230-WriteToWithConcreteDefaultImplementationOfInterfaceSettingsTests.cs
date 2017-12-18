@@ -18,9 +18,9 @@ For parameters whose type is an `interface`, the full type name of an implementa
         }
 
         [Theory]
-        [InlineData("Tests.WriteToWithConcreteDefaultImplementationOfInterface.csx")]
-        [InlineData("Tests.WriteToWithConcreteDefaultImplementationOfInterface.json")]
-        [InlineData("Tests.WriteToWithConcreteDefaultImplementationOfInterface.config")]
+        [InlineData("WriteToWithConcreteDefaultImplementationOfInterface.csx")]
+        [InlineData("WriteToWithConcreteDefaultImplementationOfInterface.json")]
+        [InlineData("WriteToWithConcreteDefaultImplementationOfInterface.config")]
         public void SupportForInterfaceParamsPassingConcreteClassWithDefaultConstructor(string fileName)
         {
             WriteDocumentation(fileName);
