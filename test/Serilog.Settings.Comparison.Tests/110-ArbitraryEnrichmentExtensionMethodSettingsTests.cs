@@ -9,7 +9,8 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class ArbitraryEnrichmentExtensionMethodSettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = "Log events can be enriched with arbitrary `Enrich.With...()` extension methods.";
+        public const string docs = @"110## Enrichment Extension Methods
+Log events can be enriched with arbitrary `Enrich.With...()` extension methods.";
 
         public ArbitraryEnrichmentExtensionMethodSettingsTests(ITestOutputHelper outputHelper)
             : base(outputHelper)

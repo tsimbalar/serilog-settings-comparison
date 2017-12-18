@@ -7,7 +7,8 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class EnvironmentVariableExpansionSettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = "Values like `%ENV_VARIABLE%` are replaced by the value of the environment variable `ENV_VARIABLE`.";
+        public const string docs = @"300## Environment variable expansion
+Values like `%ENV_VARIABLE%` are replaced by the value of the environment variable `ENV_VARIABLE`.";
 
         public EnvironmentVariableExpansionSettingsTests(ITestOutputHelper outputHelper)
             : base(outputHelper)

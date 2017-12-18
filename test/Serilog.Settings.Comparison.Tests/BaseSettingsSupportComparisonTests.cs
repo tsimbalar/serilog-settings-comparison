@@ -20,7 +20,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         {
             var fullFilePath = GetTestFileFullPath(fileName);
 
-            _outputHelper.WriteLine($"ex: `{fileName}`");
+            _outputHelper.WriteLine($"- in **{GetLanguageDisplayName(fileName)}** (ex : `{fileName}`)");
             _outputHelper.WriteLine("");
             _outputHelper.WriteLine("```" + GetMarkdownSnippetLanguage(fileName));
             _outputHelper.WriteLine(File.ReadAllText(fullFilePath));
@@ -34,6 +34,15 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
             if (mdOuputFormat == "csx") mdOuputFormat = "csharp";
             if (mdOuputFormat == "config") mdOuputFormat = "xml";
             return mdOuputFormat;
+        }
+
+        static string GetLanguageDisplayName(string fileName)
+        {
+            var displayName = fileName.Split('.').Last();
+            if (displayName == "csx") displayName = "C#";
+            if (displayName == "config") displayName = "XML";
+            if (displayName == "json") displayName = "JSON";
+            return displayName;
         }
 
         public static LoggerConfiguration LoadConfig(string fileName)

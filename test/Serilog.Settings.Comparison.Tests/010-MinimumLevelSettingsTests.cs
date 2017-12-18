@@ -8,7 +8,8 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class MinimumLevelSettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = "Global Minimum level can be defined.";
+        public const string docs = @"010## Minimum Level
+Global Minimum level can be defined.";
 
         public MinimumLevelSettingsTests(ITestOutputHelper outputHelper)
             : base(outputHelper)
