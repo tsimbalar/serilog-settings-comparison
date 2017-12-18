@@ -7,7 +7,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class WriteToWithConcreteDefaultImplementationOfInterfaceSettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"230## Interface-typed parameters
+        public const string docs = @"230### Interface-typed parameters
 For parameters whose type is an `interface`, the full type name of an implementation " +
                                    "can be provided. If the type is not in the `Serilog`, remember to include `using` directives." +
                                    "**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !";

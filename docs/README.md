@@ -26,18 +26,19 @@ new LoggerConfiguration().ReadFrom.Configuration(config)
 
 You will find below some snippets of common configuration code in *C#* with the equivalent settings in *JSON* and *XML*.
 
-## Empty settings
+## Basics
+### Empty settings
 Loading an empty config file behaves the same as the default `CreateLogger()`. Minimum Level is *Information*.
 
 
-- in **C#** (ex : `Tests.Empty.csx`)
+- in **C#** (ex : `Empty.csx`)
 
 ```csharp
 
 ```
 
 
-- in **JSON** (ex : `Tests.Empty.json`)
+- in **JSON** (ex : `Empty.json`)
 
 ```json
 {
@@ -45,7 +46,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 ```
 
 
-- in **JSON** (ex : `Tests.Empty-EmptySection.json`)
+- in **JSON** (ex : `Empty-EmptySection.json`)
 
 ```json
 {
@@ -54,7 +55,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 ```
 
 
-- in **XML** (ex : `Tests.Empty.config`)
+- in **XML** (ex : `Empty.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -63,7 +64,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 ```
 
 
-- in **XML** (ex : `Tests.Empty-EmptySection.config`)
+- in **XML** (ex : `Empty-EmptySection.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -74,11 +75,11 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 ```
 
 
-## Minimum Level
+### Minimum Level
 Global Minimum level can be defined.
 
 
-- in **C#** (ex : `Tests.MinimumLevel.csx`)
+- in **C#** (ex : `MinimumLevel.csx`)
 
 ```csharp
 LoggerConfiguration
@@ -87,7 +88,7 @@ LoggerConfiguration
 ```
 
 
-- in **C#** (ex : `Tests.MinimumLevel-is.csx`)
+- in **C#** (ex : `MinimumLevel-is.csx`)
 
 ```csharp
 using Serilog.Events;
@@ -98,7 +99,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `Tests.MinimumLevel.json`)
+- in **JSON** (ex : `MinimumLevel.json`)
 
 ```json
 {
@@ -109,7 +110,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `Tests.MinimumLevel-Default.json`)
+- in **JSON** (ex : `MinimumLevel-Default.json`)
 
 ```json
 {
@@ -122,7 +123,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `Tests.MinimumLevel.config`)
+- in **XML** (ex : `MinimumLevel.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -134,11 +135,11 @@ LoggerConfiguration
 ```
 
 
-## Minimum level overrides
+### Minimum level overrides
 Minimum level can be overriden (up or down) for specific `SourceContext`s.
 
 
-- in **C#** (ex : `Tests.MinimumLevelOverrides.csx`)
+- in **C#** (ex : `MinimumLevelOverrides.csx`)
 
 ```csharp
 using Serilog.Events;
@@ -153,7 +154,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `Tests.MinimumLevelOverrides.json`)
+- in **JSON** (ex : `MinimumLevelOverrides.json`)
 
 ```json
 {
@@ -171,7 +172,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `Tests.MinimumLevelOverrides.config`)
+- in **XML** (ex : `MinimumLevelOverrides.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -186,11 +187,12 @@ LoggerConfiguration
 ```
 
 
-## Property enrichment
+## Enrichment
+### Property enrichment
 Log events can be enriched with arbitrary properties.
 
 
-- in **C#** (ex : `Tests.EnrichWithProperty.csx`)
+- in **C#** (ex : `EnrichWithProperty.csx`)
 
 ```csharp
 LoggerConfiguration
@@ -200,7 +202,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `Tests.EnrichWithProperty.json`)
+- in **JSON** (ex : `EnrichWithProperty.json`)
 
 ```json
 {
@@ -214,7 +216,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `Tests.EnrichWithProperty.config`)
+- in **XML** (ex : `EnrichWithProperty.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -227,11 +229,11 @@ LoggerConfiguration
 ```
 
 
-## LogContext
+### LogContext
 Log events can be enriched with LogContext.
 
 
-- in **C#** (ex : `Tests.EnrichFromLogContext.csx`)
+- in **C#** (ex : `EnrichFromLogContext.csx`)
 
 ```csharp
 LoggerConfiguration.Enrich.FromLogContext();
@@ -239,7 +241,7 @@ LoggerConfiguration.Enrich.FromLogContext();
 ```
 
 
-- in **JSON** (ex : `Tests.EnrichFromLogContext.json`)
+- in **JSON** (ex : `EnrichFromLogContext.json`)
 
 ```json
 {
@@ -251,7 +253,7 @@ LoggerConfiguration.Enrich.FromLogContext();
 ```
 
 
-- in **XML** (ex : `Tests.EnrichFromLogContext.config`)
+- in **XML** (ex : `EnrichFromLogContext.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -264,11 +266,11 @@ LoggerConfiguration.Enrich.FromLogContext();
 ```
 
 
-## Enrichment Extension Methods
+### Enrichment Extension Methods
 Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
 
 
-- in **C#** (ex : `Tests.EnrichWithExternalEnricher.csx`)
+- in **C#** (ex : `EnrichWithExternalEnricher.csx`)
 
 ```csharp
 #r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
@@ -281,7 +283,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `Tests.EnrichWithExternalEnricher.json`)
+- in **JSON** (ex : `EnrichWithExternalEnricher.json`)
 
 ```json
 {
@@ -301,7 +303,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `Tests.EnrichWithExternalEnricher.config`)
+- in **XML** (ex : `EnrichWithExternalEnricher.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -315,11 +317,12 @@ LoggerConfiguration
 ```
 
 
-## Parameterless methods or extension methods
+## Sinks
+### Parameterless methods or extension methods
 Sinks without mandatory arguments can be called.
 
 
-- in **JSON** (ex : `Tests.WriteToWithNoParams.json`)
+- in **JSON** (ex : `WriteToWithNoParams.json`)
 
 ```json
 {
@@ -332,7 +335,7 @@ Sinks without mandatory arguments can be called.
 ```
 
 
-- in **JSON** (ex : `Tests.WriteToWithNoParams-LongForm.json`)
+- in **JSON** (ex : `WriteToWithNoParams-LongForm.json`)
 
 ```json
 {
@@ -346,7 +349,7 @@ Sinks without mandatory arguments can be called.
 ```
 
 
-- in **XML** (ex : `Tests.WriteToWithNoParams.config`)
+- in **XML** (ex : `WriteToWithNoParams.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -359,11 +362,11 @@ Sinks without mandatory arguments can be called.
 ```
 
 
-## `LogEventLevel`-types parameters
+### `LogEventLevel`-types parameters
 Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be provided
 
 
-- in **C#** (ex : `Tests.WriteToWithRestrictedToMinimumLevel.csx`)
+- in **C#** (ex : `WriteToWithRestrictedToMinimumLevel.csx`)
 
 ```csharp
 #r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
@@ -376,7 +379,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `Tests.WriteToWithRestrictedToMinimumLevel.json`)
+- in **JSON** (ex : `WriteToWithRestrictedToMinimumLevel.json`)
 
 ```json
 {
@@ -395,7 +398,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `Tests.WriteToWithRestrictedToMinimumLevel.config`)
+- in **XML** (ex : `WriteToWithRestrictedToMinimumLevel.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -408,11 +411,11 @@ LoggerConfiguration
 ```
 
 
-## Simple parameter types
+### Simple parameter types
 Simple types that are *convertible* from string can be passed. Empty string can be provided to specify null for nullable parameters. Parameters with a default value can be omitted.
 
 
-- in **C#** (ex : `Tests.WriteToWithSimpleParams.csx`)
+- in **C#** (ex : `WriteToWithSimpleParams.csx`)
 
 ```csharp
 #r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
@@ -424,7 +427,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `Tests.WriteToWithSimpleParams.json`)
+- in **JSON** (ex : `WriteToWithSimpleParams.json`)
 
 ```json
 {
@@ -445,7 +448,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `Tests.WriteToWithSimpleParams.config`)
+- in **XML** (ex : `WriteToWithSimpleParams.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -460,11 +463,11 @@ LoggerConfiguration
 ```
 
 
-## Interface-typed parameters
+### Interface-typed parameters
 For parameters whose type is an `interface`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
 
 
-- in **C#** (ex : `Tests.WriteToWithConcreteDefaultImplementationOfInterface.csx`)
+- in **C#** (ex : `WriteToWithConcreteDefaultImplementationOfInterface.csx`)
 
 ```csharp
 #r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
@@ -478,7 +481,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `Tests.WriteToWithConcreteDefaultImplementationOfInterface.json`)
+- in **JSON** (ex : `WriteToWithConcreteDefaultImplementationOfInterface.json`)
 
 ```json
 {
@@ -498,7 +501,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `Tests.WriteToWithConcreteDefaultImplementationOfInterface.config`)
+- in **XML** (ex : `WriteToWithConcreteDefaultImplementationOfInterface.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -512,11 +515,12 @@ LoggerConfiguration
 ```
 
 
+## Miscellaneous
 ## Environment variable expansion
 Values like `%ENV_VARIABLE%` are replaced by the value of the environment variable `ENV_VARIABLE`.
 
 
-- in **C#** (ex : `Tests.EnvironmentVariableExpansion.csx`)
+- in **C#** (ex : `EnvironmentVariableExpansion.csx`)
 
 ```csharp
 #r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
@@ -532,7 +536,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `Tests.EnvironmentVariableExpansion.json`)
+- in **JSON** (ex : `EnvironmentVariableExpansion.json`)
 
 ```json
 {
@@ -552,7 +556,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `Tests.EnvironmentVariableExpansion.config`)
+- in **XML** (ex : `EnvironmentVariableExpansion.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

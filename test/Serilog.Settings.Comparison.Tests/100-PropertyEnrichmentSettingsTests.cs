@@ -8,7 +8,8 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class PropertyEnrichmentSettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"100## Property enrichment
+        public const string docs = @"100## Enrichment
+### Property enrichment
 Log events can be enriched with arbitrary properties.";
 
         public PropertyEnrichmentSettingsTests(ITestOutputHelper outputHelper)

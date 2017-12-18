@@ -7,7 +7,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class WriteToWithLogEventLevelParametersSettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"210## `LogEventLevel`-types parameters
+        public const string docs = @"210### `LogEventLevel`-types parameters
 Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be provided";
 
         public WriteToWithLogEventLevelParametersSettingsTests(ITestOutputHelper outputHelper)

@@ -7,7 +7,8 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class WriteToWithNoParamsSettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"200## Parameterless methods or extension methods
+        public const string docs = @"200## Sinks
+### Parameterless methods or extension methods
 Sinks without mandatory arguments can be called.";
 
         public WriteToWithNoParamsSettingsTests(ITestOutputHelper outputHelper)
