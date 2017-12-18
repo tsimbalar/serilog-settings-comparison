@@ -273,7 +273,7 @@ Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
 - in **C#** (ex : `EnrichWithExternalEnricher.csx`)
 
 ```csharp
-#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
+#r ".\TestDummies.dll"
 using TestDummies;
 
 LoggerConfiguration
@@ -369,7 +369,7 @@ Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be pro
 - in **C#** (ex : `WriteToWithRestrictedToMinimumLevel.csx`)
 
 ```csharp
-#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
+#r ".\TestDummies.dll"
 using Serilog.Events;
 using TestDummies;
 
@@ -418,7 +418,7 @@ Simple types that are *convertible* from string can be passed. Empty string can 
 - in **C#** (ex : `WriteToWithSimpleParams.csx`)
 
 ```csharp
-#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
+#r ".\TestDummies.dll"
 using TestDummies;
 
 LoggerConfiguration
@@ -470,7 +470,7 @@ For parameters whose type is an `interface`, the full type name of an implementa
 - in **C#** (ex : `WriteToWithConcreteDefaultImplementationOfInterface.csx`)
 
 ```csharp
-#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
+#r ".\TestDummies.dll"
 using System;
 using Serilog.Formatting.Json;
 using TestDummies;
@@ -523,7 +523,7 @@ Values like `%ENV_VARIABLE%` are replaced by the value of the environment variab
 - in **C#** (ex : `EnvironmentVariableExpansion.csx`)
 
 ```csharp
-#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
+#r ".\TestDummies.dll"
 using System;
 using TestDummies;
 

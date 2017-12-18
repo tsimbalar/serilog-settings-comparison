@@ -79,7 +79,9 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
         static LoggerConfiguration LoadCSharpConfig(string fileName)
         {
             var code = File.ReadAllText(fileName);
-
+            // this is a hack, but trying to avoid hard-coding a path in the files ...
+            // replace .\ with an actual path
+            code = code.Replace("#r \".\\", $"#r \"{Environment.CurrentDirectory}\\");
             var jsonConfig = new LoggerConfiguration().ReadFrom.CodeString(code);
             return jsonConfig;
         }

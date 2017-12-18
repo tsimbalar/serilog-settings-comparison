@@ -1,4 +1,4 @@
-﻿#r "C:\Dev\serilog-settings-comparison\test\Serilog.Settings.Comparison.Tests\bin\Debug\net46\TestDummies.dll"
+﻿#r ".\TestDummies.dll"
 using TestDummies;
 
 LoggerConfiguration
