@@ -9,7 +9,8 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class ArbitraryEnrichmentExtensionMethodSettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"110### Enrichment Extension Methods
+        public const string docs = @"301## Method Discovery
+### Enrichment Extension Methods
 Log events can be enriched with arbitrary `Enrich.With...()` extension methods.";
 
         public ArbitraryEnrichmentExtensionMethodSettingsTests(ITestOutputHelper outputHelper)
@@ -38,12 +39,6 @@ Log events can be enriched with arbitrary `Enrich.With...()` extension methods."
             Assert.Equal("UserExtraParam", e.Properties["UserName"].LiteralValue());
         }
 
-        // TODO : implementation class for Interface or Abstract class
-        // TODO : static property accessor
-        // TODO : out of the box conversions : Uri, TimeSpan ... 
-        // TODO : AuditTo
-        // TODO : LoggingLevelSwitch
-        // TODO : filters
 
     }
 }

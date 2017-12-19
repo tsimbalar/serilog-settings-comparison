@@ -9,7 +9,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class OutOfTheBoxEnrichmentExtensionMethodSettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"105### LogContext
+        public const string docs = @"230### Enrichment from `LogContext`
 Log events can be enriched with LogContext.";
 
         public OutOfTheBoxEnrichmentExtensionMethodSettingsTests(ITestOutputHelper outputHelper)

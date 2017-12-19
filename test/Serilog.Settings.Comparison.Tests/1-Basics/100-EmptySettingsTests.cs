@@ -8,7 +8,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class EmptySettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"000## Basics
+        public const string docs = @"100## Basics
 ### Empty settings
 Loading an empty config file behaves the same as the default `CreateLogger()`. " +
                                    "Minimum Level is *Information*.";

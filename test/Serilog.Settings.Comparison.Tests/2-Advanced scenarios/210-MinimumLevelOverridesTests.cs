@@ -9,7 +9,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class MinimumLevelOverridesTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"015### Minimum level overrides
+        public const string docs = @"210### Minimum level overrides
 Minimum level can be overriden (up or down) for specific `SourceContext`s.";
 
         public MinimumLevelOverridesTests(ITestOutputHelper outputHelper)

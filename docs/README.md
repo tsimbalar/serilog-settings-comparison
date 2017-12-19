@@ -135,188 +135,6 @@ LoggerConfiguration
 ```
 
 
-### Minimum level overrides
-Minimum level can be overriden (up or down) for specific `SourceContext`s.
-
-
-- in **C#** (ex : `MinimumLevelOverrides.csx`)
-
-```csharp
-using Serilog.Events;
-
-LoggerConfiguration
-  .MinimumLevel.Debug()
-  .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
-  .MinimumLevel.Override("Microsoft.Extensions", LogEventLevel.Information)
-  .MinimumLevel.Override("System", LogEventLevel.Debug)
-  ;
-
-```
-
-
-- in **JSON** (ex : `MinimumLevelOverrides.json`)
-
-```json
-{
-  "Serilog": {
-    "MinimumLevel": {
-      "Default": "Verbose",
-      "Override": {
-        "Microsoft": "Error",
-        "Microsoft.Extensions": "Information",
-        "System": "Debug"
-      }
-    }
-  }
-}
-```
-
-
-- in **XML** (ex : `MinimumLevelOverrides.config`)
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:minimum-level" value="Verbose" />
-    <add key="serilog:minimum-level:override:Microsoft" value="Error" />
-    <add key="serilog:minimum-level:override:Microsoft.Extensions" value="Information" />
-    <add key="serilog:minimum-level:override:System" value="Debug" />
-  </appSettings>
-</configuration>
-```
-
-
-## Enrichment
-### Property enrichment
-Log events can be enriched with arbitrary properties.
-
-
-- in **C#** (ex : `EnrichWithProperty.csx`)
-
-```csharp
-LoggerConfiguration
-    .Enrich.WithProperty("AppName", "MyApp")
-    .Enrich.WithProperty("ServerName", "MyServer");
-
-```
-
-
-- in **JSON** (ex : `EnrichWithProperty.json`)
-
-```json
-{
-  "Serilog": {
-    "Properties": {
-      "AppName": "MyApp",
-      "ServerName": "MyServer"
-    }
-  }
-}
-```
-
-
-- in **XML** (ex : `EnrichWithProperty.config`)
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:enrich:with-property:AppName" value="MyApp" />
-    <add key="serilog:enrich:with-property:ServerName" value="MyServer" />
-  </appSettings>
-</configuration>
-```
-
-
-### LogContext
-Log events can be enriched with LogContext.
-
-
-- in **C#** (ex : `EnrichFromLogContext.csx`)
-
-```csharp
-LoggerConfiguration.Enrich.FromLogContext();
-
-```
-
-
-- in **JSON** (ex : `EnrichFromLogContext.json`)
-
-```json
-{
-  "Serilog": {
-    "Enrich": [ "FromLogContext" ]
-  }
-}
-
-```
-
-
-- in **XML** (ex : `EnrichFromLogContext.config`)
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:enrich:FromLogContext" value="" />
-  </appSettings>
-</configuration>
-
-```
-
-
-### Enrichment Extension Methods
-Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
-
-
-- in **C#** (ex : `EnrichWithExternalEnricher.csx`)
-
-```csharp
-#r ".\TestDummies.dll"
-using TestDummies;
-
-LoggerConfiguration
-    .Enrich.WithDummyThreadId()
-    .Enrich.WithDummyUserName("UserExtraParam");
-
-```
-
-
-- in **JSON** (ex : `EnrichWithExternalEnricher.json`)
-
-```json
-{
-  "Serilog": {
-    "Using": [ "TestDummies" ],
-    "Enrich": [
-      "WithThreadId",
-      {
-        "Name": "WithDummyUserName",
-        "Args": {
-          "extraParam": "UserExtraParam"
-        }
-      }
-    ]
-  }
-}
-```
-
-
-- in **XML** (ex : `EnrichWithExternalEnricher.config`)
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <appSettings>
-    <add key="serilog:using:TestDummies" value="TestDummies" />
-    <add key="serilog:enrich:WithDummyThreadId" value="" />
-    <add key="serilog:enrich:WithDummyUserName.extraParam" value="UserExtraParam" />
-  </appSettings>
-</configuration>
-```
-
-
 ## Sinks
 ### Parameterless methods or extension methods
 Sinks without mandatory arguments can be called.
@@ -463,6 +281,197 @@ LoggerConfiguration
 ```
 
 
+## Property-Enrichment
+Log events can be enriched with arbitrary properties.
+
+
+- in **C#** (ex : `EnrichWithProperty.csx`)
+
+```csharp
+LoggerConfiguration
+    .Enrich.WithProperty("AppName", "MyApp")
+    .Enrich.WithProperty("ServerName", "MyServer");
+
+```
+
+
+- in **JSON** (ex : `EnrichWithProperty.json`)
+
+```json
+{
+  "Serilog": {
+    "Properties": {
+      "AppName": "MyApp",
+      "ServerName": "MyServer"
+    }
+  }
+}
+```
+
+
+- in **XML** (ex : `EnrichWithProperty.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:enrich:with-property:AppName" value="MyApp" />
+    <add key="serilog:enrich:with-property:ServerName" value="MyServer" />
+  </appSettings>
+</configuration>
+```
+
+
+# Advanced scenarios
+The following scenarios are also supported.
+
+
+### Minimum level overrides
+Minimum level can be overriden (up or down) for specific `SourceContext`s.
+
+
+- in **C#** (ex : `MinimumLevelOverrides.csx`)
+
+```csharp
+using Serilog.Events;
+
+LoggerConfiguration
+  .MinimumLevel.Debug()
+  .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
+  .MinimumLevel.Override("Microsoft.Extensions", LogEventLevel.Information)
+  .MinimumLevel.Override("System", LogEventLevel.Debug)
+  ;
+
+```
+
+
+- in **JSON** (ex : `MinimumLevelOverrides.json`)
+
+```json
+{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Verbose",
+      "Override": {
+        "Microsoft": "Error",
+        "Microsoft.Extensions": "Information",
+        "System": "Debug"
+      }
+    }
+  }
+}
+```
+
+
+- in **XML** (ex : `MinimumLevelOverrides.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:minimum-level" value="Verbose" />
+    <add key="serilog:minimum-level:override:Microsoft" value="Error" />
+    <add key="serilog:minimum-level:override:Microsoft.Extensions" value="Information" />
+    <add key="serilog:minimum-level:override:System" value="Debug" />
+  </appSettings>
+</configuration>
+```
+
+
+### Enrichment from `LogContext`
+Log events can be enriched with LogContext.
+
+
+- in **C#** (ex : `EnrichFromLogContext.csx`)
+
+```csharp
+LoggerConfiguration.Enrich.FromLogContext();
+
+```
+
+
+- in **JSON** (ex : `EnrichFromLogContext.json`)
+
+```json
+{
+  "Serilog": {
+    "Enrich": [ "FromLogContext" ]
+  }
+}
+
+```
+
+
+- in **XML** (ex : `EnrichFromLogContext.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:enrich:FromLogContext" value="" />
+  </appSettings>
+</configuration>
+
+```
+
+
+# Advanced settings formats
+Below are the general rules for setting values.
+
+
+## Method Discovery
+### Enrichment Extension Methods
+Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
+
+
+- in **C#** (ex : `EnrichWithExternalEnricher.csx`)
+
+```csharp
+#r ".\TestDummies.dll"
+using TestDummies;
+
+LoggerConfiguration
+    .Enrich.WithDummyThreadId()
+    .Enrich.WithDummyUserName("UserExtraParam");
+
+```
+
+
+- in **JSON** (ex : `EnrichWithExternalEnricher.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "Enrich": [
+      "WithThreadId",
+      {
+        "Name": "WithDummyUserName",
+        "Args": {
+          "extraParam": "UserExtraParam"
+        }
+      }
+    ]
+  }
+}
+```
+
+
+- in **XML** (ex : `EnrichWithExternalEnricher.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:enrich:WithDummyThreadId" value="" />
+    <add key="serilog:enrich:WithDummyUserName.extraParam" value="UserExtraParam" />
+  </appSettings>
+</configuration>
+```
+
+
+## Interfaces and abstract classes
 ### Interface-typed parameters
 For parameters whose type is an `interface`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
 
@@ -547,7 +556,6 @@ LoggerConfiguration
 ```
 
 
-## Miscellaneous
 ## Environment variable expansion
 Values like `%ENV_VARIABLE%` are replaced by the value of the environment variable `ENV_VARIABLE`.
 

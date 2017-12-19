@@ -7,7 +7,7 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class WriteToWithConcreteDefaultImplementationOfAbstractClassSettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"231### Abstract-class-typed parameters
+        public const string docs = @"322### Abstract-class-typed parameters
 For parameters whose type is an `abstract class`, the full type name of an implementation " +
                                    "can be provided. If the type is not in the `Serilog`, remember to include `using` directives.";
 
