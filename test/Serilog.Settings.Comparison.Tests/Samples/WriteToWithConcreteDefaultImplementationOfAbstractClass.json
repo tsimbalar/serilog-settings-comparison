@@ -1,0 +1,13 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyConsole",
+        "Args": {
+          "formatter": "TestDummies.Console.CustomConsoleTheme, TestDummies"
+        }
+      }
+    ]
+  }
+}

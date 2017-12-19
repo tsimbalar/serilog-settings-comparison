@@ -515,6 +515,38 @@ LoggerConfiguration
 ```
 
 
+### Abstract-class-typed parameters
+For parameters whose type is an `abstract class`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.
+
+
+- in **C#** (ex : `WriteToWithConcreteDefaultImplementationOfAbstractClass.csx`)
+
+```csharp
+#r ".\TestDummies.dll"
+using System;
+using TestDummies;
+using TestDummies.Console;
+
+LoggerConfiguration
+    .WriteTo.DummyConsole(theme: new CustomConsoleTheme());
+
+```
+
+
+- in **XML** (ex : `WriteToWithConcreteDefaultImplementationOfAbstractClass.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:write-to:DummyConsole.theme" value="TestDummies.Console.CustomConsoleTheme, TestDummies" />
+  </appSettings>
+</configuration>
+
+```
+
+
 ## Miscellaneous
 ## Environment variable expansion
 Values like `%ENV_VARIABLE%` are replaced by the value of the environment variable `ENV_VARIABLE`.
