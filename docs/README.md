@@ -2,7 +2,7 @@
 Serilog is typically configured via code though its *configuration APIs*, but it is quite common to specify the settings also from some sort of configuration file. 
 
 For that purpose, several *Settings providers* exist, that mimic the *code-based* API and allow supplying values from external sources : 
-- *Serilog.Settings.AppSettings* allows to read configuration from the `<appSettings>` section of an `App.config` or `Web.config` file. It is used
+- *Serilog.Settings.AppSettings* allows to read configuration from the `<appSettings>` section of an `App.config` or `Web.config` file,
 - *Serilog.Settings.Configuration* relies on *Microsoft.Logging.Configuration* to read settings from sources in *JSON*, *XML* or anything that can be plugged in the *ConfigurationProvider* APIs
 
 To use *Serilog.Settings.AppSettings*, install the Nuget package, and configure you logger like : 
@@ -135,9 +135,9 @@ LoggerConfiguration
 ```
 
 
-## Sinks
-### Parameterless methods or extension methods
-Sinks without mandatory arguments can be called.
+### Sinks - Basics
+You can configure usage of a given *Sink* by specifying the name of the method or extension method that you would usually use after `WriteTo.*`.
+You may need to explicitly add a `using` directive to look for extension methods in a separate assembly or Nuget package.
 
 
 - in **C#** (ex : `WriteToWithNoParams.csx`)
@@ -193,8 +193,8 @@ LoggerConfiguration
 ```
 
 
-### `LogEventLevel`-types parameters
-Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be provided
+### Sinks - `restrictedToMinimumLevel`
+Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be provided from the level's name.
 
 
 - in **C#** (ex : `WriteToWithRestrictedToMinimumLevel.csx`)
@@ -242,7 +242,7 @@ LoggerConfiguration
 ```
 
 
-### Simple parameter types
+### Sinks - Simple parameter types
 Simple types that are *convertible* from string can be passed. Empty string can be provided to specify null for nullable parameters. Parameters with a default value can be omitted.
 
 
@@ -571,6 +571,7 @@ LoggerConfiguration
 
 ## Environment variable expansion
 Values like `%ENV_VARIABLE%` are replaced by the value of the environment variable `ENV_VARIABLE`.
+This can be used, for instance, to provide environment-dependent property-enrichment (ex: `%COMPUTERNAME%`) or paths (ex: %TEMP%).
 
 
 - in **C#** (ex : `EnvironmentVariableExpansion.csx`)

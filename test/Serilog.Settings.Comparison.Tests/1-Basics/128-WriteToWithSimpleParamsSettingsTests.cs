@@ -6,10 +6,10 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
     [Collection(docs)]
     public class WriteToWithSimpleParamsSettingsTests : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"128### Simple parameter types
+        public const string docs = @"128### Sinks - Simple parameter types
 Simple types that are *convertible* from string can be passed. " +
-                                   "Empty string can be provided to specify null for nullable parameters. " +
-                                   "Parameters with a default value can be omitted.";
+"Empty string can be provided to specify null for nullable parameters. " +
+"Parameters with a default value can be omitted.";
 
         public WriteToWithSimpleParamsSettingsTests(ITestOutputHelper outputHelper)
             : base(outputHelper)
