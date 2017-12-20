@@ -140,6 +140,19 @@ LoggerConfiguration
 Sinks without mandatory arguments can be called.
 
 
+- in **C#** (ex : `WriteToWithNoParams.csx`)
+
+```csharp
+#r ".\TestDummies.dll"
+using System;
+using TestDummies;
+
+LoggerConfiguration
+    .WriteTo.Dummy();
+
+```
+
+
 - in **JSON** (ex : `WriteToWithNoParams.json`)
 
 ```json

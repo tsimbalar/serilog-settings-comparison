@@ -17,6 +17,7 @@ Sinks without mandatory arguments can be called.";
         }
 
         [Theory]
+        [InlineData("WriteToWithNoParams.csx")]
         [InlineData("WriteToWithNoParams.json")]
         [InlineData("WriteToWithNoParams-LongForm.json")]
         [InlineData("WriteToWithNoParams.config")]
