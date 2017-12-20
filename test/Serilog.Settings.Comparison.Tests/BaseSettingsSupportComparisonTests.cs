@@ -16,8 +16,13 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
             _outputHelper = outputHelper;
         }
 
-        protected void WriteDocumentation(string fileName)
+        protected void WriteDocumentation(string fileName, bool includeInOutput = true)
         {
+            if (!includeInOutput)
+            {
+                _outputHelper.WriteLine("<!--");
+            }
+
             var fullFilePath = GetTestFileFullPath(fileName);
 
             _outputHelper.WriteLine($"- in **{GetLanguageDisplayName(fileName)}** (ex : `{fileName}`)");
@@ -26,6 +31,12 @@ namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
             _outputHelper.WriteLine(File.ReadAllText(fullFilePath));
             _outputHelper.WriteLine("```");
             _outputHelper.WriteLine("");
+
+            if (!includeInOutput)
+            {
+                _outputHelper.WriteLine("-->");
+            }
+
         }
 
         static string GetMarkdownSnippetLanguage(string fileName)

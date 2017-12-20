@@ -17,13 +17,13 @@ You may need to explicitly add a `using` directive to look for extension methods
         }
 
         [Theory]
-        [InlineData("WriteToWithNoParams.csx")]
-        [InlineData("WriteToWithNoParams.json")]
-        [InlineData("WriteToWithNoParams-LongForm.json")]
-        [InlineData("WriteToWithNoParams.config")]
-        public void SupportForSinksWithoutParameters(string fileName)
+        [InlineData("WriteToWithNoParams.csx", true)]
+        [InlineData("WriteToWithNoParams.json", true)]
+        [InlineData("WriteToWithNoParams-LongForm.json", false)]
+        [InlineData("WriteToWithNoParams.config", true)]
+        public void SupportForSinksWithoutParameters(string fileName, bool includeInOutput)
         {
-            WriteDocumentation(fileName);
+            WriteDocumentation(fileName, includeInOutput);
 
             var loggerConfig = LoadConfig(fileName);
 

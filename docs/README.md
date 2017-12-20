@@ -31,13 +31,16 @@ You will find below some snippets of common configuration code in *C#* with the 
 Loading an empty config file behaves the same as the default `CreateLogger()`. Minimum Level is *Information*.
 
 
+<!--
 - in **C#** (ex : `Empty.csx`)
 
 ```csharp
 
 ```
 
+-->
 
+<!--
 - in **JSON** (ex : `Empty.json`)
 
 ```json
@@ -45,6 +48,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 }
 ```
 
+-->
 
 - in **JSON** (ex : `Empty-EmptySection.json`)
 
@@ -55,6 +59,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 ```
 
 
+<!--
 - in **XML** (ex : `Empty.config`)
 
 ```xml
@@ -63,6 +68,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 </configuration>
 ```
 
+-->
 
 - in **XML** (ex : `Empty-EmptySection.config`)
 
@@ -88,6 +94,7 @@ LoggerConfiguration
 ```
 
 
+<!--
 - in **C#** (ex : `MinimumLevel-is.csx`)
 
 ```csharp
@@ -98,6 +105,7 @@ LoggerConfiguration
 
 ```
 
+-->
 
 - in **JSON** (ex : `MinimumLevel.json`)
 
@@ -110,6 +118,7 @@ LoggerConfiguration
 ```
 
 
+<!--
 - in **JSON** (ex : `MinimumLevel-Default.json`)
 
 ```json
@@ -122,6 +131,7 @@ LoggerConfiguration
 }
 ```
 
+-->
 
 - in **XML** (ex : `MinimumLevel.config`)
 
@@ -166,6 +176,7 @@ LoggerConfiguration
 ```
 
 
+<!--
 - in **JSON** (ex : `WriteToWithNoParams-LongForm.json`)
 
 ```json
@@ -179,6 +190,7 @@ LoggerConfiguration
 }
 ```
 
+-->
 
 - in **XML** (ex : `WriteToWithNoParams.config`)
 
