@@ -460,7 +460,7 @@ LoggerConfiguration
 
 
 ### Enrichment from `LogContext`
-Log events can be enriched with LogContext.
+Log events can be enriched with `LogContext`.
 
 
 - in **C#** (ex : `EnrichFromLogContext.csx`)

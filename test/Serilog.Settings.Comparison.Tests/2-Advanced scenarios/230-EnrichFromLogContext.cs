@@ -7,12 +7,12 @@ using Xunit.Abstractions;
 namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class OutOfTheBoxEnrichmentExtensionMethodSettingsTests : BaseSettingsSupportComparisonTests
+    public class EnrichFromLogContext : BaseSettingsSupportComparisonTests
     {
         public const string docs = @"230### Enrichment from `LogContext`
-Log events can be enriched with LogContext.";
+Log events can be enriched with `LogContext`.";
 
-        public OutOfTheBoxEnrichmentExtensionMethodSettingsTests(ITestOutputHelper outputHelper)
+        public EnrichFromLogContext(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }
@@ -21,7 +21,7 @@ Log events can be enriched with LogContext.";
         [InlineData("EnrichFromLogContext.csx")]
         [InlineData("EnrichFromLogContext.json")]
         [InlineData("EnrichFromLogContext.config")]
-        public void SupportForOutOfTheBoxEnrichmentExtensionMethod(string fileName)
+        public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);
 

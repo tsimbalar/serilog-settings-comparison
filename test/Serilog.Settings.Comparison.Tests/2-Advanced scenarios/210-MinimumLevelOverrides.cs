@@ -7,12 +7,12 @@ using Xunit.Abstractions;
 namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class MinimumLevelOverridesTests : BaseSettingsSupportComparisonTests
+    public class MinimumLevelOverrides : BaseSettingsSupportComparisonTests
     {
         public const string docs = @"210### Minimum level overrides
 Minimum level can be overriden (up or down) for specific `SourceContext`s.";
 
-        public MinimumLevelOverridesTests(ITestOutputHelper outputHelper)
+        public MinimumLevelOverrides(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }
@@ -21,7 +21,7 @@ Minimum level can be overriden (up or down) for specific `SourceContext`s.";
         [InlineData("MinimumLevelOverrides.csx")]
         [InlineData("MinimumLevelOverrides.json")]
         [InlineData("MinimumLevelOverrides.config")]
-        public void SupportForMinimumLevelOverrides(string fileName)
+        public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);
 
