@@ -67,7 +67,7 @@ namespace Serilog.SettingsComparisonTests
 
         static string GetTestFileFullPath(string fileName)
         {
-            return Directory.GetFiles(".", fileName, SearchOption.AllDirectories).FirstOrDefault()
+            return Directory.GetFiles(".", fileName, SearchOption.AllDirectories).SingleOrDefault()
                 ?? fileName;
         }
 
