@@ -1,0 +1,15 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "AuditTo": [
+      {
+        "Name": "Dummy",
+        "Args": {
+          "stringParam": "A string param",
+          "intParam": 666,
+          "nullableIntParam": ""
+        }
+      }
+    ]
+  }
+}

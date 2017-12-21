@@ -48,6 +48,19 @@ namespace TestDummies
                 restrictedToMinimumLevel);
         }
 
+        // AuditTo
+        public static LoggerConfiguration Dummy(
+            this LoggerAuditSinkConfiguration loggerSinkConfiguration,
+            string stringParam,
+            int intParam,
+            string stringParamWithDefault = "default",
+            int? nullableIntParam = 42,
+            LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum)
+        {
+            return loggerSinkConfiguration.Sink(new DummyAuditSink(stringParam, intParam, stringParamWithDefault, nullableIntParam, null),
+                restrictedToMinimumLevel);
+        }
+
         public static LoggerConfiguration DummyWithFormatter(
             this LoggerSinkConfiguration loggerSinkConfiguration,
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
@@ -57,7 +70,7 @@ namespace TestDummies
             return loggerSinkConfiguration.Sink(new DummySink(null, 0, null, null, formatter),
                 restrictedToMinimumLevel);
         }
-        
+
         public static LoggerConfiguration DummyRollingFile(
             this LoggerAuditSinkConfiguration loggerSinkConfiguration,
             string pathFormat,

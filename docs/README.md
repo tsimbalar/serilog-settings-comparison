@@ -306,7 +306,7 @@ LoggerConfiguration
 ```
 
 
-## Property-Enrichment
+### Property-Enrichment
 Log events can be enriched with arbitrary properties.
 
 
@@ -400,6 +400,60 @@ LoggerConfiguration
     <add key="serilog:minimum-level:override:System" value="Debug" />
   </appSettings>
 </configuration>
+```
+
+
+### Sinks - `AuditTo`
+Some sinks provide *Audit* functionality via the configuration method `.AuditTo.MySink()`. This is also supported via configuration.
+
+
+- in **C#** (ex : `AuditToWithSimpleParams.csx`)
+
+```csharp
+#r ".\TestDummies.dll"
+using TestDummies;
+
+LoggerConfiguration
+    .AuditTo.Dummy(stringParam: "A string param", intParam: 666, nullableIntParam: null);
+
+```
+
+
+- in **JSON** (ex : `AuditToWithSimpleParams.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "AuditTo": [
+      {
+        "Name": "Dummy",
+        "Args": {
+          "stringParam": "A string param",
+          "intParam": 666,
+          "nullableIntParam": ""
+        }
+      }
+    ]
+  }
+}
+
+```
+
+
+- in **XML** (ex : `AuditToWithSimpleParams.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:audit-to:Dummy.stringParam" value="A string param" />
+    <add key="serilog:audit-to:Dummy.intParam" value="666" />
+    <add key="serilog:audit-to:Dummy.nullableIntParam" value="" />
+  </appSettings>
+</configuration>
+
 ```
 
 
