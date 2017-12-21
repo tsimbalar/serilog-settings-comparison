@@ -501,6 +501,8 @@ Below are the general rules for setting values.
 
 
 ## Method Discovery
+
+
 ### Enrichment Extension Methods
 Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
 
@@ -553,6 +555,8 @@ LoggerConfiguration
 
 
 ## Interfaces and abstract classes
+
+
 ### Interface-typed parameters
 For parameters whose type is an `interface`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
 

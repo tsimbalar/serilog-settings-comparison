@@ -4,12 +4,11 @@ using Xunit.Abstractions;
 namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class AdvancedSettings : BaseSettingsSupportComparisonTests
+    public class InterfacesAndAbstractClasses : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"300# Advanced settings formats
-Below are the general rules for setting values.";
+        public const string docs = @"330## Interfaces and abstract classes";
 
-        public AdvancedSettings(ITestOutputHelper outputHelper)
+        public InterfacesAndAbstractClasses(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }

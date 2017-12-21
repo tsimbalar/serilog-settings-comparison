@@ -5,13 +5,13 @@ using Xunit.Abstractions;
 namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class WriteToWithConcreteDefaultImplementationOfAbstractClassSettingsTests : BaseSettingsSupportComparisonTests
+    public class AbstractClassImplementationDefaultConstructor : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"322### Abstract-class-typed parameters
+        public const string docs = @"332### Abstract-class-typed parameters
 For parameters whose type is an `abstract class`, the full type name of an implementation " +
                                    "can be provided. If the type is not in the `Serilog`, remember to include `using` directives.";
 
-        public WriteToWithConcreteDefaultImplementationOfAbstractClassSettingsTests(ITestOutputHelper outputHelper)
+        public AbstractClassImplementationDefaultConstructor(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }
@@ -20,7 +20,7 @@ For parameters whose type is an `abstract class`, the full type name of an imple
         [InlineData("WriteToWithConcreteDefaultImplementationOfAbstractClass.csx")]
         [InlineData("WriteToWithConcreteDefaultImplementationOfAbstractClass.json", Skip = "Not released yet in JSON format")]
         [InlineData("WriteToWithConcreteDefaultImplementationOfAbstractClass.config")]
-        public void SupportForAbstractClassParamsPassingConcreteClassWithDefaultConstructor(string fileName)
+        public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);
 

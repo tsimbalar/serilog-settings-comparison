@@ -5,13 +5,13 @@ using Xunit.Abstractions;
 namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class EnvironmentVariableExpansionSettingsTests : BaseSettingsSupportComparisonTests
+    public class EnvironmentVariableExpansion : BaseSettingsSupportComparisonTests
     {
         public const string docs = @"390## Environment variable expansion
 Values like `%ENV_VARIABLE%` are replaced by the value of the environment variable `ENV_VARIABLE`.
 This can be used, for instance, to provide environment-dependent property-enrichment (ex: `%COMPUTERNAME%`) or paths (ex: %TEMP%).";
 
-        public EnvironmentVariableExpansionSettingsTests(ITestOutputHelper outputHelper)
+        public EnvironmentVariableExpansion(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }
@@ -20,7 +20,7 @@ This can be used, for instance, to provide environment-dependent property-enrich
         [InlineData("EnvironmentVariableExpansion.csx")]
         [InlineData("EnvironmentVariableExpansion.json")]
         [InlineData("EnvironmentVariableExpansion.config")]
-        public void SupportEnvironmentVariableExpansion(string fileName)
+        public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);
 

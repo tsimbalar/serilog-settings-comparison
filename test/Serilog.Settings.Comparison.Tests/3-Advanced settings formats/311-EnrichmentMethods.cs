@@ -7,13 +7,12 @@ using Xunit.Abstractions;
 namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class ArbitraryEnrichmentExtensionMethodSettingsTests : BaseSettingsSupportComparisonTests
+    public class EnrichmentMethods : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"301## Method Discovery
-### Enrichment Extension Methods
+        public const string docs = @"311### Enrichment Extension Methods
 Log events can be enriched with arbitrary `Enrich.With...()` extension methods.";
 
-        public ArbitraryEnrichmentExtensionMethodSettingsTests(ITestOutputHelper outputHelper)
+        public EnrichmentMethods(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
 
@@ -23,7 +22,7 @@ Log events can be enriched with arbitrary `Enrich.With...()` extension methods."
         [InlineData("EnrichWithExternalEnricher.csx")]
         [InlineData("EnrichWithExternalEnricher.json")]
         [InlineData("EnrichWithExternalEnricher.config")]
-        public void SupportForArbitraryEnrichmentExtensionMethod(string fileName)
+        public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);
 

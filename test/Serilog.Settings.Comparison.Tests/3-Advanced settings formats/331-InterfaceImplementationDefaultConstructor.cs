@@ -5,15 +5,14 @@ using Xunit.Abstractions;
 namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class WriteToWithConcreteDefaultImplementationOfInterfaceSettingsTests : BaseSettingsSupportComparisonTests
+    public class InterfaceImplementationDefaultConstructor : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"321## Interfaces and abstract classes
-### Interface-typed parameters
+        public const string docs = @"331### Interface-typed parameters
 For parameters whose type is an `interface`, the full type name of an implementation " +
                                    "can be provided. If the type is not in the `Serilog`, remember to include `using` directives." +
                                    "**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !";
 
-        public WriteToWithConcreteDefaultImplementationOfInterfaceSettingsTests(ITestOutputHelper outputHelper)
+        public InterfaceImplementationDefaultConstructor(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }
@@ -22,7 +21,7 @@ For parameters whose type is an `interface`, the full type name of an implementa
         [InlineData("WriteToWithConcreteDefaultImplementationOfInterface.csx")]
         [InlineData("WriteToWithConcreteDefaultImplementationOfInterface.json")]
         [InlineData("WriteToWithConcreteDefaultImplementationOfInterface.config")]
-        public void SupportForInterfaceParamsPassingConcreteClassWithDefaultConstructor(string fileName)
+        public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);
 
