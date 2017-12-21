@@ -17,11 +17,11 @@ Global Minimum level can be defined.";
         }
 
         [Theory]
-        [InlineData("MinimumLevel.csx", true)]
-        [InlineData("MinimumLevel-is.csx", false)]
-        [InlineData("MinimumLevel.json", true)]
-        [InlineData("MinimumLevel-Default.json", false)]
-        [InlineData("MinimumLevel.config", true)]
+        [InlineData("110-MinimumLevel.csx", true)]
+        [InlineData("110-MinimumLevel-is.csx", false)]
+        [InlineData("110-MinimumLevel.json", true)]
+        [InlineData("110-MinimumLevel-Default.json", false)]
+        [InlineData("110-MinimumLevel.config", true)]
         public void TestCase(string fileName, bool includeInOutput)
         {
             WriteDocumentation(fileName, includeInOutput);

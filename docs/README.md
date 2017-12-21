@@ -34,7 +34,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 
 
 <!--
-- in **C#** (ex : `Empty.csx`)
+- in **C#** (ex : `101-Empty.csx`)
 
 ```csharp
 
@@ -43,7 +43,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 -->
 
 <!--
-- in **JSON** (ex : `Empty.json`)
+- in **JSON** (ex : `101-Empty.json`)
 
 ```json
 {
@@ -52,7 +52,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 
 -->
 
-- in **JSON** (ex : `Empty-EmptySection.json`)
+- in **JSON** (ex : `101-Empty-EmptySection.json`)
 
 ```json
 {
@@ -62,7 +62,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 
 
 <!--
-- in **XML** (ex : `Empty.config`)
+- in **XML** (ex : `101-Empty.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -72,7 +72,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 
 -->
 
-- in **XML** (ex : `Empty-EmptySection.config`)
+- in **XML** (ex : `101-Empty-EmptySection.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -87,7 +87,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. M
 Global Minimum level can be defined.
 
 
-- in **C#** (ex : `MinimumLevel.csx`)
+- in **C#** (ex : `110-MinimumLevel.csx`)
 
 ```csharp
 LoggerConfiguration
@@ -97,7 +97,7 @@ LoggerConfiguration
 
 
 <!--
-- in **C#** (ex : `MinimumLevel-is.csx`)
+- in **C#** (ex : `110-MinimumLevel-is.csx`)
 
 ```csharp
 using Serilog.Events;
@@ -109,7 +109,7 @@ LoggerConfiguration
 
 -->
 
-- in **JSON** (ex : `MinimumLevel.json`)
+- in **JSON** (ex : `110-MinimumLevel.json`)
 
 ```json
 {
@@ -121,7 +121,7 @@ LoggerConfiguration
 
 
 <!--
-- in **JSON** (ex : `MinimumLevel-Default.json`)
+- in **JSON** (ex : `110-MinimumLevel-Default.json`)
 
 ```json
 {
@@ -135,7 +135,7 @@ LoggerConfiguration
 
 -->
 
-- in **XML** (ex : `MinimumLevel.config`)
+- in **XML** (ex : `110-MinimumLevel.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
