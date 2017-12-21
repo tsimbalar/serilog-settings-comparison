@@ -1,19 +1,18 @@
 ﻿using Serilog.Events;
-using Serilog.Settings.Comparison.Tests.Support;
+using Serilog.SettingsComparisonTests.Support;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
+namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class EmptySettingsTests : BaseSettingsSupportComparisonTests
+    public class EmptySettings : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"100## Basics
-### Empty settings
+        public const string docs = @"101### Empty settings
 Loading an empty config file behaves the same as the default `CreateLogger()`. " +
                                    "Minimum Level is *Information*.";
 
-        public EmptySettingsTests(ITestOutputHelper outputHelper)
+        public EmptySettings(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }
@@ -24,7 +23,7 @@ Loading an empty config file behaves the same as the default `CreateLogger()`. "
         [InlineData("Empty-EmptySection.json", true)]
         [InlineData("Empty.config", false)]
         [InlineData("Empty-EmptySection.config", true)]
-        public void EmptyConfigFile(string fileName, bool includeInOutput)
+        public void TestCase(string fileName, bool includeInOutput)
         {
             WriteDocumentation(fileName, includeInOutput);
 

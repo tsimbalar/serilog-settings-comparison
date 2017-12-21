@@ -4,12 +4,11 @@ using Xunit.Abstractions;
 namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class AdvandedScenarioTests : BaseSettingsSupportComparisonTests
+    public class Basics : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"200# Advanced scenarios
-The following scenarios are also supported.";
+        public const string docs = @"100## Basics";
 
-        public AdvandedScenarioTests(ITestOutputHelper outputHelper)
+        public Basics(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }

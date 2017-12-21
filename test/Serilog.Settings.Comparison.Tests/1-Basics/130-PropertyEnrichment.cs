@@ -1,17 +1,17 @@
 ﻿using Serilog.Events;
-using Serilog.Settings.Comparison.Tests.Support;
+using Serilog.SettingsComparisonTests.Support;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
+namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class PropertyEnrichmentSettingsTests : BaseSettingsSupportComparisonTests
+    public class PropertyEnrichment : BaseSettingsSupportComparisonTests
     {
         public const string docs = @"130### Property-Enrichment
 Log events can be enriched with arbitrary properties.";
 
-        public PropertyEnrichmentSettingsTests(ITestOutputHelper outputHelper)
+        public PropertyEnrichment(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }
@@ -20,7 +20,7 @@ Log events can be enriched with arbitrary properties.";
         [InlineData("EnrichWithProperty.csx")]
         [InlineData("EnrichWithProperty.json")]
         [InlineData("EnrichWithProperty.config")]
-        public void SupportForPropertyEnrichment(string fileName)
+        public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);
 

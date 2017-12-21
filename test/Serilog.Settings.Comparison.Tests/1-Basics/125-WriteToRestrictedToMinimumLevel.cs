@@ -2,15 +2,15 @@
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
+namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class WriteToWithLogEventLevelParametersSettingsTests : BaseSettingsSupportComparisonTests
+    public class WriteToRestrictedToMinimumLevel : BaseSettingsSupportComparisonTests
     {
         public const string docs = @"125### Sinks - `restrictedToMinimumLevel`
 Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be provided from the level's name.";
 
-        public WriteToWithLogEventLevelParametersSettingsTests(ITestOutputHelper outputHelper)
+        public WriteToRestrictedToMinimumLevel(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }
@@ -19,7 +19,7 @@ Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be pro
         [InlineData("WriteToWithRestrictedToMinimumLevel.csx")]
         [InlineData("WriteToWithRestrictedToMinimumLevel.json")]
         [InlineData("WriteToWithRestrictedToMinimumLevel.config")]
-        public void SupportForLogEventLevelParameters(string fileName)
+        public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);
 

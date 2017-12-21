@@ -2,16 +2,16 @@
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
+namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class WriteToWithNoParamsSettingsTests : BaseSettingsSupportComparisonTests
+    public class WriteToSink : BaseSettingsSupportComparisonTests
     {
         public const string docs = @"120### Sinks - Basics
 You can configure usage of a given *Sink* by specifying the name of the method or extension method that you would usually use after `WriteTo.*`.
 You may need to explicitly add a `using` directive to look for extension methods in a separate assembly or Nuget package.";
 
-        public WriteToWithNoParamsSettingsTests(ITestOutputHelper outputHelper)
+        public WriteToSink(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }
@@ -21,7 +21,7 @@ You may need to explicitly add a `using` directive to look for extension methods
         [InlineData("WriteToWithNoParams.json", true)]
         [InlineData("WriteToWithNoParams-LongForm.json", false)]
         [InlineData("WriteToWithNoParams.config", true)]
-        public void SupportForSinksWithoutParameters(string fileName, bool includeInOutput)
+        public void TestCase(string fileName, bool includeInOutput)
         {
             WriteDocumentation(fileName, includeInOutput);
 

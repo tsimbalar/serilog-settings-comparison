@@ -1,7 +1,7 @@
 ﻿using Xunit;
 using Xunit.Abstractions;
 
-namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
+namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
     public class AdvandedSettingsTests : BaseSettingsSupportComparisonTests

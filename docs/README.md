@@ -27,6 +27,8 @@ new LoggerConfiguration().ReadFrom.Configuration(config)
 You will find below some snippets of common configuration code in *C#* with the equivalent settings in *JSON* and *XML*.
 
 ## Basics
+
+
 ### Empty settings
 Loading an empty config file behaves the same as the default `CreateLogger()`. Minimum Level is *Information*.
 

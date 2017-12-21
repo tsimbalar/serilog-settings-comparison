@@ -1,6 +1,6 @@
 ﻿using Serilog.Events;
 
-namespace Serilog.Settings.Comparison.Tests.Support
+namespace Serilog.SettingsComparisonTests.Support
 {
     public static class Extensions
     {

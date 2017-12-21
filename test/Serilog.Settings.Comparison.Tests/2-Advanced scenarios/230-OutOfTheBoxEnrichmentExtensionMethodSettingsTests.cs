@@ -1,10 +1,10 @@
 ﻿using Serilog.Context;
 using Serilog.Events;
-using Serilog.Settings.Comparison.Tests.Support;
+using Serilog.SettingsComparisonTests.Support;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
+namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
     public class OutOfTheBoxEnrichmentExtensionMethodSettingsTests : BaseSettingsSupportComparisonTests

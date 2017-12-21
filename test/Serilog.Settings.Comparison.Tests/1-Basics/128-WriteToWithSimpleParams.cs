@@ -1,17 +1,17 @@
 ﻿using Xunit;
 using Xunit.Abstractions;
 
-namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
+namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class WriteToWithSimpleParamsSettingsTests : BaseSettingsSupportComparisonTests
+    public class WriteToWithSimpleParams : BaseSettingsSupportComparisonTests
     {
         public const string docs = @"128### Sinks - Simple parameter types
 Simple types that are *convertible* from string can be passed. " +
 "Empty string can be provided to specify null for nullable parameters. " +
 "Parameters with a default value can be omitted.";
 
-        public WriteToWithSimpleParamsSettingsTests(ITestOutputHelper outputHelper)
+        public WriteToWithSimpleParams(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }
@@ -20,7 +20,7 @@ Simple types that are *convertible* from string can be passed. " +
         [InlineData("WriteToWithSimpleParams.csx")]
         [InlineData("WriteToWithSimpleParams.json")]
         [InlineData("WriteToWithSimpleParams.config")]
-        public void SupportForSimpleTypesParameters(string fileName)
+        public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);
 

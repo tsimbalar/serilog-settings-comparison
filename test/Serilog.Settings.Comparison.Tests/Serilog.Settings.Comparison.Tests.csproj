@@ -4,26 +4,39 @@
     <TargetFramework>net46</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>Serilog.Settings.Comparison.Tests</AssemblyName>
+
+    <RootNamespace>Serilog.SettingsComparisonTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Samples\*" />
+    <Compile Remove="bin\**" />
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="**\*.json" />
+    <None Remove="**\*.csx" />
+    <None Remove="**\*.config" />
+    <None Remove="bin\**" />
+    <None Remove="obj\**" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <Content Include="Samples\*">
+    <Content Include="**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="**\*.csx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="**\*.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
+  
   <ItemGroup>
-    <None Remove="xunit.runner.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="xunit.runner.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Remove="bin\**" />
+    <Content Remove="obj\**" />
   </ItemGroup>
 
   <ItemGroup>

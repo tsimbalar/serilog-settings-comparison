@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Serilog.Settings.Code;
 using Xunit.Abstractions;
 
-namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
+namespace Serilog.SettingsComparisonTests
 {
     public abstract class BaseSettingsSupportComparisonTests
     {

@@ -1,17 +1,17 @@
 ﻿using Serilog.Events;
-using Serilog.Settings.Comparison.Tests.Support;
+using Serilog.SettingsComparisonTests.Support;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Serilog.Settings.C.Tests.SettingsComparison.Tests
+namespace Serilog.SettingsComparisonTests
 {
     [Collection(docs)]
-    public class MinimumLevelSettingsTests : BaseSettingsSupportComparisonTests
+    public class MinimumLevel : BaseSettingsSupportComparisonTests
     {
         public const string docs = @"110### Minimum Level
 Global Minimum level can be defined.";
 
-        public MinimumLevelSettingsTests(ITestOutputHelper outputHelper)
+        public MinimumLevel(ITestOutputHelper outputHelper)
             : base(outputHelper)
         {
         }
@@ -22,7 +22,7 @@ Global Minimum level can be defined.";
         [InlineData("MinimumLevel.json", true)]
         [InlineData("MinimumLevel-Default.json", false)]
         [InlineData("MinimumLevel.config", true)]
-        public void SupportForMinimumLevel(string fileName, bool includeInOutput)
+        public void TestCase(string fileName, bool includeInOutput)
         {
             WriteDocumentation(fileName, includeInOutput);
 
