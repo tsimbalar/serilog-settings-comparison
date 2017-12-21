@@ -627,7 +627,25 @@ LoggerConfiguration
 ```
 
 
-:warning: Not released yet in JSON format
+- in **JSON** (ex : `332-WriteToWithConcreteDefaultImplementationOfAbstractClass.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyConsole",
+        "Args": {
+          "theme": "TestDummies.Console.CustomConsoleTheme, TestDummies"
+        }
+      }
+    ]
+  }
+}
+
+```
+
 
 - in **XML** (ex : `332-WriteToWithConcreteDefaultImplementationOfAbstractClass.config`)
 
