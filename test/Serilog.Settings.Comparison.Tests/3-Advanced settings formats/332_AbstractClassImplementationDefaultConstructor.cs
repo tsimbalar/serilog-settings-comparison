@@ -17,9 +17,9 @@ For parameters whose type is an `abstract class`, the full type name of an imple
         }
 
         [Theory]
-        [InlineData("WriteToWithConcreteDefaultImplementationOfAbstractClass.csx")]
-        [InlineData("WriteToWithConcreteDefaultImplementationOfAbstractClass.json", Skip = "Not released yet in JSON format")]
-        [InlineData("WriteToWithConcreteDefaultImplementationOfAbstractClass.config")]
+        [InlineData("332-WriteToWithConcreteDefaultImplementationOfAbstractClass.csx")]
+        [InlineData("332-WriteToWithConcreteDefaultImplementationOfAbstractClass.json", Skip = "Not released yet in JSON format")]
+        [InlineData("332-WriteToWithConcreteDefaultImplementationOfAbstractClass.config")]
         public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);

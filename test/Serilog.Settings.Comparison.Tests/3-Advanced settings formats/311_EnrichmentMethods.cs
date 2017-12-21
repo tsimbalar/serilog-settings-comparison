@@ -19,9 +19,9 @@ Log events can be enriched with arbitrary `Enrich.With...()` extension methods."
         }
 
         [Theory]
-        [InlineData("EnrichWithExternalEnricher.csx")]
-        [InlineData("EnrichWithExternalEnricher.json")]
-        [InlineData("EnrichWithExternalEnricher.config")]
+        [InlineData("311-EnrichWithExternalEnricher.csx")]
+        [InlineData("311-EnrichWithExternalEnricher.json")]
+        [InlineData("311-EnrichWithExternalEnricher.config")]
         public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);

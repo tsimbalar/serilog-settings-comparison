@@ -17,10 +17,10 @@ You may need to explicitly add a `using` directive to look for extension methods
         }
 
         [Theory]
-        [InlineData("WriteToWithNoParams.csx", true)]
-        [InlineData("WriteToWithNoParams.json", true)]
-        [InlineData("WriteToWithNoParams-LongForm.json", false)]
-        [InlineData("WriteToWithNoParams.config", true)]
+        [InlineData("120-WriteToWithNoParams.csx", true)]
+        [InlineData("120-WriteToWithNoParams.json", true)]
+        [InlineData("120-WriteToWithNoParams-LongForm.json", false)]
+        [InlineData("120-WriteToWithNoParams.config", true)]
         public void TestCase(string fileName, bool includeInOutput)
         {
             WriteDocumentation(fileName, includeInOutput);

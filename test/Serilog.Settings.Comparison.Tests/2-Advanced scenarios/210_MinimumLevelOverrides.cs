@@ -18,9 +18,9 @@ Minimum level can be overriden (up or down) for specific `SourceContext`s.";
         }
 
         [Theory]
-        [InlineData("MinimumLevelOverrides.csx")]
-        [InlineData("MinimumLevelOverrides.json")]
-        [InlineData("MinimumLevelOverrides.config")]
+        [InlineData("210-MinimumLevelOverrides.csx")]
+        [InlineData("210-MinimumLevelOverrides.json")]
+        [InlineData("210-MinimumLevelOverrides.config")]
         public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);

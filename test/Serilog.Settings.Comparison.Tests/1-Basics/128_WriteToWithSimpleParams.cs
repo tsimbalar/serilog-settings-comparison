@@ -17,9 +17,9 @@ Simple types that are *convertible* from string can be passed. " +
         }
 
         [Theory]
-        [InlineData("WriteToWithSimpleParams.csx")]
-        [InlineData("WriteToWithSimpleParams.json")]
-        [InlineData("WriteToWithSimpleParams.config")]
+        [InlineData("128-WriteToWithSimpleParams.csx")]
+        [InlineData("128-WriteToWithSimpleParams.json")]
+        [InlineData("128-WriteToWithSimpleParams.config")]
         public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);

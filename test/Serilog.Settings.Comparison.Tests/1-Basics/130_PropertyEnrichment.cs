@@ -17,9 +17,9 @@ Log events can be enriched with arbitrary properties.";
         }
 
         [Theory]
-        [InlineData("EnrichWithProperty.csx")]
-        [InlineData("EnrichWithProperty.json")]
-        [InlineData("EnrichWithProperty.config")]
+        [InlineData("130-EnrichWithProperty.csx")]
+        [InlineData("130-EnrichWithProperty.json")]
+        [InlineData("130-EnrichWithProperty.config")]
         public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);

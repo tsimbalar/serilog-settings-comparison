@@ -15,9 +15,9 @@ Some sinks provide *Audit* functionality via the configuration method `.AuditTo.
         }
 
         [Theory]
-        [InlineData("AuditToWithSimpleParams.csx")]
-        [InlineData("AuditToWithSimpleParams.json")]
-        [InlineData("AuditToWithSimpleParams.config")]
+        [InlineData("221-AuditToWithSimpleParams.csx")]
+        [InlineData("221-AuditToWithSimpleParams.json")]
+        [InlineData("221-AuditToWithSimpleParams.config")]
         public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);

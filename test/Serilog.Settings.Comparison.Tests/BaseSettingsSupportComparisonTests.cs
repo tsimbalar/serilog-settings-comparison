@@ -56,7 +56,7 @@ namespace Serilog.SettingsComparisonTests
             return displayName;
         }
 
-        public static LoggerConfiguration LoadConfig(string fileName)
+        protected static LoggerConfiguration LoadConfig(string fileName)
         {
             var fullFilePath = GetTestFileFullPath(fileName);
             if (fileName.EndsWith(".json")) return LoadJsonConfig(fullFilePath);
@@ -67,8 +67,8 @@ namespace Serilog.SettingsComparisonTests
 
         static string GetTestFileFullPath(string fileName)
         {
-            var fullFilePath = Path.Combine("Samples", fileName);
-            return fullFilePath;
+            return Directory.GetFiles(".", fileName, SearchOption.AllDirectories).FirstOrDefault()
+                ?? fileName;
         }
 
         static LoggerConfiguration LoadXmlConfig(string fileName)

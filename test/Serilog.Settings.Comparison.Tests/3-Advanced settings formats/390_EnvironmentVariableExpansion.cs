@@ -17,9 +17,9 @@ This can be used, for instance, to provide environment-dependent property-enrich
         }
 
         [Theory]
-        [InlineData("EnvironmentVariableExpansion.csx")]
-        [InlineData("EnvironmentVariableExpansion.json")]
-        [InlineData("EnvironmentVariableExpansion.config")]
+        [InlineData("390-EnvironmentVariableExpansion.csx")]
+        [InlineData("390-EnvironmentVariableExpansion.json")]
+        [InlineData("390-EnvironmentVariableExpansion.config")]
         public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);

@@ -6,27 +6,34 @@
 // TODO : filters
 
 
-// expected layout
+// Possible layout
 // # 1- Basics
-// ## 100 Empty (loading the file ?)
+// ## 101 Empty (loading the file ?)
 // ## 110 Minimum Level
-// ## 120 Sinks / WriteTo
+// ## 120 Sinks / WriteTo no params
+// ## 125 Sinks RestrictedTo
+// ## 128 Sinks WriteTo basic params
 // ## 130 Enrichment (properties)
 
-// # 2 - Advanced
+// # 2 - Advanced scenarios
 // ## 210 Minimum Level Overrides
 // ## 220 Sinks
-//      - LoggingLevelSwitch
-//      - AuditTo
-// ## 230 LogContext
+// ### 221 AuditTo
+// ### 222 LoggingLevelSwitch (TODO)
+// ## 230 LogContext enrichment
+// ## 240 Filter (TODO)
+// TODO : Async / Map ? sub-Logger ? 
+
 
 // # 3 - Advance Settings formats
-// ## 300 Method Discovery
-// ## 310 String conversions (IConvertible, Urls , Timespan etc)
-// ## 320 Interfaces / Abstract classes
-//      - subclasses with parameterless contructor
-//      - static property
-// ## 350 - Other
-//      - Env variable expansion
+// ## 310 Method Discovery
+// ### 311 Enrich etc (TO COMPLETE) - speak about using etc
+// ## 320 Specific String conversions (Enum, IConvertible, Urls , Timespan etc) (TODO)
+// ## 330 Interfaces / Abstract classes
+// ### 331 Interfaces / default constructor
+// ### 332 Abstract classes / default constructor
+// ### 336 Interfaces / static property (TODO)
+// ### 337 Abstract classes / static property (TODO)
+// ## 390 - Env variable expansion
 
 

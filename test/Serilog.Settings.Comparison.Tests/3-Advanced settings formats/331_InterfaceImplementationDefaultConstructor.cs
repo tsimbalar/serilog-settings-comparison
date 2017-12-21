@@ -18,9 +18,9 @@ For parameters whose type is an `interface`, the full type name of an implementa
         }
 
         [Theory]
-        [InlineData("WriteToWithConcreteDefaultImplementationOfInterface.csx")]
-        [InlineData("WriteToWithConcreteDefaultImplementationOfInterface.json")]
-        [InlineData("WriteToWithConcreteDefaultImplementationOfInterface.config")]
+        [InlineData("331-WriteToWithConcreteDefaultImplementationOfInterface.csx")]
+        [InlineData("331-WriteToWithConcreteDefaultImplementationOfInterface.json")]
+        [InlineData("331-WriteToWithConcreteDefaultImplementationOfInterface.config")]
         public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);

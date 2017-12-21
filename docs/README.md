@@ -152,7 +152,7 @@ You can configure usage of a given *Sink* by specifying the name of the method o
 You may need to explicitly add a `using` directive to look for extension methods in a separate assembly or Nuget package.
 
 
-- in **C#** (ex : `WriteToWithNoParams.csx`)
+- in **C#** (ex : `120-WriteToWithNoParams.csx`)
 
 ```csharp
 #r ".\TestDummies.dll"
@@ -165,7 +165,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `WriteToWithNoParams.json`)
+- in **JSON** (ex : `120-WriteToWithNoParams.json`)
 
 ```json
 {
@@ -179,7 +179,7 @@ LoggerConfiguration
 
 
 <!--
-- in **JSON** (ex : `WriteToWithNoParams-LongForm.json`)
+- in **JSON** (ex : `120-WriteToWithNoParams-LongForm.json`)
 
 ```json
 {
@@ -194,7 +194,7 @@ LoggerConfiguration
 
 -->
 
-- in **XML** (ex : `WriteToWithNoParams.config`)
+- in **XML** (ex : `120-WriteToWithNoParams.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -211,7 +211,7 @@ LoggerConfiguration
 Parameters of type `LogEventLevel` such as `restrictedToMinimumLevel` can be provided from the level's name.
 
 
-- in **C#** (ex : `WriteToWithRestrictedToMinimumLevel.csx`)
+- in **C#** (ex : `125-WriteToRestrictedToMinimumLevel.csx`)
 
 ```csharp
 #r ".\TestDummies.dll"
@@ -224,7 +224,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `WriteToWithRestrictedToMinimumLevel.json`)
+- in **JSON** (ex : `125-WriteToRestrictedToMinimumLevel.json`)
 
 ```json
 {
@@ -243,7 +243,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `WriteToWithRestrictedToMinimumLevel.config`)
+- in **XML** (ex : `125-WriteToRestrictedToMinimumLevel.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -260,7 +260,7 @@ LoggerConfiguration
 Simple types that are *convertible* from string can be passed. Empty string can be provided to specify null for nullable parameters. Parameters with a default value can be omitted.
 
 
-- in **C#** (ex : `WriteToWithSimpleParams.csx`)
+- in **C#** (ex : `128-WriteToWithSimpleParams.csx`)
 
 ```csharp
 #r ".\TestDummies.dll"
@@ -272,7 +272,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `WriteToWithSimpleParams.json`)
+- in **JSON** (ex : `128-WriteToWithSimpleParams.json`)
 
 ```json
 {
@@ -293,7 +293,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `WriteToWithSimpleParams.config`)
+- in **XML** (ex : `128-WriteToWithSimpleParams.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -312,7 +312,7 @@ LoggerConfiguration
 Log events can be enriched with arbitrary properties.
 
 
-- in **C#** (ex : `EnrichWithProperty.csx`)
+- in **C#** (ex : `130-EnrichWithProperty.csx`)
 
 ```csharp
 LoggerConfiguration
@@ -322,7 +322,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `EnrichWithProperty.json`)
+- in **JSON** (ex : `130-EnrichWithProperty.json`)
 
 ```json
 {
@@ -336,7 +336,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `EnrichWithProperty.config`)
+- in **XML** (ex : `130-EnrichWithProperty.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -357,7 +357,7 @@ The following scenarios are also supported.
 Minimum level can be overriden (up or down) for specific `SourceContext`s.
 
 
-- in **C#** (ex : `MinimumLevelOverrides.csx`)
+- in **C#** (ex : `210-MinimumLevelOverrides.csx`)
 
 ```csharp
 using Serilog.Events;
@@ -372,7 +372,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `MinimumLevelOverrides.json`)
+- in **JSON** (ex : `210-MinimumLevelOverrides.json`)
 
 ```json
 {
@@ -390,7 +390,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `MinimumLevelOverrides.config`)
+- in **XML** (ex : `210-MinimumLevelOverrides.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -409,7 +409,7 @@ LoggerConfiguration
 Some sinks provide *Audit* functionality via the configuration method `.AuditTo.MySink()`. This is also supported via configuration.
 
 
-- in **C#** (ex : `AuditToWithSimpleParams.csx`)
+- in **C#** (ex : `221-AuditToWithSimpleParams.csx`)
 
 ```csharp
 #r ".\TestDummies.dll"
@@ -421,7 +421,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `AuditToWithSimpleParams.json`)
+- in **JSON** (ex : `221-AuditToWithSimpleParams.json`)
 
 ```json
 {
@@ -443,7 +443,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `AuditToWithSimpleParams.config`)
+- in **XML** (ex : `221-AuditToWithSimpleParams.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -463,7 +463,7 @@ LoggerConfiguration
 Log events can be enriched with `LogContext`.
 
 
-- in **C#** (ex : `EnrichFromLogContext.csx`)
+- in **C#** (ex : `230-EnrichFromLogContext.csx`)
 
 ```csharp
 LoggerConfiguration.Enrich.FromLogContext();
@@ -471,7 +471,7 @@ LoggerConfiguration.Enrich.FromLogContext();
 ```
 
 
-- in **JSON** (ex : `EnrichFromLogContext.json`)
+- in **JSON** (ex : `230-EnrichFromLogContext.json`)
 
 ```json
 {
@@ -483,7 +483,7 @@ LoggerConfiguration.Enrich.FromLogContext();
 ```
 
 
-- in **XML** (ex : `EnrichFromLogContext.config`)
+- in **XML** (ex : `230-EnrichFromLogContext.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -507,7 +507,7 @@ Below are the general rules for setting values.
 Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
 
 
-- in **C#** (ex : `EnrichWithExternalEnricher.csx`)
+- in **C#** (ex : `311-EnrichWithExternalEnricher.csx`)
 
 ```csharp
 #r ".\TestDummies.dll"
@@ -520,7 +520,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `EnrichWithExternalEnricher.json`)
+- in **JSON** (ex : `311-EnrichWithExternalEnricher.json`)
 
 ```json
 {
@@ -540,7 +540,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `EnrichWithExternalEnricher.config`)
+- in **XML** (ex : `311-EnrichWithExternalEnricher.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -561,7 +561,7 @@ LoggerConfiguration
 For parameters whose type is an `interface`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
 
 
-- in **C#** (ex : `WriteToWithConcreteDefaultImplementationOfInterface.csx`)
+- in **C#** (ex : `331-WriteToWithConcreteDefaultImplementationOfInterface.csx`)
 
 ```csharp
 #r ".\TestDummies.dll"
@@ -575,7 +575,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `WriteToWithConcreteDefaultImplementationOfInterface.json`)
+- in **JSON** (ex : `331-WriteToWithConcreteDefaultImplementationOfInterface.json`)
 
 ```json
 {
@@ -595,7 +595,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `WriteToWithConcreteDefaultImplementationOfInterface.config`)
+- in **XML** (ex : `331-WriteToWithConcreteDefaultImplementationOfInterface.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -613,7 +613,7 @@ LoggerConfiguration
 For parameters whose type is an `abstract class`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.
 
 
-- in **C#** (ex : `WriteToWithConcreteDefaultImplementationOfAbstractClass.csx`)
+- in **C#** (ex : `332-WriteToWithConcreteDefaultImplementationOfAbstractClass.csx`)
 
 ```csharp
 #r ".\TestDummies.dll"
@@ -627,7 +627,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `WriteToWithConcreteDefaultImplementationOfAbstractClass.config`)
+- in **XML** (ex : `332-WriteToWithConcreteDefaultImplementationOfAbstractClass.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -646,7 +646,7 @@ Values like `%ENV_VARIABLE%` are replaced by the value of the environment variab
 This can be used, for instance, to provide environment-dependent property-enrichment (ex: `%COMPUTERNAME%`) or paths (ex: %TEMP%).
 
 
-- in **C#** (ex : `EnvironmentVariableExpansion.csx`)
+- in **C#** (ex : `390-EnvironmentVariableExpansion.csx`)
 
 ```csharp
 #r ".\TestDummies.dll"
@@ -662,7 +662,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `EnvironmentVariableExpansion.json`)
+- in **JSON** (ex : `390-EnvironmentVariableExpansion.json`)
 
 ```json
 {
@@ -682,7 +682,7 @@ LoggerConfiguration
 ```
 
 
-- in **XML** (ex : `EnvironmentVariableExpansion.config`)
+- in **XML** (ex : `390-EnvironmentVariableExpansion.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
