@@ -627,6 +627,31 @@ LoggerConfiguration
 ```
 
 
+- in **JSON** (ex : `332-WriteToWithConcreteDefaultImplementationOfAbstractClass.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyConsole",
+        "Args": {
+          "formatter": "TestDummies.Console.CustomConsoleTheme, TestDummies"
+        }
+      }
+    ]
+  }
+}
+
+```
+
+
+ :heavy_exclamation_mark: **Test Failed** : 
+```Assert.IsType() Failure
+Expected: TestDummies.Console.CustomConsoleTheme
+Actual:   TestDummies.Console.Themes.EmptyConsoleTheme
+```
 - in **XML** (ex : `332-WriteToWithConcreteDefaultImplementationOfAbstractClass.config`)
 
 ```xml

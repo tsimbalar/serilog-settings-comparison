@@ -1,3 +1,5 @@
+function Coalesce($a, $b) { if ($a -ne $null) { $a } else { $b } }
+
 echo "build: Build started"
 
 Push-Location $PSScriptRoot
@@ -22,7 +24,9 @@ $xml.SelectNodes('/assemblies/assembly/collection') | Sort-Object name | ForEach
     New-Object -Type PSObject -Property @{
         Description = $_.name.Substring(3).Replace("\r\n", "`n")
         Tests = $_.SelectNodes('test') | ForEach-Object {
-                    $_.output.InnerText
+                    if ($_.result -eq "Skip") { ":warning: $($_.reason.InnerText)`n" }
+                    elseif ($_.result -eq "Fail") { "$($_.output.InnerText)`n:heavy_exclamation_mark: **Test Failed** : `n``````$($_.failure.message.InnerText.Replace("\r\n", "`n"))`n``````" }
+                    else { $_.output.InnerText }
                 } 
     }
 } | % {@($_.Description) + "`n" + $_.Tests} | Out-File README.md -Encoding utf8 -Append
