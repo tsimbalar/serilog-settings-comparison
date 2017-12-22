@@ -19,8 +19,8 @@
 
 // # 3 - Advanced Settings formats
 // ## 310 Method Discovery
-// ### 311 Enrich etc (TO COMPLETE) - speak about using etc
-// ## 320 Specific String conversions (Enum, IConvertible, Urls , Timespan etc) (TODO)
+// ### 311 Enrich etc (TO COMPLETE) - speak about using etc (TODO)
+// ## 320 Specific String conversions (Enum, IConvertible, Urls , Timespan etc)
 // ## 330 Interfaces / Abstract classes
 // ### 331 Interfaces / default constructor
 // ### 332 Abstract classes / default constructor
@@ -28,4 +28,6 @@
 // ### 337 Abstract classes / static property
 // ## 390 - Env variable expansion
 
+
+// specific handling for configuration reload for logginglevelswitch ??
 

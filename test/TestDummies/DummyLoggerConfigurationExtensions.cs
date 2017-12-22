@@ -61,6 +61,16 @@ namespace TestDummies
                 restrictedToMinimumLevel);
         }
 
+        public static LoggerConfiguration DummyWithManyParams(
+            this LoggerSinkConfiguration loggerSinkConfiguration,
+            MyEnum enumParam,
+            TimeSpan timespanParam,
+            Uri uriParam
+        )
+        {
+            return loggerSinkConfiguration.Sink(new DummySinkWithParams(enumParam, timespanParam, uriParam), LevelAlias.Minimum);
+        }
+
         public static LoggerConfiguration DummyWithFormatter(
             this LoggerSinkConfiguration loggerSinkConfiguration,
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,

@@ -554,6 +554,64 @@ LoggerConfiguration
 ```
 
 
+## Setting values conversions
+Values for settings can be simple value types (`string`, `int`, `bool` etc), nullable versions of the previous. `Enum`s can also be parsed by name. Some specific types like `Uri` and `TimeSpan` are also supported.
+
+
+- in **C#** (ex : `320-SettingsValueConversions.csx`)
+
+```csharp
+#r ".\TestDummies.dll"
+using System;
+using TestDummies;
+
+LoggerConfiguration
+    .WriteTo.DummyWithManyParams(
+        enumParam: MyEnum.Qux,
+        timespanParam: new TimeSpan(2, 3, 4, 5),
+        uriParam: new Uri("https://www.serilog.net"));
+
+```
+
+
+- in **JSON** (ex : `320-SettingsValueConversions.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyWithManyParams",
+        "Args": {
+          "enumParam": "Qux",
+          "timespanParam": "2.03:04:05",
+          "uriParam": "https://www.serilog.net"
+        }
+      }
+    ]
+  }
+}
+
+```
+
+
+- in **XML** (ex : `320-SettingsValueConversions.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:write-to:DummyWithManyParams.enumParam" value="Qux" />
+    <add key="serilog:write-to:DummyWithManyParams.timespanParam" value="2.03:04:05" />
+    <add key="serilog:write-to:DummyWithManyParams.uriParam" value="https://www.serilog.net" />
+  </appSettings>
+</configuration>
+
+```
+
+
 ## Interfaces and abstract classes
 
 

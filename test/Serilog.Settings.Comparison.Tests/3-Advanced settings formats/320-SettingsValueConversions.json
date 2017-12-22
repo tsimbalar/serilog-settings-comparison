@@ -1,0 +1,15 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyWithManyParams",
+        "Args": {
+          "enumParam": "Qux",
+          "timespanParam": "2.03:04:05",
+          "uriParam": "https://www.serilog.net"
+        }
+      }
+    ]
+  }
+}
