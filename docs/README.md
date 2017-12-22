@@ -557,8 +557,8 @@ LoggerConfiguration
 ## Interfaces and abstract classes
 
 
-### Interface-typed parameters
-For parameters whose type is an `interface`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
+### Full type name of implementation with default constructor
+For parameters whose type is an `interface` or an `abstract class`, the full type name of an implementation can be provided. If the type is not in the `Serilog` assembly, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
 
 
 - in **C#** (ex : `331-WriteToWithConcreteDefaultImplementationOfInterface.csx`)
@@ -609,8 +609,7 @@ LoggerConfiguration
 ```
 
 
-### Abstract-class-typed parameters
-For parameters whose type is an `abstract class`, the full type name of an implementation can be provided. If the type is not in the `Serilog`, remember to include `using` directives.
+
 
 
 - in **C#** (ex : `332-WriteToWithConcreteDefaultImplementationOfAbstractClass.csx`)
@@ -655,6 +654,112 @@ LoggerConfiguration
   <appSettings>
     <add key="serilog:using:TestDummies" value="TestDummies" />
     <add key="serilog:write-to:DummyConsole.theme" value="TestDummies.Console.CustomConsoleTheme, TestDummies" />
+  </appSettings>
+</configuration>
+
+```
+
+
+### Public static properties
+For parameters whose type is an `interface` or an `abstract class`, you can reference a static property that exposes an instance of that interface. Use the full containing type name followed by `::` and the `public static` property name.
+
+
+- in **C#** (ex : `335-WriteToWithInterfaceStaticProperty.csx`)
+
+```csharp
+#r ".\TestDummies.dll"
+#r ".\Serilog.Settings.Comparison.Tests.dll"
+using System;
+using Serilog.Formatting.Json;
+using TestDummies;
+using Serilog.SettingsComparisonTests.Support.Formatting;
+
+LoggerConfiguration
+    .WriteTo.DummyWithFormatter(formatter: CustomFormatters.Formatter);
+
+```
+
+
+- in **JSON** (ex : `335-WriteToWithInterfaceStaticProperty.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyWithFormatter",
+        "Args": {
+          "formatter": "Serilog.SettingsComparisonTests.Support.Formatting.CustomFormatters::Formatter, Serilog.Settings.Comparison.Tests"
+        }
+      }
+    ]
+  }
+}
+
+```
+
+
+- in **XML** (ex : `335-WriteToWithInterfaceStaticProperty.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:write-to:DummyWithFormatter.formatter" value="Serilog.SettingsComparisonTests.Support.Formatting.CustomFormatters::Formatter, Serilog.Settings.Comparison.Tests" />
+  </appSettings>
+</configuration>
+
+```
+
+
+
+
+
+- in **C#** (ex : `336-WriteToWithAbstractClassStaticProperty.csx`)
+
+```csharp
+#r ".\TestDummies.dll"
+using System;
+using TestDummies;
+using TestDummies.Console;
+using TestDummies.Console.Themes;
+
+LoggerConfiguration
+    .WriteTo.DummyConsole(theme: ConsoleThemes.Theme1);
+
+```
+
+
+- in **JSON** (ex : `336-WriteToWithAbstractClassStaticProperty.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyConsole",
+        "Args": {
+          "theme": "TestDummies.Console.Themes.ConsoleThemes::Theme1, TestDummies"
+        }
+      }
+    ]
+  }
+}
+
+```
+
+
+- in **XML** (ex : `336-WriteToWithAbstractClassStaticProperty.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:write-to:DummyConsole.theme" value="TestDummies.Console.Themes.ConsoleThemes::Theme1, TestDummies" />
   </appSettings>
 </configuration>
 

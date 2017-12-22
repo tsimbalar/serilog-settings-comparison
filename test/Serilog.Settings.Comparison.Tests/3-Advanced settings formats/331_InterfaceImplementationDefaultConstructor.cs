@@ -7,9 +7,9 @@ namespace Serilog.SettingsComparisonTests
     [Collection(docs)]
     public class InterfaceImplementationDefaultConstructor : BaseSettingsSupportComparisonTests
     {
-        public const string docs = @"331### Interface-typed parameters
-For parameters whose type is an `interface`, the full type name of an implementation " +
-                                   "can be provided. If the type is not in the `Serilog`, remember to include `using` directives." +
+        public const string docs = @"331### Full type name of implementation with default constructor
+For parameters whose type is an `interface` or an `abstract class`, the full type name of an implementation " +
+                                   "can be provided. If the type is not in the `Serilog` assembly, remember to include `using` directives." +
                                    "**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !";
 
         public InterfaceImplementationDefaultConstructor(ITestOutputHelper outputHelper)

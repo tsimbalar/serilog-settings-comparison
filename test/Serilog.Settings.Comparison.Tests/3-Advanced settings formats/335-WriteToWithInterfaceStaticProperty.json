@@ -1,0 +1,13 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyWithFormatter",
+        "Args": {
+          "formatter": "Serilog.SettingsComparisonTests.Support.Formatting.CustomFormatters::Formatter, Serilog.Settings.Comparison.Tests"
+        }
+      }
+    ]
+  }
+}
