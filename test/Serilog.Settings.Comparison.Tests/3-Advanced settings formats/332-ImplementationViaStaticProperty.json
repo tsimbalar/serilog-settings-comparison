@@ -7,6 +7,12 @@
         "Args": {
           "formatter": "Serilog.SettingsComparisonTests.Support.Formatting.CustomFormatters::Formatter, Serilog.Settings.Comparison.Tests"
         }
+      },
+      {
+        "Name": "DummyConsole",
+        "Args": {
+          "theme": "TestDummies.Console.Themes.ConsoleThemes::Theme1, TestDummies"
+        }
       }
     ]
   }
