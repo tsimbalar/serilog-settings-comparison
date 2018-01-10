@@ -1,0 +1,19 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "LevelSwitches": [
+      { "$mySwitch": "Warning" }
+    ],
+    "MinimumLevel": {
+      "ControlledBy": "$mySwitch"
+    },
+    "WriteTo": [
+      {
+        "Name": "DummyWithLevelSwitch",
+        "Args": {
+          "controlLevelSwitch": "$mySwitch"
+        }
+      }
+    ]
+  }
+}

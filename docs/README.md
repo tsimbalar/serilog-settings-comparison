@@ -459,6 +459,45 @@ LoggerConfiguration
 ```
 
 
+### Sinks - `LoggingLevelSwitch`
+Some sinks such as the *Seq* sink accept a `LoggingLevelSwitch` that can be remote-controlled. In those case, the same ``LoggingLevelSwitch` instance that is used to control the global minimum level must be used. The *reference* to the switch is nted with the symbol `$`.
+
+
+- in **C#** (ex : `222-LoggingLevelSwitch.csx`)
+
+```csharp
+#r ".\TestDummies.dll"
+using Serilog.Core;
+using Serilog.Events;
+using TestDummies;
+
+var mySwitch = new LoggingLevelSwitch(LogEventLevel.Warning);
+
+LoggerConfiguration
+    .MinimumLevel.ControlledBy(mySwitch)
+    .WriteTo.DummyWithLevelSwitch(controlLevelSwitch: mySwitch);
+
+```
+
+
+:warning: Not implemented yet !
+
+- in **XML** (ex : `222-LoggingLevelSwitch.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:level-switch:$mySwitch" value="Warning" />
+    <add key="serilog:minimum-level:controlled-by" value="$mySwitch" />
+    <add key="serilog:write-to:DummyWithLevelSwitch.controlLevelSwitch" value="$mySwitch" />
+  </appSettings>
+</configuration>
+
+```
+
+
 ### Enrichment from `LogContext`
 Log events can be enriched with `LogContext`.
 
