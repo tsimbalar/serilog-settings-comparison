@@ -92,7 +92,6 @@ Global Minimum level can be defined.
 ```csharp
 LoggerConfiguration
     .MinimumLevel.Warning();
-
 ```
 
 
@@ -104,7 +103,6 @@ using Serilog.Events;
 
 LoggerConfiguration
     .MinimumLevel.Is(LogEventLevel.Warning);
-
 ```
 
 -->
@@ -161,7 +159,6 @@ using TestDummies;
 
 LoggerConfiguration
     .WriteTo.Dummy();
-
 ```
 
 
@@ -174,7 +171,6 @@ LoggerConfiguration
     "WriteTo": [ "Dummy" ]
   }
 }
-
 ```
 
 
@@ -220,7 +216,6 @@ using TestDummies;
 
 LoggerConfiguration
     .WriteTo.Dummy(restrictedToMinimumLevel: LogEventLevel.Error);
-
 ```
 
 
@@ -268,7 +263,6 @@ using TestDummies;
 
 LoggerConfiguration
     .WriteTo.Dummy(stringParam: "A string param", intParam: 666, nullableIntParam: null);
-
 ```
 
 
@@ -318,7 +312,6 @@ Log events can be enriched with arbitrary properties.
 LoggerConfiguration
     .Enrich.WithProperty("AppName", "MyApp")
     .Enrich.WithProperty("ServerName", "MyServer");
-
 ```
 
 
@@ -368,7 +361,6 @@ LoggerConfiguration
   .MinimumLevel.Override("Microsoft.Extensions", LogEventLevel.Information)
   .MinimumLevel.Override("System", LogEventLevel.Debug)
   ;
-
 ```
 
 
@@ -417,7 +409,6 @@ using TestDummies;
 
 LoggerConfiguration
     .AuditTo.Dummy(stringParam: "A string param", intParam: 666, nullableIntParam: null);
-
 ```
 
 
@@ -439,7 +430,6 @@ LoggerConfiguration
     ]
   }
 }
-
 ```
 
 
@@ -455,7 +445,6 @@ LoggerConfiguration
     <add key="serilog:audit-to:Dummy.nullableIntParam" value="" />
   </appSettings>
 </configuration>
-
 ```
 
 
@@ -476,7 +465,6 @@ var mySwitch = new LoggingLevelSwitch(LogEventLevel.Warning);
 LoggerConfiguration
     .MinimumLevel.ControlledBy(mySwitch)
     .WriteTo.DummyWithLevelSwitch(controlLevelSwitch: mySwitch);
-
 ```
 
 
@@ -494,7 +482,6 @@ LoggerConfiguration
     <add key="serilog:write-to:DummyWithLevelSwitch.controlLevelSwitch" value="$mySwitch" />
   </appSettings>
 </configuration>
-
 ```
 
 
@@ -506,7 +493,6 @@ Log events can be enriched with `LogContext`.
 
 ```csharp
 LoggerConfiguration.Enrich.FromLogContext();
-
 ```
 
 
@@ -518,7 +504,6 @@ LoggerConfiguration.Enrich.FromLogContext();
     "Enrich": [ "FromLogContext" ]
   }
 }
-
 ```
 
 
@@ -531,7 +516,6 @@ LoggerConfiguration.Enrich.FromLogContext();
     <add key="serilog:enrich:FromLogContext" value="" />
   </appSettings>
 </configuration>
-
 ```
 
 
@@ -555,7 +539,6 @@ using TestDummies;
 LoggerConfiguration
     .Enrich.WithDummyThreadId()
     .Enrich.WithDummyUserName("UserExtraParam");
-
 ```
 
 
@@ -609,7 +592,6 @@ LoggerConfiguration
         enumParam: MyEnum.Qux,
         timespanParam: new TimeSpan(2, 3, 4, 5),
         uriParam: new Uri("https://www.serilog.net"));
-
 ```
 
 
@@ -631,7 +613,6 @@ LoggerConfiguration
     ]
   }
 }
-
 ```
 
 
@@ -647,7 +628,6 @@ LoggerConfiguration
     <add key="serilog:write-to:DummyWithManyParams.uriParam" value="https://www.serilog.net" />
   </appSettings>
 </configuration>
-
 ```
 
 
@@ -670,7 +650,6 @@ using TestDummies.Console;
 LoggerConfiguration
     .WriteTo.DummyWithFormatter(formatter: new JsonFormatter())
     .WriteTo.DummyConsole(theme: new CustomConsoleTheme());
-
 ```
 
 
@@ -696,7 +675,6 @@ LoggerConfiguration
     ]
   }
 }
-
 ```
 
 
@@ -711,7 +689,6 @@ LoggerConfiguration
     <add key="serilog:write-to:DummyConsole.theme" value="TestDummies.Console.CustomConsoleTheme, TestDummies" />
   </appSettings>
 </configuration>
-
 ```
 
 
@@ -734,7 +711,6 @@ using Serilog.SettingsComparisonTests.Support.Formatting;
 LoggerConfiguration
     .WriteTo.DummyWithFormatter(formatter: CustomFormatters.Formatter)
     .WriteTo.DummyConsole(theme: ConsoleThemes.Theme1);
-
 ```
 
 
@@ -760,7 +736,6 @@ LoggerConfiguration
     ]
   }
 }
-
 ```
 
 
@@ -775,7 +750,6 @@ LoggerConfiguration
     <add key="serilog:write-to:DummyConsole.theme" value="TestDummies.Console.Themes.ConsoleThemes::Theme1, TestDummies" />
   </appSettings>
 </configuration>
-
 ```
 
 
@@ -796,7 +770,6 @@ LoggerConfiguration
     .WriteTo.Dummy(
         stringParam: Environment.ExpandEnvironmentVariables("%PATH%"),
         intParam: Int32.Parse(Environment.ExpandEnvironmentVariables("%NUMBER_OF_PROCESSORS%")));
-
 ```
 
 

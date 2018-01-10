@@ -28,7 +28,7 @@ namespace Serilog.SettingsComparisonTests
             _outputHelper.WriteLine($"- in **{GetLanguageDisplayName(fileName)}** (ex : `{fileName}`)");
             _outputHelper.WriteLine("");
             _outputHelper.WriteLine("```" + GetMarkdownSnippetLanguage(fileName));
-            _outputHelper.WriteLine(File.ReadAllText(fullFilePath));
+            _outputHelper.WriteLine(File.ReadAllText(fullFilePath).TrimEnd());
             _outputHelper.WriteLine("```");
             _outputHelper.WriteLine("");
 

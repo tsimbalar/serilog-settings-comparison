@@ -12,7 +12,7 @@
 // ## 210 Minimum Level Overrides
 // ## 220 Sinks
 // ### 221 AuditTo
-// ### 222 LoggingLevelSwitch (TODO)
+// ### 222 LoggingLevelSwitch
 // ## 230 LogContext enrichment
 // ## 240 Filter (TODO)
 // TODO : Async / Map ? sub-Logger ? 
@@ -30,4 +30,6 @@
 
 
 // specific handling for configuration reload for logginglevelswitch ??
+// Serilog.Settings.Configuration : support for multiple sinks of the same kind ....
+// specific handling for Async or Logger (lambdas with a () => ILogger ?) 
 
