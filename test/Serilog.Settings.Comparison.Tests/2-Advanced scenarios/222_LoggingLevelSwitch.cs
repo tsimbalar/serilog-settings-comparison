@@ -19,7 +19,7 @@ Some sinks such as the *Seq* sink accept a `LoggingLevelSwitch` that can be remo
 
         [Theory]
         [InlineData("222-LoggingLevelSwitch.csx")]
-        [InlineData("222-LoggingLevelSwitch.json", Skip = "Not implemented yet !")]
+        [InlineData("222-LoggingLevelSwitch.json", Skip = "Not implemented yet in Serilog.Settings.Configuration !")]
         [InlineData("222-LoggingLevelSwitch.config")]
         public void TestCase(string fileName)
         {

@@ -468,7 +468,7 @@ LoggerConfiguration
 ```
 
 
-:warning: Not implemented yet !
+:warning: Not implemented yet in Serilog.Settings.Configuration !
 
 - in **XML** (ex : `222-LoggingLevelSwitch.config`)
 
