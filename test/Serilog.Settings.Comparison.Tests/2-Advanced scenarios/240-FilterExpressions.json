@@ -1,0 +1,13 @@
+﻿{
+  "Serilog": {
+    "Using": [ "Serilog.Filters.Expressions" ],
+    "Filter": [
+      {
+        "Name": "ByExcluding",
+        "Args": {
+          "expression": "filter = 'exclude'"
+        }
+      }
+    ]
+  }
+}

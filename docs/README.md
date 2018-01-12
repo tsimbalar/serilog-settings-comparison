@@ -519,6 +519,52 @@ LoggerConfiguration.Enrich.FromLogContext();
 ```
 
 
+### Filtering - Expressions
+Filtering can be specified using *filter expressions* thanks to the package *Serilog.Filters.Expressions*.
+
+
+- in **C#** (ex : `240-FilterExpressions.csx`)
+
+```csharp
+#r ".\Serilog.Filters.Expressions.dll"
+
+LoggerConfiguration
+    .Filter.ByExcluding("filter = 'exclude'");
+```
+
+
+- in **JSON** (ex : `240-FilterExpressions.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "Serilog.Filters.Expressions" ],
+    "Filter": [
+      {
+        "Name": "ByExcluding",
+        "Args": {
+          "expression": "filter = 'exclude'"
+        }
+      }
+    ]
+  }
+}
+```
+
+
+- in **XML** (ex : `240-FilterExpressions.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:Serilog.Filters.Expressions" value="Serilog.Filters.Expressions" />
+    <add key="serilog:filter:ByExcluding.expression" value="filter = 'exclude'" />
+  </appSettings>
+</configuration>
+```
+
+
 # Advanced settings formats
 Below are the general rules for setting values.
 

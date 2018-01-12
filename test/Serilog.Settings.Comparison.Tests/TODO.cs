@@ -1,7 +1,7 @@
 ﻿
 // Expected ToC
 // # 1- Basics
-// ## 101 Empty (loading the file ?)
+// ## 101 Empty
 // ## 110 Minimum Level
 // ## 120 Sinks / WriteTo no params
 // ## 125 Sinks RestrictedTo
@@ -14,7 +14,7 @@
 // ### 221 AuditTo
 // ### 222 LoggingLevelSwitch
 // ## 230 LogContext enrichment
-// ## 240 Filter (TODO)
+// ## 240 Filter
 // TODO : Async / Map ? sub-Logger ? 
 
 // # 3 - Advanced Settings formats
