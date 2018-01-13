@@ -1,0 +1,27 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo:SubLogger1": {
+      "Name": "Logger",
+      "Args": {
+        "configureLogger": {
+          "Properties": {
+            "Prop1": "PropValue1"
+          },
+          "WriteTo": [ "DummyConsole" ]
+        }
+      }
+    },
+    "WriteTo:SubLogger2": {
+      "Name": "Logger",
+      "Args": {
+        "configureLogger": {
+          "Properties": {
+            "Prop2": "PropValue2"
+          },
+          "WriteTo": [ "Dummy" ]
+        }
+      }
+    }
+  }
+}

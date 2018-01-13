@@ -15,6 +15,7 @@
 // ### 222 LoggingLevelSwitch
 // ## 230 LogContext enrichment
 // ## 240 Filter
+// ## 250 Sub-loggers
 // TODO : Async / Map ? sub-Logger ? 
 
 // # 3 - Advanced Settings formats

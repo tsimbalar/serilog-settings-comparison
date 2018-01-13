@@ -3,17 +3,27 @@ using System.IO;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
 using Serilog.Settings.Code;
+using TestDummies;
+using TestDummies.Console;
 using Xunit.Abstractions;
 
 namespace Serilog.SettingsComparisonTests
 {
-    public abstract class BaseSettingsSupportComparisonTests
+    public abstract class BaseSettingsSupportComparisonTests : IDisposable
     {
         readonly ITestOutputHelper _outputHelper;
 
         protected BaseSettingsSupportComparisonTests(ITestOutputHelper outputHelper)
         {
             _outputHelper = outputHelper;
+
+            DummyConsoleSink.Emitted.Clear();
+            DummyAuditSink.Emitted.Clear();
+            DummySink.Emitted.Clear();
+            DummyRollingFileAuditSink.Emitted.Clear();
+            DummyRollingFileSink.Emitted.Clear();
+            DummySinkWithParams.Emitted.Clear();
+            DummyWithLevelSwitchSink.Emitted.Clear();
         }
 
         protected void WriteDocumentation(string fileName, bool includeInOutput = true)
@@ -97,5 +107,15 @@ namespace Serilog.SettingsComparisonTests
             return jsonConfig;
         }
 
+        public void Dispose()
+        {
+            DummyConsoleSink.Emitted.Clear();
+            DummyAuditSink.Emitted.Clear();
+            DummySink.Emitted.Clear();
+            DummyRollingFileAuditSink.Emitted.Clear();
+            DummyRollingFileSink.Emitted.Clear();
+            DummySinkWithParams.Emitted.Clear();
+            DummyWithLevelSwitchSink.Emitted.Clear();
+        }
     }
 }

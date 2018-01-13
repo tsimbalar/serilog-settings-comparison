@@ -1,5 +1,4 @@
-﻿using Serilog.Context;
-using Serilog.Events;
+﻿using Serilog.Events;
 using Serilog.SettingsComparisonTests.Support;
 using Xunit;
 using Xunit.Abstractions;

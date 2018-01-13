@@ -468,7 +468,7 @@ LoggerConfiguration
 ```
 
 
-:warning: Not implemented yet in Serilog.Settings.Configuration !
+:warning: Not implemented yet in Serilog.Settings.Configuration ! [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-configuration/69.svg)](https://github.com/serilog/serilog-settings-configuration/issues/69)
 
 - in **XML** (ex : `222-LoggingLevelSwitch.config`)
 
@@ -564,6 +564,63 @@ LoggerConfiguration
 </configuration>
 ```
 
+
+### Sub-loggers / child loggers
+When conditional configuration is needed depending on the sinks, sub-loggers can be used. [More about sub-loggers](https://nblumhardt.com/2016/07/serilog-2-write-to-logger/)
+
+
+- in **C#** (ex : `250-SubLoggers.csx`)
+
+```csharp
+#r ".\TestDummies.dll"
+using TestDummies;
+
+LoggerConfiguration
+    .WriteTo.Logger(lc => lc
+        .Enrich.WithProperty("Prop1", "PropValue1")
+        .WriteTo.DummyConsole()
+        )
+    .WriteTo.Logger(lc => lc
+        .Enrich.WithProperty("Prop2", "PropValue2")
+        .WriteTo.Dummy()
+    );
+```
+
+
+- in **JSON** (ex : `250-SubLoggers.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo:SubLogger1": {
+      "Name": "Logger",
+      "Args": {
+        "configureLogger": {
+          "Properties": {
+            "Prop1": "PropValue1"
+          },
+          "WriteTo": [ "DummyConsole" ]
+        }
+      }
+    },
+    "WriteTo:SubLogger2": {
+      "Name": "Logger",
+      "Args": {
+        "configureLogger": {
+          "Properties": {
+            "Prop2": "PropValue2"
+          },
+          "WriteTo": [ "Dummy" ]
+        }
+      }
+    }
+  }
+}
+```
+
+
+:warning: Not supported yet in the appSettings XML format. [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog/1072.svg)](https://github.com/serilog/serilog/issues/1072)
 
 # Advanced settings formats
 Below are the general rules for setting values.

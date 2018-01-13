@@ -14,7 +14,6 @@ namespace TestDummies
 
         public DummySink(string stringParam, int intParam, string stringParamWithDefault, int? nullableIntParam, ITextFormatter formatter)
         {
-            Emitted = new List<LogEvent>();
             StringParam = stringParam;
             IntParam = intParam;
             StringParamWithDefault = stringParamWithDefault;
@@ -33,11 +32,20 @@ namespace TestDummies
         [ThreadStatic]
         public static int? NullableIntParam;
 
-
         [ThreadStatic]
-        // ReSharper disable ThreadStaticFieldHasInitializer
-        public static List<LogEvent> Emitted = new List<LogEvent>();
-        // ReSharper restore ThreadStaticFieldHasInitializer
+        static List<LogEvent> _emitted;
+
+        public static List<LogEvent> Emitted
+        {
+            get
+            {
+                if (_emitted == null)
+                {
+                    _emitted = new List<LogEvent>();
+                }
+                return _emitted;
+            }
+        }
 
         public void Emit(LogEvent logEvent)
         {
