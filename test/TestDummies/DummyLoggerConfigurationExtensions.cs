@@ -107,14 +107,10 @@ namespace TestDummies
             return loggerSinkConfiguration.Sink(new DummyConsoleSink(theme), restrictedToMinimumLevel);
         }
 
-        //public static LoggerConfiguration Dummy(
-        //    this LoggerSinkConfiguration loggerSinkConfiguration,
-        //    Action<LoggerSinkConfiguration> wrappedSinkAction)
-        //{
-        //    return LoggerSinkConfiguration.Wrap(
-        //        loggerSinkConfiguration,
-        //        s => new DummyWrappingSink(s),
-        //        wrappedSinkAction);
-        //}
+        public static LoggerConfiguration ByExcludingLevel(this LoggerFilterConfiguration loggerFilterConfiguration,
+            LogEventLevel excludedLevel)
+        {
+            return loggerFilterConfiguration.With(new DummyEventLevelFilter(excludedLevel));
+        }
     }
 }

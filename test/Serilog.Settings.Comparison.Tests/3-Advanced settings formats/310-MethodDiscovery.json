@@ -1,0 +1,31 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "Filter": [
+      {
+        "Name": "ByExcludingLevel",
+        "Args": {
+          "excludedLevel": "Warning"
+        }
+      }
+    ],
+    "Enrich": [
+      {
+        "Name": "WithDummyUserName",
+        "Args": {
+          "extraParam": "UserExtraParam"
+        }
+      }
+    ],
+    "AuditTo": [
+      {
+        "Name": "Dummy",
+        "Args": {
+          "stringParam": "A string param",
+          "intParam": 666
+        }
+      }
+    ],
+    "WriteTo": [ "Dummy" ]
+  }
+}

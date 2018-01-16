@@ -627,53 +627,88 @@ Below are the general rules for setting values.
 
 
 ## Method Discovery
+Settings providers will discover extension methods for configuration. Remember to add  `using` directives if those extension methods leave in an assembly other than *Serilog*.
+
+Extension methods to the following types are supported :
+
+| Type | C# API | xml prefix | json section
+| ---- | ------ | ---------- | ------------
+| `LoggerSinkConfiguration` | `config.WriteTo.*` | `serilog:write-to:` | `WriteTo`
+| `LoggerAuditSinkConfiguration` | `config.AuditTo.*` | `serilog:audit-to:` | `AuditTo`
+| `LoggerEnrichmentConfiguration` | `config.Enrich.*` | `serilog:enrich:` | `Enrich`
+| `LoggerFilterConfiguration` | `config.Filter.*` | `serilog:filter:` | `Filter`
 
 
-### Enrichment Extension Methods
-Log events can be enriched with arbitrary `Enrich.With...()` extension methods.
 
 
-- in **C#** (ex : `311-EnrichWithExternalEnricher.csx`)
+- in **C#** (ex : `310-MethodDiscovery.csx`)
 
 ```csharp
 #r ".\TestDummies.dll"
+using Serilog.Events;
 using TestDummies;
 
 LoggerConfiguration
-    .Enrich.WithDummyThreadId()
-    .Enrich.WithDummyUserName("UserExtraParam");
+    .Filter.ByExcludingLevel(LogEventLevel.Warning)
+    .Enrich.WithDummyUserName("UserExtraParam")
+    .AuditTo.Dummy(stringParam: "A string param", intParam: 666)
+    .WriteTo.Dummy()
+    ;
 ```
 
 
-- in **JSON** (ex : `311-EnrichWithExternalEnricher.json`)
+- in **JSON** (ex : `310-MethodDiscovery.json`)
 
 ```json
 {
   "Serilog": {
     "Using": [ "TestDummies" ],
+    "Filter": [
+      {
+        "Name": "ByExcludingLevel",
+        "Args": {
+          "excludedLevel": "Warning"
+        }
+      }
+    ],
     "Enrich": [
-      "WithThreadId",
       {
         "Name": "WithDummyUserName",
         "Args": {
           "extraParam": "UserExtraParam"
         }
       }
-    ]
+    ],
+    "AuditTo": [
+      {
+        "Name": "Dummy",
+        "Args": {
+          "stringParam": "A string param",
+          "intParam": 666
+        }
+      }
+    ],
+    "WriteTo": [ "Dummy" ]
   }
 }
 ```
 
 
-- in **XML** (ex : `311-EnrichWithExternalEnricher.config`)
+:heavy_exclamation_mark: **Test Failed** : 
+```Assert.NotNull() Failure
+```
+- in **XML** (ex : `310-MethodDiscovery.config`)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <appSettings>
     <add key="serilog:using:TestDummies" value="TestDummies" />
-    <add key="serilog:enrich:WithDummyThreadId" value="" />
+    <add key="serilog:filter:ByExcludingLevel.excludedLevel" value="Warning" />
     <add key="serilog:enrich:WithDummyUserName.extraParam" value="UserExtraParam" />
+    <add key="serilog:audit-to:Dummy.stringParam" value="A string param" />
+    <add key="serilog:audit-to:Dummy.intParam" value="666" />
+    <add key="serilog:write-to:Dummy" value="" />
   </appSettings>
 </configuration>
 ```
