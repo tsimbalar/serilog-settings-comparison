@@ -35,6 +35,11 @@ namespace TestDummies.Console
         {
             Emitted.Add(logEvent);
         }
+
+        public static void Reset()
+        {
+            _emitted = null;
+        }
     }
 
 }

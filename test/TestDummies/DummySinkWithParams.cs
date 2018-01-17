@@ -42,5 +42,13 @@ namespace TestDummies
         {
             Emitted.Add(logEvent);
         }
+
+        public static void Reset()
+        {
+            EnumParam = default(MyEnum);
+            TimespanParam = default(TimeSpan);
+            UriParam = default(Uri);
+            _emitted = null;
+        }
     }
 }

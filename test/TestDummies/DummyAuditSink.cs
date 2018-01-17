@@ -52,5 +52,15 @@ namespace TestDummies
         {
             Emitted.Add(logEvent);
         }
+
+        public static void Reset()
+        {
+            Formatter = null;
+            IntParam = default(int);
+            NullableIntParam = null;
+            StringParam = null;
+            StringParamWithDefault = null;
+            _emitted = null;
+        }
     }
 }

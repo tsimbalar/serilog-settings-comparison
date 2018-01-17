@@ -17,13 +17,18 @@ namespace Serilog.SettingsComparisonTests
         {
             _outputHelper = outputHelper;
 
-            DummyConsoleSink.Emitted.Clear();
-            DummyAuditSink.Emitted.Clear();
-            DummySink.Emitted.Clear();
-            DummyRollingFileAuditSink.Emitted.Clear();
-            DummyRollingFileSink.Emitted.Clear();
-            DummySinkWithParams.Emitted.Clear();
-            DummyWithLevelSwitchSink.Emitted.Clear();
+            ClearDummySinkStaticState();
+        }
+
+        static void ClearDummySinkStaticState()
+        {
+            DummyConsoleSink.Reset();
+            DummyAuditSink.Reset();
+            DummySink.Reset();
+            DummyRollingFileAuditSink.Reset();
+            DummyRollingFileSink.Reset();
+            DummySinkWithParams.Reset();
+            DummyWithLevelSwitchSink.Reset();
         }
 
         protected void WriteDocumentation(string fileName, bool includeInOutput = true)
@@ -109,13 +114,7 @@ namespace Serilog.SettingsComparisonTests
 
         public void Dispose()
         {
-            DummyConsoleSink.Emitted.Clear();
-            DummyAuditSink.Emitted.Clear();
-            DummySink.Emitted.Clear();
-            DummyRollingFileAuditSink.Emitted.Clear();
-            DummyRollingFileSink.Emitted.Clear();
-            DummySinkWithParams.Emitted.Clear();
-            DummyWithLevelSwitchSink.Emitted.Clear();
+            ClearDummySinkStaticState();
         }
     }
 }

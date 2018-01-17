@@ -433,6 +433,11 @@ LoggerConfiguration
 ```
 
 
+:heavy_exclamation_mark: **Test Failed** : 
+```Assert.Equal() Failure
+Expected: A string param
+Actual:   (null)
+```
 - in **XML** (ex : `221-AuditToWithSimpleParams.config`)
 
 ```xml

@@ -34,5 +34,11 @@ namespace TestDummies
         {
             Emitted.Add(logEvent);
         }
+
+        public static void Reset()
+        {
+            ControlLevelSwitch = default(LoggingLevelSwitch);
+            _emitted = null;
+        }
     }
 }
