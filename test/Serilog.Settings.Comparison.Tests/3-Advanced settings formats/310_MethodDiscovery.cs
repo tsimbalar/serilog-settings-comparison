@@ -31,7 +31,7 @@ Extension methods to the following types are supported :
 
         [Theory]
         [InlineData("310-MethodDiscovery.csx")]
-        [InlineData("310-MethodDiscovery.json", Skip = "AuditTo is not supported in JSON yet")]
+        [InlineData("310-MethodDiscovery.json", Skip = "AuditTo is not supported in Serilog.Settings.Configuration yet ! [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-configuration/80.svg)](https://github.com/serilog/serilog-settings-configuration/issues/80)")]
         [InlineData("310-MethodDiscovery.config")]
         public void TestCase(string fileName)
         {

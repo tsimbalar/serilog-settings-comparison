@@ -412,7 +412,7 @@ LoggerConfiguration
 ```
 
 
-:warning: Not supported in JSON format yet !
+:warning: Not implemented yet in Serilog.Settings.Configuration ! [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-configuration/80.svg)](https://github.com/serilog/serilog-settings-configuration/issues/80)
 
 - in **XML** (ex : `221-AuditToWithSimpleParams.config`)
 
@@ -639,7 +639,7 @@ LoggerConfiguration
 ```
 
 
-:warning: AuditTo is not supported in JSON yet
+:warning: AuditTo is not supported in Serilog.Settings.Configuration yet ! [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-configuration/80.svg)](https://github.com/serilog/serilog-settings-configuration/issues/80)
 
 - in **XML** (ex : `310-MethodDiscovery.config`)
 
@@ -735,7 +735,7 @@ LoggerConfiguration
 ```
 
 
-:warning: Inconstency : JSON provider seems to need fully-qualified type name for Serilog types, but appSettings does not
+:warning: Inconstency : JSON provider seems to need fully-qualified type name for Serilog types, but appSettings does not ! [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-configuration/81.svg)](https://github.com/serilog/serilog-settings-configuration/issues/81)
 
 - in **XML** (ex : `331-ImplementationDefaultConstructor.config`)
 
