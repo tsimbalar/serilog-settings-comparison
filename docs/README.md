@@ -412,32 +412,8 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `221-AuditToWithSimpleParams.json`)
+:warning: Not supported in JSON format yet !
 
-```json
-{
-  "Serilog": {
-    "Using": [ "TestDummies" ],
-    "AuditTo": [
-      {
-        "Name": "Dummy",
-        "Args": {
-          "stringParam": "A string param",
-          "intParam": 666,
-          "nullableIntParam": ""
-        }
-      }
-    ]
-  }
-}
-```
-
-
-:heavy_exclamation_mark: **Test Failed** : 
-```Assert.Equal() Failure
-Expected: A string param
-Actual:   (null)
-```
 - in **XML** (ex : `221-AuditToWithSimpleParams.config`)
 
 ```xml
@@ -662,46 +638,8 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `310-MethodDiscovery.json`)
+:warning: AuditTo is not supported in JSON yet
 
-```json
-{
-  "Serilog": {
-    "Using": [ "TestDummies" ],
-    "Filter": [
-      {
-        "Name": "ByExcludingLevel",
-        "Args": {
-          "excludedLevel": "Warning"
-        }
-      }
-    ],
-    "Enrich": [
-      {
-        "Name": "WithDummyUserName",
-        "Args": {
-          "extraParam": "UserExtraParam"
-        }
-      }
-    ],
-    "AuditTo": [
-      {
-        "Name": "Dummy",
-        "Args": {
-          "stringParam": "A string param",
-          "intParam": 666
-        }
-      }
-    ],
-    "WriteTo": [ "Dummy" ]
-  }
-}
-```
-
-
-:heavy_exclamation_mark: **Test Failed** : 
-```Assert.NotNull() Failure
-```
 - in **XML** (ex : `310-MethodDiscovery.config`)
 
 ```xml
