@@ -16,17 +16,13 @@
 // ## 230 LogContext enrichment
 // ## 240 Filter
 // ## 250 Sub-loggers
-// TODO : Async / Map ? sub-Logger ? 
 
 // # 3 - Advanced Settings formats
 // ## 310 Method Discovery
-// ### 311 Enrich etc (TO COMPLETE) - speak about using etc (TODO)
 // ## 320 Specific String conversions (Enum, IConvertible, Urls , Timespan etc)
 // ## 330 Interfaces / Abstract classes
-// ### 331 Interfaces / default constructor
-// ### 332 Abstract classes / default constructor
-// ### 336 Interfaces / static property
-// ### 337 Abstract classes / static property
+// ### 331 Default constructor
+// ### 332 Static property
 // ## 390 - Env variable expansion
 
 

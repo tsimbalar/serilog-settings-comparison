@@ -717,7 +717,7 @@ LoggerConfiguration
 
 
 ### Full type name of implementation with default constructor
-For parameters whose type is an `interface` or an `abstract class`, the full type name of an implementation can be provided. If the type is not in the `Serilog` assembly, remember to include `using` directives.**TODO** : investigate.... Configuration seems to require the assembly name, but AppSettings doesn't !
+For parameters whose type is an `interface` or an `abstract class`, the full type name of an implementation can be provided. If the type is not in the `Serilog` assembly, remember to include `using` directives.
 
 
 - in **C#** (ex : `331-ImplementationDefaultConstructor.csx`)
@@ -735,30 +735,7 @@ LoggerConfiguration
 ```
 
 
-- in **JSON** (ex : `331-ImplementationDefaultConstructor.json`)
-
-```json
-{
-  "Serilog": {
-    "Using": [ "TestDummies" ],
-    "WriteTo": [
-      {
-        "Name": "DummyWithFormatter",
-        "Args": {
-          "formatter": "Serilog.Formatting.Json.JsonFormatter, Serilog"
-        }
-      },
-      {
-        "Name": "DummyConsole",
-        "Args": {
-          "theme": "TestDummies.Console.CustomConsoleTheme, TestDummies"
-        }
-      }
-    ]
-  }
-}
-```
-
+:warning: Inconstency : JSON provider seems to need fully-qualified type name for Serilog types, but appSettings does not
 
 - in **XML** (ex : `331-ImplementationDefaultConstructor.config`)
 
