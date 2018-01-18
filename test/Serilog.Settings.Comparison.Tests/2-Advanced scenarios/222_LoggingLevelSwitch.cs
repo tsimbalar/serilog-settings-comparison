@@ -10,7 +10,8 @@ namespace Serilog.SettingsComparisonTests
     public class LoggingLevelSwitch : BaseSettingsSupportComparisonTests
     {
         public const string docs = @"222### Sinks - `LoggingLevelSwitch`
-Some sinks such as the *Seq* sink accept a `LoggingLevelSwitch` that can be remote-controlled. In those case, the same ``LoggingLevelSwitch` instance that is used to control the global minimum level must be used. The *reference* to the switch is nted with the symbol `$`.";
+Some sinks such as the *Seq* sink accept a `LoggingLevelSwitch` that can be remote-controlled. In those case, the same `LoggingLevelSwitch` instance that is used to control the global minimum level must be used.
+The *reference* to the switch is noted with the symbol `$`.";
 
         public LoggingLevelSwitch(ITestOutputHelper outputHelper)
             : base(outputHelper)
