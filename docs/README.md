@@ -412,7 +412,26 @@ LoggerConfiguration
 ```
 
 
-:warning: Not implemented yet in Serilog.Settings.Configuration ! [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-configuration/80.svg)](https://github.com/serilog/serilog-settings-configuration/issues/80)
+- in **JSON** (ex : `221-AuditToWithSimpleParams.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "AuditTo": [
+      {
+        "Name": "Dummy",
+        "Args": {
+          "stringParam": "A string param",
+          "intParam": 666,
+          "nullableIntParam": ""
+        }
+      }
+    ]
+  }
+}
+```
+
 
 - in **XML** (ex : `221-AuditToWithSimpleParams.config`)
 
@@ -639,7 +658,42 @@ LoggerConfiguration
 ```
 
 
-:warning: AuditTo is not supported in Serilog.Settings.Configuration yet ! [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-configuration/80.svg)](https://github.com/serilog/serilog-settings-configuration/issues/80)
+- in **JSON** (ex : `310-MethodDiscovery.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "Filter": [
+      {
+        "Name": "ByExcludingLevel",
+        "Args": {
+          "excludedLevel": "Warning"
+        }
+      }
+    ],
+    "Enrich": [
+      {
+        "Name": "WithDummyUserName",
+        "Args": {
+          "extraParam": "UserExtraParam"
+        }
+      }
+    ],
+    "AuditTo": [
+      {
+        "Name": "Dummy",
+        "Args": {
+          "stringParam": "A string param",
+          "intParam": 666
+        }
+      }
+    ],
+    "WriteTo": [ "Dummy" ]
+  }
+}
+```
+
 
 - in **XML** (ex : `310-MethodDiscovery.config`)
 

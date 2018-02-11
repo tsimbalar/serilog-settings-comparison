@@ -49,7 +49,7 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
     <Reference Include="System.Configuration" />
     <PackageReference Include="Serilog.Settings.AppSettings" Version="2.1.2" />
-    <PackageReference Include="Serilog.Settings.Configuration" Version="2.4.1-dev-00070" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="2.5.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.0.0" />
   </ItemGroup>
 

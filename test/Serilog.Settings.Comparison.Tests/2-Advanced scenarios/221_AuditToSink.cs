@@ -16,7 +16,7 @@ Some sinks provide *Audit* functionality via the configuration method `.AuditTo.
 
         [Theory]
         [InlineData("221-AuditToWithSimpleParams.csx")]
-        [InlineData("221-AuditToWithSimpleParams.json", Skip = "Not implemented yet in Serilog.Settings.Configuration ! [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-configuration/80.svg)](https://github.com/serilog/serilog-settings-configuration/issues/80)")]
+        [InlineData("221-AuditToWithSimpleParams.json")]
         [InlineData("221-AuditToWithSimpleParams.config")]
         public void TestCase(string fileName)
         {
