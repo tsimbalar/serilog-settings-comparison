@@ -1,9 +1,7 @@
 ﻿{
   "Serilog": {
     "Using": [ "TestDummies" ],
-    "LevelSwitches": [
-      { "$mySwitch": "Warning" }
-    ],
+    "LevelSwitches": { "$mySwitch": "Warning" },
     "MinimumLevel": {
       "ControlledBy": "$mySwitch"
     },

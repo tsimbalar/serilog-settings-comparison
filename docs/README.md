@@ -469,7 +469,28 @@ LoggerConfiguration
 ```
 
 
-:warning: Not implemented yet in Serilog.Settings.Configuration ! [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-configuration/69.svg)](https://github.com/serilog/serilog-settings-configuration/issues/69)
+- in **JSON** (ex : `222-LoggingLevelSwitch.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "LevelSwitches": { "$mySwitch": "Warning" },
+    "MinimumLevel": {
+      "ControlledBy": "$mySwitch"
+    },
+    "WriteTo": [
+      {
+        "Name": "DummyWithLevelSwitch",
+        "Args": {
+          "controlLevelSwitch": "$mySwitch"
+        }
+      }
+    ]
+  }
+}
+```
+
 
 - in **XML** (ex : `222-LoggingLevelSwitch.config`)
 
