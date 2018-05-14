@@ -1,0 +1,23 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "Destructure": [
+      {
+        "Name": "ToMaximumDepth",
+        "Args": { "maximumDestructuringDepth": 3 }
+      },
+      {
+        "Name": "ToMaximumStringLength",
+        "Args": { "maximumStringLength": 3 }
+      },
+      {
+        "Name": "ToMaximumCollectionCount",
+        "Args": { "maximumCollectionCount": 3 }
+      },
+      {
+        "Name": "With",
+        "Args": { "policy": "TestDummies.Policies.CustomPolicy, TestDummies" }
+      }
+    ]
+  }
+}

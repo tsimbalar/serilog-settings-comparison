@@ -541,6 +541,56 @@ LoggerConfiguration.Enrich.FromLogContext();
 ```
 
 
+### Custom Destructuring
+Specific *Destructuring* rules can be specified.
+
+
+- in **C#** (ex : `235-Destructure.csx`)
+
+```csharp
+#r ".\TestDummies.dll"
+using TestDummies;
+using TestDummies.Policies;
+
+LoggerConfiguration
+    .Destructure.ToMaximumDepth(maximumDestructuringDepth: 3)
+    .Destructure.ToMaximumStringLength(maximumStringLength: 3)
+    .Destructure.ToMaximumCollectionCount(maximumCollectionCount: 3)
+    .Destructure.With(new CustomPolicy());
+```
+
+
+- in **JSON** (ex : `235-Destructure.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "Destructure": [
+      {
+        "Name": "ToMaximumDepth",
+        "Args": { "maximumDestructuringDepth": 3 }
+      },
+      {
+        "Name": "ToMaximumStringLength",
+        "Args": { "maximumStringLength": 3 }
+      },
+      {
+        "Name": "ToMaximumCollectionCount",
+        "Args": { "maximumCollectionCount": 3 }
+      },
+      {
+        "Name": "With",
+        "Args": { "policy": "TestDummies.Policies.CustomPolicy, TestDummies" }
+      }
+    ]
+  }
+}
+```
+
+
+:warning: Not supported yet in the appSettings XML format. [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-appsettings/20.svg)](https://github.com/serilog/serilog-settings-appsettings/issues/20)
+
 ### Filtering - Expressions
 Filtering can be specified using *filter expressions* thanks to the package *Serilog.Filters.Expressions*.
 
