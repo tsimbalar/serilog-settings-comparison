@@ -1,4 +1,5 @@
-﻿using Serilog.Events;
+﻿using System;
+using Serilog.Events;
 using Serilog.SettingsComparisonTests.Support;
 using TestDummies.Policies;
 using Xunit;
@@ -20,7 +21,7 @@ Specific *Destructuring* rules can be specified.";
         [Theory]
         [InlineData("235-Destructure.csx")]
         [InlineData("235-Destructure.json")]
-        [InlineData("235-Destructure.config", Skip = "Not supported yet in the appSettings XML format. [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-appsettings/20.svg)](https://github.com/serilog/serilog-settings-appsettings/issues/20)")]
+        [InlineData("235-Destructure.config")]
         public void TestCase(string fileName)
         {
             WriteDocumentation(fileName);
@@ -52,14 +53,17 @@ Specific *Destructuring* rules can be specified.";
                 Password = "ThisIsSoSecret",
                 Username = "tsimbalar"
             };
+            var version = new Version(2, 6, 1);
 
-            logger.Information("{@Nested} {@String}, {@Collection}, {@LoginData}", nestedObject, inputString, collection, loginData);
+            logger.Information("{@Nested} {@String}, {@Collection}, {@LoginData}, {@Version}",
+                nestedObject, inputString, collection, loginData, version);
 
             Assert.NotNull(e);
             var formattedNested = e.Properties["Nested"].ToString();
             var formattedString = e.Properties["String"].ToString();
             var formattedCollection = e.Properties["Collection"].ToString();
             var formattedLoginData = e.Properties["LoginData"].ToString();
+            var formattedVersion = e.Properties["Version"];
 
             Assert.Contains("C", formattedNested);
             Assert.DoesNotContain("D", formattedNested);
@@ -71,6 +75,8 @@ Specific *Destructuring* rules can be specified.";
 
             Assert.DoesNotContain("Password", formattedLoginData);
             Assert.DoesNotContain(loginData.Password, formattedLoginData);
+
+            Assert.IsType<ScalarValue>(formattedVersion);
         }
     }
 }

@@ -556,6 +556,7 @@ LoggerConfiguration
     .Destructure.ToMaximumDepth(maximumDestructuringDepth: 3)
     .Destructure.ToMaximumStringLength(maximumStringLength: 3)
     .Destructure.ToMaximumCollectionCount(maximumCollectionCount: 3)
+    .Destructure.AsScalar(typeof(System.Version))
     .Destructure.With(new CustomPolicy());
 ```
 
@@ -580,6 +581,10 @@ LoggerConfiguration
         "Args": { "maximumCollectionCount": 3 }
       },
       {
+        "Name": "AsScalar",
+        "Args": { "scalarType": "System.Version" }
+      },
+      {
         "Name": "With",
         "Args": { "policy": "TestDummies.Policies.CustomPolicy, TestDummies" }
       }
@@ -589,7 +594,22 @@ LoggerConfiguration
 ```
 
 
-:warning: Not supported yet in the appSettings XML format. [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-appsettings/20.svg)](https://github.com/serilog/serilog-settings-appsettings/issues/20)
+- in **XML** (ex : `235-Destructure.config`)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="serilog:using:TestDummies" value="TestDummies" />
+    <add key="serilog:destructure:ToMaximumDepth.maximumDestructuringDepth" value="3" />
+    <add key="serilog:destructure:ToMaximumStringLength.maximumStringLength" value="3" />
+    <add key="serilog:destructure:ToMaximumCollectionCount.maximumCollectionCount" value="3" />
+    <add key="serilog:destructure:AsScalar.scalarType" value="System.Version" />
+    <add key="serilog:destructure:With.policy" value="TestDummies.Policies.CustomPolicy, TestDummies" />
+  </appSettings>
+</configuration>
+```
+
 
 ### Filtering - Expressions
 Filtering can be specified using *filter expressions* thanks to the package *Serilog.Filters.Expressions*.

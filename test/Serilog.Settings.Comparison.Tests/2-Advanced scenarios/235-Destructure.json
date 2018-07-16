@@ -15,6 +15,10 @@
         "Args": { "maximumCollectionCount": 3 }
       },
       {
+        "Name": "AsScalar",
+        "Args": { "scalarType": "System.Version" }
+      },
+      {
         "Name": "With",
         "Args": { "policy": "TestDummies.Policies.CustomPolicy, TestDummies" }
       }
