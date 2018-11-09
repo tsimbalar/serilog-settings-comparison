@@ -1,0 +1,25 @@
+﻿{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyWithComplexParams",
+        "Args": {
+          "poco": {
+            "stringProperty": "myString",
+            "intProperty": 42,
+            "nested": {
+              "subProperty": "Sub"
+            }
+          },
+          "intArray": [ 2, 4, 6 ],
+          "stringArray": [ "one", "two", "three" ],
+          "objArray": [
+            { "subProperty": "Sub1" },
+            { "subProperty": "Sub2" }
+          ]
+        }
+      }
+    ]
+  }
+}

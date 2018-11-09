@@ -25,6 +25,7 @@ namespace Serilog.SettingsComparisonTests
             DummyConsoleSink.Reset();
             DummyAuditSink.Reset();
             DummySink.Reset();
+            DummySinkWithComplexParams.Reset();
             DummyRollingFileAuditSink.Reset();
             DummyRollingFileSink.Reset();
             DummySinkWithParams.Reset();

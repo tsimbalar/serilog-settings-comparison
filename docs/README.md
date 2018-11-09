@@ -804,6 +804,7 @@ LoggerConfiguration
 
 
 ## Setting values conversions
+### Simple values
 Values for settings can be simple value types (`string`, `int`, `bool` etc), nullable versions of the previous. `Enum`s can also be parsed by name. Some specific types like `Uri` and `TimeSpan` are also supported.
 
 
@@ -857,6 +858,77 @@ LoggerConfiguration
 </configuration>
 ```
 
+
+### Complex values
+Arrays or complex type can also be passed to configuration methods.
+
+
+- in **C#** (ex : `321-ComplexValues.csx`)
+
+```csharp
+#r ".\TestDummies.dll"
+using TestDummies;
+
+LoggerConfiguration
+    .WriteTo.DummyWithComplexParams(
+        poco: new Poco()
+        {
+            StringProperty = "myString",
+            IntProperty = 42,
+            Nested = new SubPoco()
+            {
+                SubProperty = "Sub"
+            }
+        },
+        intArray: new[] { 2, 4, 6 },
+        stringArray: new[] { "one", "two", "three" },
+        objArray: new SubPoco[]
+            {
+                new SubPoco()
+                {
+                    SubProperty = "Sub1"
+                },
+                new SubPoco()
+                {
+                    SubProperty = "Sub2"
+                }
+            }
+    );
+```
+
+
+- in **JSON** (ex : `321-ComplexValues.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyWithComplexParams",
+        "Args": {
+          "poco": {
+            "stringProperty": "myString",
+            "intProperty": 42,
+            "nested": {
+              "subProperty": "Sub"
+            }
+          },
+          "intArray": [ 2, 4, 6 ],
+          "stringArray": [ "one", "two", "three" ],
+          "objArray": [
+            { "subProperty": "Sub1" },
+            { "subProperty": "Sub2" }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+
+:warning: Not supported yet in the appSettings XML format.
 
 ## Interfaces and abstract classes
 

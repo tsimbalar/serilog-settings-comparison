@@ -71,6 +71,15 @@ namespace TestDummies
             return loggerSinkConfiguration.Sink(new DummySinkWithParams(enumParam, timespanParam, uriParam), LevelAlias.Minimum);
         }
 
+        public static LoggerConfiguration DummyWithComplexParams(this LoggerSinkConfiguration loggerSinkConfiguration,
+            Poco poco,
+            int[] intArray,
+            string[] stringArray,
+            SubPoco[] objArray)
+        {
+            return loggerSinkConfiguration.Sink(new DummySinkWithComplexParams(poco, intArray, stringArray, objArray), LevelAlias.Minimum);
+        }
+
         public static LoggerConfiguration DummyWithFormatter(
             this LoggerSinkConfiguration loggerSinkConfiguration,
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,

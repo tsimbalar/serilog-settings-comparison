@@ -9,6 +9,7 @@ namespace Serilog.SettingsComparisonTests
     public class SettingsValueConversions : BaseSettingsSupportComparisonTests
     {
         public const string docs = @"320## Setting values conversions
+### Simple values
 Values for settings can be simple value types (`string`, `int`, `bool` etc), nullable versions of the previous. `Enum`s can also be parsed by name. Some specific types like `Uri` and `TimeSpan` are also supported.";
 
         public SettingsValueConversions(ITestOutputHelper outputHelper)
