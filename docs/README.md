@@ -952,7 +952,30 @@ LoggerConfiguration
 ```
 
 
-:warning: Inconstency : JSON provider seems to need fully-qualified type name for Serilog types, but appSettings does not ! [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-configuration/81.svg)](https://github.com/serilog/serilog-settings-configuration/issues/81)
+- in **JSON** (ex : `331-ImplementationDefaultConstructor.json`)
+
+```json
+{
+  "Serilog": {
+    "Using": [ "TestDummies" ],
+    "WriteTo": [
+      {
+        "Name": "DummyWithFormatter",
+        "Args": {
+          "formatter": "Serilog.Formatting.Json.JsonFormatter"
+        }
+      },
+      {
+        "Name": "DummyConsole",
+        "Args": {
+          "theme": "TestDummies.Console.CustomConsoleTheme, TestDummies"
+        }
+      }
+    ]
+  }
+}
+```
+
 
 - in **XML** (ex : `331-ImplementationDefaultConstructor.config`)
 

@@ -19,7 +19,7 @@ For parameters whose type is an `interface` or an `abstract class`, the full typ
 
         [Theory]
         [InlineData("331-ImplementationDefaultConstructor.csx")]
-        [InlineData("331-ImplementationDefaultConstructor.json", Skip = "Inconstency : JSON provider seems to need fully-qualified type name for Serilog types, but appSettings does not ! [![GitHub issue state](https://img.shields.io/github/issues/detail/s/serilog/serilog-settings-configuration/81.svg)](https://github.com/serilog/serilog-settings-configuration/issues/81)")]
+        [InlineData("331-ImplementationDefaultConstructor.json")]
         [InlineData("331-ImplementationDefaultConstructor.config")]
         public void TestCase(string fileName)
         {
